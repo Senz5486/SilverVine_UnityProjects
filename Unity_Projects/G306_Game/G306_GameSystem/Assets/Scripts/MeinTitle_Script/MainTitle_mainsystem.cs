@@ -9,7 +9,8 @@ public class MainTitle_mainsystem : MonoBehaviour
     //GameObjects
     [SerializeField] private Image GameLogo; // ゲームのロゴ
     [SerializeField] private Text SubTitle; //ゲームのロゴの下に入れる文字
-
+    [SerializeField] private GameObject SceneManagerObject;
+    OR_SceneManager _orSceneManager;
     //Vector&RectTransform
     [SerializeField] private Vector2 LogoPos;
     [SerializeField] private RectTransform RectTrans;
@@ -23,6 +24,7 @@ public class MainTitle_mainsystem : MonoBehaviour
 
     private void Awake()
     {
+        _orSceneManager = SceneManagerObject.GetComponent<OR_SceneManager>();
         RectTrans = GameLogo.GetComponent<RectTransform>();
         LogoPos = RectTrans.anchoredPosition;
         isLogoMaxHeight = false;
@@ -35,6 +37,15 @@ public class MainTitle_mainsystem : MonoBehaviour
     {
 
         MainTitleAnimationSystem();
+        AnyKeyPush();
+    }
+
+    void AnyKeyPush()
+    {
+        if (Input.anyKey)
+        {
+            _orSceneManager.NextSceneLoad();
+        }
     }
 
     void MainTitleAnimationSystem() //タイトルのロゴやサブタイトルのアニメーションシステム

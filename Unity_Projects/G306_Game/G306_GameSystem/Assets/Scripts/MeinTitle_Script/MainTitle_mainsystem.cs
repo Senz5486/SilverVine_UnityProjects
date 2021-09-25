@@ -10,17 +10,22 @@ public class MainTitle_mainsystem : MonoBehaviour
     [SerializeField] private Image GameLogo; // ゲームのロゴ
     [SerializeField] private Text SubTitle; //ゲームのロゴの下に入れる文字
 
-    //Vector
-    Vector3 LogoPos;
+    //Vector&RectTransform
+    [SerializeField] private Vector2 LogoPos;
+    [SerializeField] private RectTransform RectTrans;
     //Float
-
+    [SerializeField] private float BlinkSpeed;
+    [SerializeField] private float BlinkTimer;
     //Bool
-    public bool isMoveLogo;
-    bool isLogoMaxHeight;
+    [SerializeField] private bool isMoveLogo;
+    [SerializeField] private bool isLogoMaxHeight;
     #endregion
 
     private void Awake()
     {
+        RectTrans = GameLogo.GetComponent<RectTransform>();
+        LogoPos = RectTrans.anchoredPosition;
+        isLogoMaxHeight = false;
         isMoveLogo = true;
         SubTitle.text = "キーを押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key)
     }
@@ -34,24 +39,45 @@ public class MainTitle_mainsystem : MonoBehaviour
 
     void MainTitleAnimationSystem() //タイトルのロゴやサブタイトルのアニメーションシステム
     {
-        LogoPos = GameLogo.transform.position;
-        if (isMoveLogo == true) // バグ発生中- 修正中
+
+        #region ロゴが上下に動くアニメーション 
+        //ロゴ用 (バグ修正済み: 2021/09/26 0:54 - 渡邊 # 状態:完成 #)
+        if (isMoveLogo == true)
         {
-            if(isLogoMaxHeight == false)
+            if (isLogoMaxHeight == false)
             {
-                LogoPos.y += 0.1f;
-                if(LogoPos.y >= 15.0f)
+                LogoPos.y += 0.03f;
+                if (LogoPos.y >= 15.0f)
                 {
                     isLogoMaxHeight = true;
                 }
-            }else if(isLogoMaxHeight == true){
-                LogoPos.y -= 0.1f;
-                if(LogoPos.y <= -15.0f)
+            }
+            if (isLogoMaxHeight == true)
+            {
+                LogoPos.y -= 0.03f;
+                if (LogoPos.y <= -15.0f)
                 {
                     isLogoMaxHeight = false;
                 }
             }
         }
-        GameLogo.transform.position = LogoPos;
+        RectTrans.anchoredPosition = LogoPos;
+        //ロゴ用
+        #endregion
+
+        #region サブタイトルが点滅するアニメーション
+        //サブタイトル用 (バグ無し: 2021/09/26 1:03 - 渡邊 # 状態:完成 #)
+
+        SubTitle.color = GetAlphaColor(SubTitle.color);
+
+        Color GetAlphaColor(Color color)
+        {
+            BlinkTimer += Time.deltaTime * 5.0f * BlinkSpeed;
+            color.a = Mathf.Sin(BlinkTimer) * 0.5f + 0.5f;
+
+            return color;
+        }
+        //サブタイトル用
+        #endregion
     }
 }

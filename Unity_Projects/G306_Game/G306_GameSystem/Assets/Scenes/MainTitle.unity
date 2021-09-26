@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 59371283}
   - component: {fileID: 59371282}
   - component: {fileID: 59371284}
+  - component: {fileID: 59371285}
   m_Layer: 0
   m_Name: ScriptObject
   m_TagString: Untagged
@@ -271,6 +272,20 @@ MonoBehaviour:
   SceneName: MainMenu
   LoadingUI: {fileID: 1369130414}
   LoadingBar: {fileID: 333401541}
+--- !u!114 &59371285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59371281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef83ba0194a085c45bac6712ce2153ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameVersion: 1.0.0
+  BuildNumber: 2021092046881
 --- !u!1 &112024307
 GameObject:
   m_ObjectHideFlags: 0

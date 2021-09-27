@@ -32,7 +32,6 @@ public class MainTitle_mainsystem : MonoBehaviour
         SubTitle.text = "キーを押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key)
     }
 
-
     void Update()
     {
 

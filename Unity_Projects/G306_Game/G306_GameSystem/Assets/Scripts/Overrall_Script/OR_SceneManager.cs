@@ -20,7 +20,6 @@ public class OR_SceneManager : MonoBehaviour
     public void NextSceneLoad()
     {
         LoadingUI.SetActive(true);
-
         StartCoroutine("LoadAsyncSceneSystem");
     }
 
@@ -32,7 +31,7 @@ public class OR_SceneManager : MonoBehaviour
         while (!async.isDone)
         {
             var ProgressValue = Mathf.Clamp01(async.progress / 0.9f);
-            LoadingBar.fillAmount = ProgressValue;
+            LoadingBar.fillAmount = async.progress;
             yield return null;
         }
     }

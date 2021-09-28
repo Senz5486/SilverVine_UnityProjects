@@ -23,6 +23,9 @@ public class MG_HealthSystem : MonoBehaviour
     [SerializeField] private Image HealthRedBar;
     [SerializeField] private Image HealthPurpleBar;
 
+    //Text
+    [SerializeField] private Text HealthPersentText;
+    
     //Tween
     private Tween HealthPurpleTween;
     private void Awake()
@@ -54,6 +57,7 @@ public class MG_HealthSystem : MonoBehaviour
     {
         var ValueFrom = CurrentHealth / MaxHealth;
         var ValueTo = (CurrentHealth - reducationValue) / MaxHealth;
+        HealthPersentText.text = (ValueFrom * 100).ToString() + "%";
 
         //赤ゲージの常時減少
         HealthRedBar.fillAmount = ValueTo;
@@ -71,6 +75,7 @@ public class MG_HealthSystem : MonoBehaviour
         if(CurrentHealth <= 0)
         {
             CurrentHealth = 0;
+            HealthPersentText.text = "ゲームオーバー";
             isDead = true;
             return;
         }

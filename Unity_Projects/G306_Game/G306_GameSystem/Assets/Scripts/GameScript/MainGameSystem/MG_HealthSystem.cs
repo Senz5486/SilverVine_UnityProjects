@@ -68,7 +68,7 @@ public class MG_HealthSystem : MonoBehaviour
     }
     public void LimitHealthControll()
     {
-        if(CurrentHealth >= 0)
+        if(CurrentHealth <= 0)
         {
             CurrentHealth = 0;
             isDead = true;

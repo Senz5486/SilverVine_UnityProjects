@@ -11,47 +11,49 @@ public class OR_SceneManager : MonoBehaviour
 
     //String
     [SerializeField] private string SceneName;      //読み込むシーン名
-
+    [SerializeField] private string RandomTips1; //Loading Random1 の時のTips
+    [SerializeField] private string RandomTips2; //Loading Random2 の時のTips
+    [SerializeField] private string RandomTips3; //Loading Random3 の時のTips
     //Int
-    [SerializeField] private int LoadingRandom;
+    private int LoadingRandom;
 
     //GameObject
     [SerializeField] private GameObject LoadingUI;  //ローディングUI
-    [SerializeField] private GameObject LoadingBG1;
-    [SerializeField] private GameObject LoadingBG2;
-    [SerializeField] private GameObject LoadingBG3;
+    [SerializeField] private GameObject LoadingBG1; //ローディング Random1 の時の背景
+    [SerializeField] private GameObject LoadingBG2; //ローディング Random2 の時の背景
+    [SerializeField] private GameObject LoadingBG3; //ローディング Random3 の時の背景
 
     //Image
     [SerializeField] private Image LoadingBar;      //NowLoadingのプログレスバーの指定
 
     //Text
     [SerializeField] private Text ProgressText;     //プログレステキスト
-    [SerializeField] private Text Tips;
+    [SerializeField] private Text Tips;             //Tipsテキスト
 
 
     private void Awake()
     {
-        LoadingRandom = Random.Range(1, 4);
+        LoadingRandom = Random.Range(1, 4); //ランダム整数 1 - 3
         if(LoadingRandom == 1)
         {
             LoadingBG1.SetActive(true);
             LoadingBG2.SetActive(false);
             LoadingBG3.SetActive(false);
-            Tips.text = "下記のキャラクターは現在作成中のラフ画です 作成者:横瀬";
+            Tips.text = RandomTips1;
         }
         if(LoadingRandom == 2)
         {
             LoadingBG2.SetActive(true);
             LoadingBG1.SetActive(false);
             LoadingBG3.SetActive(false);
-            Tips.text = "下記のキャラクターは現在作成中のラフ画です 作成者:齋藤";
+            Tips.text = RandomTips2;
         }
         if(LoadingRandom == 3)
         {
             LoadingBG3.SetActive(true);
             LoadingBG1.SetActive(false);
             LoadingBG2.SetActive(false);
-            Tips.text = "下記のキャラクターは現在作成中のラフ画です 作成者:松田";
+            Tips.text = RandomTips3;
         }
     }
 

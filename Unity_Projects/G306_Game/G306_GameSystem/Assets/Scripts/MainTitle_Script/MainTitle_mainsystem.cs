@@ -9,26 +9,29 @@ public class MainTitle_mainsystem : MonoBehaviour
     //GameObjects
     [SerializeField] private Image GameLogo; // ゲームのロゴ
     [SerializeField] private Text SubTitle; //ゲームのロゴの下に入れる文字
-    [SerializeField] private GameObject SceneManagerObject;
-    OR_SceneManager _orSceneManager;
+    [SerializeField] private GameObject SceneManagerObject; //シーンマネージャーを設定してるオブジェクト参照
+    OR_SceneManager _orSceneManager; //OR_SceneManager
     //Vector&RectTransform
-    [SerializeField] private Vector2 LogoPos;
-    [SerializeField] private RectTransform RectTrans;
+    [SerializeField] private Vector2 LogoPos; //ロゴのポジション
+    [SerializeField] private RectTransform RectTrans; //ロゴの場所
     //Float
     [SerializeField] private float BlinkSpeed;
     [SerializeField] private float BlinkTimer;
     //Bool
     [SerializeField] private bool isMoveLogo;
     [SerializeField] private bool isLogoMaxHeight;
+    //SoundObject
+    [SerializeField] private SoundController _SoundController;
     #endregion
 
     private void Awake()
     {
-        _orSceneManager = SceneManagerObject.GetComponent<OR_SceneManager>();
-        RectTrans = GameLogo.GetComponent<RectTransform>();
-        LogoPos = RectTrans.anchoredPosition;
-        isLogoMaxHeight = false;
-        isMoveLogo = true;
+        _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+        _orSceneManager = SceneManagerObject.GetComponent<OR_SceneManager>(); 
+        RectTrans = GameLogo.GetComponent<RectTransform>(); 
+        LogoPos = RectTrans.anchoredPosition; 
+        isLogoMaxHeight = false; 
+        isMoveLogo = true; 
         SubTitle.text = "キーを押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key)
     }
 

@@ -255,6 +255,8 @@ MonoBehaviour:
   RectTrans: {fileID: 0}
   BlinkSpeed: 0.6
   BlinkTimer: 0
+  LogoMoveHeight: 20
+  LogoMoveSpeed: 0.08
   isMoveLogo: 0
   isLogoMaxHeight: 0
   _SoundController: {fileID: 0}
@@ -299,6 +301,7 @@ MonoBehaviour:
   LoadingBar: {fileID: 333401541}
   ProgressText: {fileID: 1915237672}
   Tips: {fileID: 22698214}
+  _MusicController: {fileID: 0}
 --- !u!4 &83894524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2545823773444583948, guid: 1d346702b2107531e939003fb256261b, type: 3}
@@ -602,8 +605,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180}
-  m_SizeDelta: {x: 600, y: 75}
+  m_AnchoredPosition: {x: 0, y: -219}
+  m_SizeDelta: {x: 1920, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &112024309
 MonoBehaviour:
@@ -803,9 +806,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayBGMAudio: -1
+  LastPlayMusicNo: 0
   audioClips:
   - {fileID: 8300000, guid: 6a44a84affa76ea489ae6f99145ee550, type: 3}
   - {fileID: 8300000, guid: b0c2839517dc16245b0dfd965884b981, type: 3}
+  - {fileID: 8300000, guid: 475eb58c9fe08084a812ddc9e519edf5, type: 3}
 --- !u!1 &315805314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,8 +2190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 200}
+  m_AnchoredPosition: {x: 0.000015259, y: 0}
+  m_SizeDelta: {x: 924, y: 151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048549564
 MonoBehaviour:
@@ -2208,7 +2213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32b84d6883f393c4d95a98f3de8fec0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bc125b77eaf0ea4aad6ebaa713ccb65, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3748,6 +3753,12 @@ MonoBehaviour:
   PlaySEAudio: -1
   audioClips:
   - {fileID: 8300000, guid: 4c40a2cbad9a41640b75e20da082832c, type: 3}
+  - {fileID: 8300000, guid: be5a42a600ee8a943a3f73ff8f94cb8f, type: 3}
+  - {fileID: 8300000, guid: f2262ec6634e2a942a640437a2b898cc, type: 3}
+  - {fileID: 8300000, guid: 63e1e3e402aa19c4a8e9f31de2fffd58, type: 3}
+  - {fileID: 8300000, guid: 4b22b36ddfd052a4ca879ee9ce3f8e38, type: 3}
+  - {fileID: 8300000, guid: 193e8f1faaae792428f112ef3ef0f3ed, type: 3}
+  - {fileID: 8300000, guid: f23c1f6534a154c419fd7d231f59443e, type: 3}
 --- !u!1 &1850751692
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class SoundController : MonoBehaviour
     {
         if (PlaySEAudio >= 0)
         {
-            for (int i = 0; i >= PlaySEAudio; i++)
+            for (int i = 0; i <= PlaySEAudio; i++)
             {
                 if (i == PlaySEAudio)
                 { 

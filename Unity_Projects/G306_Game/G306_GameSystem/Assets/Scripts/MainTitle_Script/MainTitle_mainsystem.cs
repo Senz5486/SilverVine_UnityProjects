@@ -15,9 +15,10 @@ public class MainTitle_mainsystem : MonoBehaviour
     [SerializeField] private Vector2 LogoPos; //ロゴのポジション
     [SerializeField] private RectTransform RectTrans; //ロゴの場所
     //Float
-    [SerializeField] private float BlinkSpeed;
+    [SerializeField] private float BlinkSpeed;      //点滅速度
     [SerializeField] private float BlinkTimer;
     [SerializeField] private float LogoMoveHeight; //どこまで動くか
+    [SerializeField] private float LogoMoveSpeed; //ロゴが動く速度
     //Bool
     [SerializeField] private bool isMoveLogo;
     [SerializeField] private bool isLogoMaxHeight;
@@ -38,8 +39,8 @@ public class MainTitle_mainsystem : MonoBehaviour
 
         isMoveLogo = true;
         UpdateOnce = true;
-        SubTitle.text = "キーを押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key) 
-        Invoke("PlayMusic", 0.5f);
+        SubTitle.text = "スペースキー を押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key) 
+        Invoke("PlayMusic", 0.1f);
         
     }
 
@@ -56,9 +57,14 @@ public class MainTitle_mainsystem : MonoBehaviour
 
     void AnyKeyPush()
     {
-        if (Input.anyKey)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            _SoundController.PlaySEAudio = 6;
             _orSceneManager.NextSceneLoad();
+        }
+        else
+        {
+            _SoundController.PlaySEAudio = -3;
         }
     }
 
@@ -71,7 +77,7 @@ public class MainTitle_mainsystem : MonoBehaviour
         {
             if (isLogoMaxHeight == false)
             {
-                LogoPos.y += 0.03f;
+                LogoPos.y += LogoMoveSpeed;
                 if (LogoPos.y >= LogoMoveHeight)
                 {
                     isLogoMaxHeight = true;
@@ -79,7 +85,7 @@ public class MainTitle_mainsystem : MonoBehaviour
             }
             if (isLogoMaxHeight == true)
             {
-                LogoPos.y -= 0.03f;
+                LogoPos.y -= LogoMoveSpeed;
                 if (LogoPos.y <= -LogoMoveHeight)
                 {
                     isLogoMaxHeight = false;

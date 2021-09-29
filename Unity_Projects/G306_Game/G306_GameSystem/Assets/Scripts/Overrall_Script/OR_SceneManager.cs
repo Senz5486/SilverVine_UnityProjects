@@ -30,25 +30,27 @@ public class OR_SceneManager : MonoBehaviour
     [SerializeField] private Text ProgressText;     //プログレステキスト
     [SerializeField] private Text Tips;             //Tipsテキスト
 
-
+    //MusicObject
+    [SerializeField] private MusicController _MusicController;
     private void Awake()
     {
+        _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
         LoadingRandom = Random.Range(1, 4); //ランダム整数 1 - 3
-        if(LoadingRandom == 1)
+        if (LoadingRandom == 1)
         {
             LoadingBG1.SetActive(true);
             LoadingBG2.SetActive(false);
             LoadingBG3.SetActive(false);
             Tips.text = RandomTips1;
         }
-        if(LoadingRandom == 2)
+        if (LoadingRandom == 2)
         {
             LoadingBG2.SetActive(true);
             LoadingBG1.SetActive(false);
             LoadingBG3.SetActive(false);
             Tips.text = RandomTips2;
         }
-        if(LoadingRandom == 3)
+        if (LoadingRandom == 3)
         {
             LoadingBG3.SetActive(true);
             LoadingBG1.SetActive(false);
@@ -56,7 +58,10 @@ public class OR_SceneManager : MonoBehaviour
             Tips.text = RandomTips3;
         }
     }
-
+    void PlayMusic()
+    {
+        _MusicController.PlayBGMAudio = -1;
+    }
     //次のシーンへ移動するシステム (バグ無し: 2021/09/26 1:26 - 渡邊 # 状態:完成 #)
     //次のシーンへ移動したいときは NextSceneLoad()関数をご使用ください。
     //↓ 使い方 ↓
@@ -73,12 +78,17 @@ public class OR_SceneManager : MonoBehaviour
     IEnumerator LoadAsyncSceneSystem() 
     {
         async = SceneManager.LoadSceneAsync(SceneName);
+        async.allowSceneActivation = false;
         //シーンが読み終わるまで待つ
-        while (!async.isDone)
+        while (async.progress < 0.9f)
         {
             ProgressText.text = (async.progress * 100) + "%";
             LoadingBar.fillAmount = async.progress;
             yield return null;
         }
+            ProgressText.text = "100%";
+            LoadingBar.fillAmount = 1.0f;
+            yield return new WaitForSeconds(1.5f); //待ち時間
+            async.allowSceneActivation = true;
     }
 }

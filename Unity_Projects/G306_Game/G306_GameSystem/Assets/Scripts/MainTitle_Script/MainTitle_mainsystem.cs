@@ -17,29 +17,41 @@ public class MainTitle_mainsystem : MonoBehaviour
     //Float
     [SerializeField] private float BlinkSpeed;
     [SerializeField] private float BlinkTimer;
+    [SerializeField] private float LogoMoveHeight; //どこまで動くか
     //Bool
     [SerializeField] private bool isMoveLogo;
     [SerializeField] private bool isLogoMaxHeight;
+    private bool UpdateOnce;
     //SoundObject
     [SerializeField] private SoundController _SoundController;
+    [SerializeField] private MusicController _MusicController;
     #endregion
 
     private void Awake()
     {
         _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+        _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
         _orSceneManager = SceneManagerObject.GetComponent<OR_SceneManager>(); 
         RectTrans = GameLogo.GetComponent<RectTransform>(); 
-        LogoPos = RectTrans.anchoredPosition; 
-        isLogoMaxHeight = false; 
-        isMoveLogo = true; 
-        SubTitle.text = "キーを押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key)
+        LogoPos = RectTrans.anchoredPosition;
+        isLogoMaxHeight = false;
+
+        isMoveLogo = true;
+        UpdateOnce = true;
+        SubTitle.text = "キーを押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key) 
+        Invoke("PlayMusic", 0.5f);
+        
     }
 
     void Update()
     {
-
         MainTitleAnimationSystem();
         AnyKeyPush();
+    }
+
+    void PlayMusic()
+    {
+        _MusicController.PlayBGMAudio = 0;
     }
 
     void AnyKeyPush()
@@ -60,7 +72,7 @@ public class MainTitle_mainsystem : MonoBehaviour
             if (isLogoMaxHeight == false)
             {
                 LogoPos.y += 0.03f;
-                if (LogoPos.y >= 15.0f)
+                if (LogoPos.y >= LogoMoveHeight)
                 {
                     isLogoMaxHeight = true;
                 }
@@ -68,7 +80,7 @@ public class MainTitle_mainsystem : MonoBehaviour
             if (isLogoMaxHeight == true)
             {
                 LogoPos.y -= 0.03f;
-                if (LogoPos.y <= -15.0f)
+                if (LogoPos.y <= -LogoMoveHeight)
                 {
                     isLogoMaxHeight = false;
                 }

@@ -23,7 +23,7 @@ public class SoundController : MonoBehaviour
             for (int i = 0; i >= PlaySEAudio; i++)
             {
                 if (i == PlaySEAudio)
-                {
+                { 
                     _audiosource.PlayOneShot(audioClips[i]);
                     PlaySEAudio = -1;
                     break;

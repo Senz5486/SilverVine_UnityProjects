@@ -11,14 +11,16 @@ public class OR_Fadein : MonoBehaviour
     public bool isFadeIn; //このフラグが有効になった時にフェードアウトを実行する
 
     Image FadeImage;
-
     private void Awake()
     {
-        Alpha = 255.0f;
+        FadeImage = this.GetComponent<Image>();
+        
+        
     }
     void Start()
     {
-        FadeImage = this.GetComponent<Image>();
+        Alpha = 255.0f;
+        FadeImage.enabled = true;
         Red = FadeImage.color.r;
         Green = FadeImage.color.g;
         Blue = FadeImage.color.b;
@@ -42,6 +44,7 @@ public class OR_Fadein : MonoBehaviour
         if (Alpha <= 0)
         {
             isFadeIn = false;
+            FadeImage.enabled = false;
         }
 
     }

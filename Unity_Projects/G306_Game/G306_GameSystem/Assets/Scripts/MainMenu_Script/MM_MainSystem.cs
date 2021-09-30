@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MM_MainSystem : MonoBehaviour
 {
@@ -16,13 +17,14 @@ public class MM_MainSystem : MonoBehaviour
     }
     void Start()
     {
-
+       
     }
 
     void Update()
     {
-
+        
     }
+
     void PlayMusic()
     {
         _MusicController.PlayBGMAudio = 2;

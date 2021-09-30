@@ -88,7 +88,7 @@ public class OR_SceneManager : MonoBehaviour
         }
             ProgressText.text = "100%";
             LoadingBar.fillAmount = 1.0f;
-            yield return new WaitForSeconds(1.5f); //‘Ò‚¿ŽžŠÔ
+            yield return new WaitForSeconds(0.1f); //‘Ò‚¿ŽžŠÔ
             async.allowSceneActivation = true;
     }
 }

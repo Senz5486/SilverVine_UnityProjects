@@ -10,7 +10,7 @@ public class OR_SceneManager : MonoBehaviour
     private AsyncOperation async;           //AsyncOperation
 
     //String
-    [SerializeField] private string SceneName;      //読み込むシーン名
+    public string SceneName;      //読み込むシーン名
     [SerializeField] private string RandomTips1; //Loading Random1 の時のTips
     [SerializeField] private string RandomTips2; //Loading Random2 の時のTips
     [SerializeField] private string RandomTips3; //Loading Random3 の時のTips
@@ -88,7 +88,7 @@ public class OR_SceneManager : MonoBehaviour
         }
             ProgressText.text = "100%";
             LoadingBar.fillAmount = 1.0f;
-            yield return new WaitForSeconds(0.1f); //待ち時間
+            yield return new WaitForSeconds(2.1f); //待ち時間
             async.allowSceneActivation = true;
     }
 }

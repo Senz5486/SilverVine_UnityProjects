@@ -29,13 +29,13 @@ public class MM_PushButtons : MonoBehaviour
     }
     public void PushGameStart()
     {
-        if (isFirstPlay == false) //初回プレイだった場合
+        if (isFirstPlay == true) //初回プレイだった場合
         {
             _SceneManager.SceneName = "Stage_Tutorial";
             _SceneManager.NextSceneLoad();
-            isFirstPlay = true;
+            isFirstPlay = false;
         }
-        else if (isFirstPlay) //二回目以降の場合
+        else if (isFirstPlay == false) //二回目以降の場合
         {
             StageSelectUI.SetActive(true);
             MainMenuUI.SetActive(false);

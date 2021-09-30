@@ -27,6 +27,5 @@ public class MM_MainSystem : MonoBehaviour
 
     void PlayMusic()
     {
-        _MusicController.PlayBGMAudio = 2;
     }
 }

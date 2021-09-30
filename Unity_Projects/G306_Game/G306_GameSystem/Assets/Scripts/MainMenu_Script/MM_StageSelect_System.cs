@@ -70,31 +70,37 @@ public class MM_StageSelect_System : MonoBehaviour
                     case 0: //ステージ1
                         StageImage[CurrentSelectStage].SetActive(true);
                         StageName.text = "ステージ1";
-                        StageDifficult.text = "難易度: ★☆☆☆☆";
+                        StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#FF0000>★</color><color=#ffffff>☆☆☆☆</color>";
                         StageGimik.text = "トゲトゲ";
                         break;
                     case 1: //ステージ2
                         StageImage[CurrentSelectStage].SetActive(true);
                         StageName.text = "ステージ2";
-                        StageDifficult.text = "難易度: ★☆☆☆☆";
+                        StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#FF0000>★★</color><color=#ffffff>☆☆☆</color>";
                         StageGimik.text = "トゲトゲ";
                         break;
                     case 2: //ステージ3
                         StageImage[CurrentSelectStage].SetActive(true);
                         StageName.text = "ステージ3";
-                        StageDifficult.text = "難易度: ★☆☆☆☆";
+                        StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#FF0000>★★★</color><color=#ffffff>☆☆</color>";
                         StageGimik.text = "トゲトゲ";
                         break;
                     case 3: //ステージ4
                         StageImage[CurrentSelectStage].SetActive(true);
                         StageName.text = "ステージ4";
-                        StageDifficult.text = "難易度: ★☆☆☆☆";
+                        StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#FF0000>★★★★</color><color=#ffffff>☆</color>";
                         StageGimik.text = "トゲトゲ";
                         break;
                     case 4: //ステージ5
                         StageImage[CurrentSelectStage].SetActive(true);
                         StageName.text = "ステージ5";
-                        StageDifficult.text = "難易度: ★☆☆☆☆";
+                        StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#FF0000>★★★★★</color>";
+                        StageGimik.text = "トゲトゲ";
+                        break;
+                    case 5: //ステージEX
+                        StageImage[CurrentSelectStage].SetActive(true);
+                        StageName.text = "<color=#470000>ステージ</color> <color=#C40065>EX</color>";
+                        StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#6100FF>★★★★★</color>";
                         StageGimik.text = "トゲトゲ";
                         break;
                 }

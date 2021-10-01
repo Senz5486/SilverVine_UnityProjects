@@ -8,6 +8,7 @@ public class MM_PushButtons : MonoBehaviour
     OR_SceneManager _SceneManager;
     //GameObjects
     [SerializeField] private GameObject MainMenuUI;
+    [SerializeField] private GameObject TutorialUI;
     [SerializeField] private GameObject StageSelectUI;
     [SerializeField] private GameObject OptionUI;
     [SerializeField] private GameObject ConfirmExit;
@@ -26,14 +27,15 @@ public class MM_PushButtons : MonoBehaviour
         StageSelectUI.SetActive(false);
         OptionUI.SetActive(false);
         ConfirmExit.SetActive(false);
+        TutorialUI.SetActive(false);
     }
     public void PushGameStart()
     {
         if (isFirstPlay == true) //èââÒÉvÉåÉCÇæÇ¡ÇΩèÍçá
         {
-            _SceneManager.SceneName = "Stage_Tutorial";
-            _SceneManager.NextSceneLoad();
-            isFirstPlay = false;
+            TutorialUI.SetActive(true);
+            MainMenuUI.SetActive(false);
+            
         }
         else if (isFirstPlay == false) //ìÒâÒñ⁄à»ç~ÇÃèÍçá
         {
@@ -53,4 +55,11 @@ public class MM_PushButtons : MonoBehaviour
         MainMenuUI.SetActive(false);
         ConfirmExit.SetActive(true);
     }
+    public void PushTutorialPlay()
+    {
+        _SceneManager.SceneName = "Stage_Tutorial";
+        _SceneManager.NextSceneLoad();
+        isFirstPlay = false;
+    }
+
 }

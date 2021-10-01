@@ -33,12 +33,12 @@ public class Item_GetSystem : MonoBehaviour
 
         if (Player.gameObject.tag == "Player" && Item_Type == 1) //回復アイテムに触れた時
         {
-            Destroy(this);//触れた時のこのオブジェクトを破壊する <--- 最終処理
+            Destroy(this.gameObject);//触れた時のこのオブジェクトを破壊する <--- 最終処理
         }
 
         if (Player.gameObject.tag == "Player" && Item_Type == 2) //速度上昇アイテムに触れた時
         {
-            Destroy(this);//触れた時のこのオブジェクトを破壊する <--- 最終処理
+            Destroy(this.gameObject);//触れた時のこのオブジェクトを破壊する <--- 最終処理
         } 
 
     }

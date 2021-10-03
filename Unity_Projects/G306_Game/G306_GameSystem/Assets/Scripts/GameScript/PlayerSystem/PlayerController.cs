@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float Player_JumpLimitHeight;
     [SerializeField] private float JumpLimitTime;
     [SerializeField] private float JumpTime;
+    public float SpeedItemPower;
+    public float SpeedItemTime;
     public float Player_Speed;
 
     //bool

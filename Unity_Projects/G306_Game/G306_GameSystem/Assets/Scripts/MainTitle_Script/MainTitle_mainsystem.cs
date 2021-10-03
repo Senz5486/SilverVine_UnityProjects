@@ -22,7 +22,6 @@ public class MainTitle_mainsystem : MonoBehaviour
     //Bool
     [SerializeField] private bool isMoveLogo;
     [SerializeField] private bool isLogoMaxHeight;
-    private bool UpdateOnce;
     //SoundObject
     [SerializeField] private SoundController _SoundController;
     [SerializeField] private MusicController _MusicController;
@@ -36,9 +35,7 @@ public class MainTitle_mainsystem : MonoBehaviour
         RectTrans = GameLogo.GetComponent<RectTransform>(); 
         LogoPos = RectTrans.anchoredPosition;
         isLogoMaxHeight = false;
-
         isMoveLogo = true;
-        UpdateOnce = true;
         SubTitle.text = "スペースキー を押してスタート"; //サブタイトルの表示文字を設定 (Def:Press Any Key) 
         Invoke("PlayMusic", 0.1f);
         

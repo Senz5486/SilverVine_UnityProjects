@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class playerControl : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class playerControl : MonoBehaviour
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
     private Vector3 moveDirection = Vector3.zero;
-
+    private Tween CameraTween;
     CharacterController controller;
 
     // Start is called before the first frame update

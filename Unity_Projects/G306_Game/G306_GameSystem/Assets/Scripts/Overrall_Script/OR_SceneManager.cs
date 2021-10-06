@@ -82,7 +82,7 @@ public class OR_SceneManager : MonoBehaviour
         //ƒV[ƒ“‚ª“Ç‚İI‚í‚é‚Ü‚Å‘Ò‚Â
         while (async.progress < 0.9f)
         {
-            ProgressText.text = (async.progress * 100) + "%";
+            ProgressText.text = (async.progress * 100).ToString("0") + "%";
             LoadingBar.fillAmount = async.progress;
             yield return null;
         }

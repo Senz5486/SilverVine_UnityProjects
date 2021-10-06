@@ -25,6 +25,7 @@ public class MainTitle_mainsystem : MonoBehaviour
     //SoundObject
     [SerializeField] private SoundController _SoundController;
     [SerializeField] private MusicController _MusicController;
+    
     #endregion
 
     private void Awake()

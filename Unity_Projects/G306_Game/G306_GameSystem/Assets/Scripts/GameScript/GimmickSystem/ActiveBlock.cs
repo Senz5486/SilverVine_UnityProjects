@@ -18,7 +18,6 @@ public class ActiveBlock : MonoBehaviour
         if(!block.active && other.gameObject.tag == "Player" && Input.GetKeyDown("e"))
         {
             _mghealthsystem.TokenDamage(5.0f);
-            //_mghealthsystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
             block.SetActive(true);
         }
     }

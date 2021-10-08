@@ -47,17 +47,16 @@ public class MG_HealthSystem : MonoBehaviour
             MinusTimer += Time.deltaTime;
             if (MinusTimer >= MinusTime)
             {
-                CurrentHealth -= MinusHealth;
                 HealthBarUpdate(MinusHealth);
+                CurrentHealth -= MinusHealth;
                 MinusTimer = 0;
             }
         }
     }
     public void TokenDamage(float Damage)
     {
-        CurrentHealth -= Damage;
         HealthBarUpdate(Damage);
-        Damage = 0.0f;
+        CurrentHealth -= Damage;
     }
     public void HealthBarUpdate(float reducationValue, float time = 0.5f)
     {

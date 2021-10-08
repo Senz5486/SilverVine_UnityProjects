@@ -35,8 +35,7 @@ public class MG_HealthSystem : MonoBehaviour
     }
     void Update()
     {
-        PerSecMinusSystem();
-        
+        PerSecMinusSystem();   
     }
 
     void PerSecMinusSystem()

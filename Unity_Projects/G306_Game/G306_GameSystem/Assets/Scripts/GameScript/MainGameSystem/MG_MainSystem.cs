@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MG_MainSystem : MonoBehaviour
 {
@@ -75,23 +76,31 @@ public class MG_MainSystem : MonoBehaviour
                 CD_Timer += Time.deltaTime;
             }
 
-            switch (Stage_StartCountDown) //ステージ開始カウントダウン表示
+            if(SceneManager.GetActiveScene().name == "Stage_Tutorial")
             {
-                case 0.0f:
-                    Stage_StartCountDown = 0.0f;
-                    CountDownText.text = "ゲーム開始...!";
-                    Invoke("DeleteCDText", 0.5f);
-                    break;
-                case 1.0f:
-                    CountDownText.text = "ゲーム開始まで 1秒";
-                    break;
-                case 2.0f:
-                    CountDownText.text = "ゲーム開始まで 2秒";
-                    break;
-                case 3.0f:
-                    CountDownText.text = "ゲーム開始まで 3秒";
-                    break;
+                CountDownText.text = "";
             }
+            else
+            {
+                switch (Stage_StartCountDown) //ステージ開始カウントダウン表示
+                {
+                    case 0.0f:
+                        Stage_StartCountDown = 0.0f;
+                        CountDownText.text = "ゲーム開始...!";
+                        Invoke("DeleteCDText", 0.5f);
+                        break;
+                    case 1.0f:
+                        CountDownText.text = "ゲーム開始まで 1秒";
+                        break;
+                    case 2.0f:
+                        CountDownText.text = "ゲーム開始まで 2秒";
+                        break;
+                    case 3.0f:
+                        CountDownText.text = "ゲーム開始まで 3秒";
+                        break;
+                }
+            }
+
         }
         else if(_HealthSystem.isStart == true && StopMinusHealth == false)//ゲームが開始したら
         {

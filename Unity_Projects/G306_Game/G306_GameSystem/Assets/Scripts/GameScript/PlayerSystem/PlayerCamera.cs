@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] private Transform TargetObject;        //追いかけるオブジェクト
+    public Transform TargetObject;        //追いかけるオブジェクト
 
     [SerializeField] private float CameraDistance = 3.0f;   // プレイヤーとの距離
     [SerializeField] private float Height = 1.0f;           //カメラの高さ

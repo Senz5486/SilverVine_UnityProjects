@@ -5,7 +5,8 @@ using UnityEngine;
 public class ActiveBlock : MonoBehaviour
 {
     [SerializeField] GameObject block;
-    MG_HealthSystem _mghealthsystem;
+    [SerializeField] float      Damage;
+    MG_HealthSystem             _mghealthsystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class ActiveBlock : MonoBehaviour
     {
         if(!block.active && other.gameObject.tag == "Player" && Input.GetKeyDown("e"))
         {
-            _mghealthsystem.TokenDamage(5.0f);
+            _mghealthsystem.TokenDamage(Damage);
             block.SetActive(true);
         }
     }

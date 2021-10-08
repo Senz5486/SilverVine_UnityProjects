@@ -40,26 +40,45 @@ public class Item_GetSystem : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider Player)
-    {
-
-        if (Player.gameObject.tag == "Player" && Item_Type == 1) //回復アイテムに触れた時
+    {//オブジェクトがPlayerかどうかを1度の判別で済むように、かつDestroyの場所も１か所に
+        if(Player.gameObject.tag == "Player")//プレイヤーに触れたとき
         {
-            _mghealthsystem.CurrentHealth += Item_HealPower;
-            if(_mghealthsystem.CurrentHealth >= _mghealthsystem.MaxHealth)
+            switch (Item_Type)
             {
-                _mghealthsystem.CurrentHealth = _mghealthsystem.MaxHealth;
+                case 1://回復アイテムの場合
+                    _mghealthsystem.CurrentHealth += Item_HealPower;
+                    if (_mghealthsystem.CurrentHealth >= _mghealthsystem.MaxHealth)//体力最大値補正 
+                    {
+                        _mghealthsystem.CurrentHealth = _mghealthsystem.MaxHealth;
+                    }
+                    break;
+                case 2://加速アイテムの場合
+                    _playerController.SpeedItemPower = Item_SpeedPower;
+                    _playerController.SpeedItemTime += isSpeedTime;
+                    break;
             }
-
-            Destroy(this.gameObject);//触れた時のこのオブジェクトを破壊する <--- 最終処理
+            Destroy(this.gameObject);//アイテム消去
         }
 
-        if (Player.gameObject.tag == "Player" && Item_Type == 2) //速度上昇アイテムに触れた時
-        {
 
-            _playerController.SpeedItemPower = Item_SpeedPower;
-            _playerController.SpeedItemTime += isSpeedTime;
-            Destroy(this.gameObject);//触れた時のこのオブジェクトを破壊する <--- 最終処理
-        } 
+        //if (Player.gameObject.tag == "Player" && Item_Type == 1) //回復アイテムに触れた時
+        //{
+        //    _mghealthsystem.CurrentHealth += Item_HealPower;
+        //    if(_mghealthsystem.CurrentHealth >= _mghealthsystem.MaxHealth)
+        //    {
+        //        _mghealthsystem.CurrentHealth = _mghealthsystem.MaxHealth;
+        //    }
+
+        //    Destroy(this.gameObject);//触れた時のこのオブジェクトを破壊する <--- 最終処理
+        //}
+
+        //if (Player.gameObject.tag == "Player" && Item_Type == 2) //速度上昇アイテムに触れた時
+        //{
+
+        //    _playerController.SpeedItemPower = Item_SpeedPower;
+        //    _playerController.SpeedItemTime += isSpeedTime;
+        //    Destroy(this.gameObject);//触れた時のこのオブジェクトを破壊する <--- 最終処理
+        //} 
 
     }
 

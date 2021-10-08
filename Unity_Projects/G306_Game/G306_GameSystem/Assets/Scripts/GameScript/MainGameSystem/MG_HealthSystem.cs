@@ -12,10 +12,11 @@ public class MG_HealthSystem : MonoBehaviour
 
     public float MinusTime;     //1.0fなら1秒ごとに体力が減る
     public float MinusHealth;   //MinusTime毎に減る体力量
+
     //public bool
     public bool isStart;        //ステージがスタートしたかどうか
     public bool isDead;
-
+    
     //float
     [SerializeField] private float MinusTimer;
 
@@ -52,6 +53,12 @@ public class MG_HealthSystem : MonoBehaviour
             }
         }
     }
+    public void TokenDamage(float Damage)
+    {
+        CurrentHealth -= Damage;
+        HealthBarUpdate(Damage);
+        Damage = 0.0f;
+    }
     public void HealthBarUpdate(float reducationValue, float time = 0.5f)
     {
         var ValueFrom = CurrentHealth / MaxHealth;
@@ -68,6 +75,7 @@ public class MG_HealthSystem : MonoBehaviour
         //紫ゲージの減少
         HealthPurpleTween = DOTween.To(() => ValueFrom, x => { HealthPurpleBar.fillAmount = x; }, ValueTo, time);
     }
+
     public void LimitHealthControll()
     {
         if(CurrentHealth <= 0)

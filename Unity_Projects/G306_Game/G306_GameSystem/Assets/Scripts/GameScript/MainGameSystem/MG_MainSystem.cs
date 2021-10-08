@@ -9,6 +9,7 @@ public class MG_MainSystem : MonoBehaviour
     MG_HealthSystem _HealthSystem;
     SoundController _SoundController;
     MusicController _MusicController;
+    PlayerController _PlayerController;
     //Gameobject
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private GameObject GameClearUI;
@@ -25,6 +26,7 @@ public class MG_MainSystem : MonoBehaviour
     {
         //_SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
         //_MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+        _PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
         _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
         Invoke("PlayStageMusic", 0.1f);
     }
@@ -32,6 +34,7 @@ public class MG_MainSystem : MonoBehaviour
     {
         GameOverUI.SetActive(false);
         GameClearUI.SetActive(false);
+        _PlayerController.EnableCharaSystem = false;
     }
 
     void Update()
@@ -76,23 +79,17 @@ public class MG_MainSystem : MonoBehaviour
             {
                 case 0.0f:
                     Stage_StartCountDown = 0.0f;
-                    CountDownText.text = "ステージ開始...!";
-                    Invoke("DeleteCDText", 1.0f);
+                    CountDownText.text = "ゲーム開始...!";
+                    Invoke("DeleteCDText", 0.5f);
                     break;
                 case 1.0f:
-                    CountDownText.text = "1";
+                    CountDownText.text = "ゲーム開始まで 1秒";
                     break;
                 case 2.0f:
-                    CountDownText.text = "2";
+                    CountDownText.text = "ゲーム開始まで 2秒";
                     break;
                 case 3.0f:
-                    CountDownText.text = "3";
-                    break;
-                case 4.0f:
-                    CountDownText.text = "4";
-                    break;
-                case 5.0f:
-                    CountDownText.text = "5";
+                    CountDownText.text = "ゲーム開始まで 3秒";
                     break;
             }
         }
@@ -105,6 +102,7 @@ public class MG_MainSystem : MonoBehaviour
     void DeleteCDText()
     {
         CountDownText.text = "";
+        _PlayerController.EnableCharaSystem = true;
         _HealthSystem.isStart = true;
 
     }

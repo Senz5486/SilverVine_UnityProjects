@@ -3,29 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MM_MainSystem : MonoBehaviour
+namespace Coffee.UIExtensions
 {
-    //SoundObject
-    [SerializeField] private SoundController _SoundController;
-    [SerializeField] private MusicController _MusicController;
+    public class MM_MainSystem : MonoBehaviour
+    {
+        //SoundObject
+        [SerializeField] private SoundController _SoundController;
+        [SerializeField] private MusicController _MusicController;
 
-    private void Awake()
-    {
-        _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
-        _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
-        Invoke("PlayMusic", 0.1f);
-    }
-    void Start()
-    {
-       
-    }
+        //GameObject
+        [SerializeField] private GameObject[] _DissolveObjects;
+        [SerializeField] private GameObject DissolveFade;
 
-    void Update()
-    {
-        
-    }
+        //Float
+        private float FadeSpeed;
+        private void Awake()
+        {
+            _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+            _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+            Invoke("PlayMusic", 0.1f);
 
-    void PlayMusic()
-    {
+        }
+        void Start()
+        {
+            FadeSpeed = 0.0083f;
+        }
+
+        void Update()
+        {
+            DissolveFade.GetComponent<UIDissolve>().location += 0.02f;
+
+            if (DissolveFade.GetComponent<UIDissolve>().location >= 0.95f)
+            {
+                DissolveFade.SetActive(false);
+            }
+
+            if(_DissolveObjects[0].GetComponent<UIDissolve>().location > 0.0f)
+            {
+                for (int i = 0; i < _DissolveObjects.Length; i++)
+                {
+                    _DissolveObjects[i].GetComponent<UIDissolve>().location -= FadeSpeed;
+                }
+            }
+        }
+
+        void PlayMusic()
+        {
+        }
     }
 }

@@ -62,7 +62,7 @@ public class OR_SceneManager : MonoBehaviour
     {
         _MusicController.PlayBGMAudio = -1;
     }
-    //次のシーンへ移動するシステム (バグ無し: 2021/09/26 1:26 - 渡邊 # 状態:完成 #)
+    //次のシーンへ移動するシステム
     //次のシーンへ移動したいときは NextSceneLoad()関数をご使用ください。
     //↓ 使い方 ↓
     //1 -  そのシーンに空のゲームオブジェクトを配置し、このスクリプトを設定します。
@@ -74,7 +74,7 @@ public class OR_SceneManager : MonoBehaviour
         StartCoroutine("LoadAsyncSceneSystem");
     }
 
-    //ローディングシステム (バグ無し: 2021/09/26 1:30 - 渡邊 # 状態:完成 #)
+    //ローディングシステム 
     IEnumerator LoadAsyncSceneSystem() 
     {
         async = SceneManager.LoadSceneAsync(SceneName);

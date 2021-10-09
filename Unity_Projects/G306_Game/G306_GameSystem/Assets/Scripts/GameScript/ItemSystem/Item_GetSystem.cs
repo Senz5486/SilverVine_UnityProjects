@@ -1,25 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Item_GetSystem : MonoBehaviour
 {
     PlayerController _playerController;
     MG_HealthSystem _mghealthsystem;
+    Tutorial_MainSystem _tutorial;
     string Item_Name;        //アイテム名
     public int Item_Type;           //アイテムタイプ (1: 回復アイテム/2:速度上昇アイテム)
     float Item_HealPower;           //アイテム1のヒールパワー
     float Item_SpeedPower;          //アイテム2の速度上昇率
     public float isSpeedTime;       //アイテム2の速度上昇時間
-    TextMesh Item_DisplayName = null;
+    [SerializeField] private TextMesh Item_DisplayName = null;
     private void Awake()
     {
-       Item_DisplayName = GameObject.Find("ItemText").GetComponent<TextMesh>();
+        if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
+        {
+            _tutorial = GameObject.Find("ScriptObject").GetComponent<Tutorial_MainSystem>();
+        }
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         _mghealthsystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
     }
-    private void FixedUpdate()
+     void Update()
     {
         switch (Item_Type)
         {
@@ -47,6 +52,10 @@ public class Item_GetSystem : MonoBehaviour
             {
                 case 1://回復アイテムの場合
                     _mghealthsystem.TokenDamage(-Item_HealPower);
+                    if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
+                    {
+                        _tutorial.isGetHealItem = true;
+                    }
                     if (_mghealthsystem.CurrentHealth >= _mghealthsystem.MaxHealth)//体力最大値補正 
                     {
                         _mghealthsystem.CurrentHealth = _mghealthsystem.MaxHealth;
@@ -54,8 +63,12 @@ public class Item_GetSystem : MonoBehaviour
                     }
                     break;
                 case 2://加速アイテムの場合
-                    _playerController.SpeedItemPower = Item_SpeedPower;
+                    _playerController.Player_Speed = _playerController.Player_Speed + Item_SpeedPower;
                     _playerController.SpeedItemTime += isSpeedTime;
+                    if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
+                    {
+                        _tutorial.isGetSpeedItem = true;
+                    }
                     break;
             }
             Destroy(this.gameObject);//アイテム消去
@@ -81,10 +94,5 @@ public class Item_GetSystem : MonoBehaviour
         //    Destroy(this.gameObject);//触れた時のこのオブジェクトを破壊する <--- 最終処理
         //} 
 
-    }
-
-    void Update()
-    {
-        
     }
 }

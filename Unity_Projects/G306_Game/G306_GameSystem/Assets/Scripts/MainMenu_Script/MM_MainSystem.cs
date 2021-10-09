@@ -29,7 +29,7 @@ namespace Coffee.UIExtensions
             FadeSpeed = 0.0083f;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             DissolveFade.GetComponent<UIDissolve>().location += 0.02f;
 

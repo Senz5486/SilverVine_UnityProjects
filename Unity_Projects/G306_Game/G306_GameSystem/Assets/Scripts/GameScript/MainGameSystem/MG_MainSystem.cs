@@ -17,7 +17,7 @@ public class MG_MainSystem : MonoBehaviour
     //Text
     [SerializeField] private Text CountDownText;
     //float
-    [SerializeField] private float Stage_Minus;
+    public float Stage_Minus;
     [SerializeField] private float Stage_StartCountDown;
     [SerializeField] private float CD_Timer;
     //bool

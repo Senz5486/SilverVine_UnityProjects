@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public float SpeedItemPower;
     public float SpeedItemTime;
     public float Player_Speed;
+    private float Default_Player_Speed;
     //回転
     float Y_Rotate;
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody>();
         Y_Rotate = 90.0f;
+        Default_Player_Speed = Player_Speed;
     }
 
     void FixedUpdate()
@@ -50,16 +52,29 @@ public class PlayerController : MonoBehaviour
         isHead = head.IsGround();
         CanAction = action.ActionArea();
 
+        if (SpeedItemTime < 0)
+        {
+            SpeedItemTime = 0;
+            SpeedItemPower = 0;
+            Player_Speed = Default_Player_Speed;
+        }
+        else if (SpeedItemTime > 0)
+        {
+            SpeedItemTime -= Time.deltaTime;
+        }
+
+        
+        //キー入力
+        float Horizontal = Input.GetAxis("Horizontal");
+        float Vertical = Input.GetAxis("Vertical");
+
+        //速度
+        float X_Speed = 0.0f;
+        float Y_Speed = -Gravity * GravityFallTime;
+
+
         if (EnableCharaSystem)
         {
-            //キー入力
-            float Horizontal = Input.GetAxis("Horizontal");
-            float Vertical = Input.GetAxis("Vertical");
-
-            //速度
-            float X_Speed = 0.0f;
-            float Y_Speed = -Gravity * GravityFallTime;
-
             if (isGround)
             {
                 GravityFallTime = 0.0f;
@@ -117,7 +132,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
             rb.velocity = new Vector3(X_Speed, Y_Speed, 0);
         }
-        
     }
 
     private void OnCollisionEnter(Collision collision)

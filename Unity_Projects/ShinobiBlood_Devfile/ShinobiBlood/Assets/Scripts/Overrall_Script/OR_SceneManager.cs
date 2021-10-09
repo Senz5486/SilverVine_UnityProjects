@@ -11,17 +11,14 @@ public class OR_SceneManager : MonoBehaviour
 
     //String
     public string SceneName;      //読み込むシーン名
-    [SerializeField] private string RandomTips1; //Loading Random1 の時のTips
-    [SerializeField] private string RandomTips2; //Loading Random2 の時のTips
-    [SerializeField] private string RandomTips3; //Loading Random3 の時のTips
+    [SerializeField] private string RandomTips1 = "ステージによって、減る体力量は違う！難しいステージに行けば行くほど、減る体力が増え難易度が上昇するぞ・・・！"; //Loading Random1 の時のTips
+    [SerializeField] private string RandomTips2 = "実は、開発当時はキャラクター案が3つあった！今後増えるかもしれない・・・？"; //Loading Random2 の時のTips
+    [SerializeField] private string RandomTips3 = "ゲームのメインキャラクターについて　　　　　　　　　　忍者の家系に産まれた黒魔術師というのが主人公の設定だ！"; //Loading Random3 の時のTips
     //Int
     private int LoadingRandom;
 
     //GameObject
     [SerializeField] private GameObject LoadingUI;  //ローディングUI
-    [SerializeField] private GameObject LoadingBG1; //ローディング Random1 の時の背景
-    [SerializeField] private GameObject LoadingBG2; //ローディング Random2 の時の背景
-    [SerializeField] private GameObject LoadingBG3; //ローディング Random3 の時の背景
 
     //Image
     [SerializeField] private Image LoadingBar;      //NowLoadingのプログレスバーの指定
@@ -36,26 +33,17 @@ public class OR_SceneManager : MonoBehaviour
     {
         _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
         LoadingRandom = Random.Range(1, 4); //ランダム整数 1 - 3
-        if (LoadingRandom == 1)
+        switch (LoadingRandom)
         {
-            LoadingBG1.SetActive(true);
-            LoadingBG2.SetActive(false);
-            LoadingBG3.SetActive(false);
-            Tips.text = RandomTips1;
-        }
-        if (LoadingRandom == 2)
-        {
-            LoadingBG2.SetActive(true);
-            LoadingBG1.SetActive(false);
-            LoadingBG3.SetActive(false);
-            Tips.text = RandomTips2;
-        }
-        if (LoadingRandom == 3)
-        {
-            LoadingBG3.SetActive(true);
-            LoadingBG1.SetActive(false);
-            LoadingBG2.SetActive(false);
-            Tips.text = RandomTips3;
+            case 1:
+                Tips.text = RandomTips1;
+                break;
+            case 2:
+                Tips.text = RandomTips2;
+                break;
+            case 3:
+                Tips.text = RandomTips3;
+                break;
         }
     }
     void PlayMusic()
@@ -88,7 +76,7 @@ public class OR_SceneManager : MonoBehaviour
         }
             ProgressText.text = "100%";
             LoadingBar.fillAmount = 1.0f;
-            yield return new WaitForSeconds(0.35f); //待ち時間
+            yield return new WaitForSeconds(1.25f); //待ち時間
             async.allowSceneActivation = true;
     }
 }

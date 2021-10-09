@@ -50,7 +50,7 @@ public class MainTitle_mainsystem : MonoBehaviour
 
     void PlayMusic()
     {
-        _MusicController.PlayBGMAudio = 3;
+        _MusicController.PlayBGMAudio = 4;
     }
 
     void AnyKeyPush()

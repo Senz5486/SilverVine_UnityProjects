@@ -637,6 +637,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b0c2839517dc16245b0dfd965884b981, type: 3}
   - {fileID: 8300000, guid: 475eb58c9fe08084a812ddc9e519edf5, type: 3}
   - {fileID: 8300000, guid: 1266ac1c9d79fcc43a9588ebe43ecff2, type: 3}
+  - {fileID: 8300000, guid: f9c09749169b8f543a14e174601a4cc5, type: 3}
 --- !u!1 &187359265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1627,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9170577495445612818, guid: 67d3abe897c93a08e9593b0a183f2bb4, type: 3}
   m_PrefabInstance: {fileID: 985258583}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &728196000
+--- !u!4 &836084687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2545823773444583948, guid: 1d346702b2107531e939003fb256261b, type: 3}
+  m_PrefabInstance: {fileID: 326078559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!84 &933507666
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1662,11 +1668,6 @@ RenderTexture:
     m_WrapW: 1
   m_Dimension: 2
   m_VolumeDepth: 1
---- !u!4 &836084687 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2545823773444583948, guid: 1d346702b2107531e939003fb256261b, type: 3}
-  m_PrefabInstance: {fileID: 326078559}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &936916413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,8 +2385,8 @@ MonoBehaviour:
   autoEnableOutlines: 1
   outlineCamera: {fileID: 1758704747}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1279848709}
-  extraRenderTexture: {fileID: 728196000}
+  renderTexture: {fileID: 1913459981}
+  extraRenderTexture: {fileID: 933507666}
 --- !u!4 &1120043651 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5752105476961817693, guid: 9d642dd3a2ff904da90e9417ae5cddec, type: 3}
@@ -2489,42 +2490,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 364259216340155366, guid: 896e7b16fd2075f4cb50ffb17aba177f, type: 3}
   m_PrefabInstance: {fileID: 1517017568}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1279848709
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
-  m_Width: 1920
-  m_Height: 1080
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1297793475
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,7 +3322,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1279848709}
+  m_TargetTexture: {fileID: 1913459981}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -3621,6 +3586,42 @@ Transform:
   m_Father: {fileID: 1042518909}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1913459981
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_Width: 1920
+  m_Height: 1080
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &1971960147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2545823773444583948, guid: 1d346702b2107531e939003fb256261b, type: 3}

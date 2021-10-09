@@ -10,6 +10,7 @@ public class MM_PushButtons : MonoBehaviour
     [SerializeField] private GameObject MainMenuUI;
     [SerializeField] private GameObject TutorialUI;
     [SerializeField] private GameObject StageSelectUI;
+    [SerializeField] private GameObject CreditUI;
     [SerializeField] private GameObject OptionUI;
     [SerializeField] private GameObject ConfirmExit;
 
@@ -26,6 +27,7 @@ public class MM_PushButtons : MonoBehaviour
         MainMenuUI.SetActive(true);
         StageSelectUI.SetActive(false);
         OptionUI.SetActive(false);
+        CreditUI.SetActive(false);
         ConfirmExit.SetActive(false);
         TutorialUI.SetActive(false);
     }
@@ -64,5 +66,10 @@ public class MM_PushButtons : MonoBehaviour
     public void PushConfirmExit()
     {
         Application.Quit();
+    }
+    public void PushCredit()
+    {
+        CreditUI.SetActive(true);
+        MainMenuUI.SetActive(false);
     }
 }

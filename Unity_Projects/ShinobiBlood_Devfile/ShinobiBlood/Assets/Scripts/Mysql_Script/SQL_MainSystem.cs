@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class SQL_MainSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    string url = "http://58.88.221.104/data/data_server.php";
+    public int Stage_ID;
+    public float Stage_MaxScore;
+    
+    public void CallLoadScore()
     {
-        
+        //StartCoroutine(DataServer());
     }
 
-    // Update is called once per frame
-    void Update()
+    /*IEnumerator DataServer()
     {
-        
-    }
+        WWWForm form = new WWWForm();
+        form.AddField
+    }*/
 }

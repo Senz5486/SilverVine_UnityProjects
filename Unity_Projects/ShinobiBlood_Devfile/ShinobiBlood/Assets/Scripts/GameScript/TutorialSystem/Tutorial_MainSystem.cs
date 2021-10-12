@@ -50,7 +50,6 @@ public class Tutorial_MainSystem : MonoBehaviour
             _MusicController.PlayBGMAudio = 5;
             TutorialUI.SetActive(true);
             TutorialTipsText.text = "訓練場へようこそ";
-            _SoundController.PlaySEAudio = 7;
             isCanMove = false;
             Invoke("Tips1", 2.0f);
         }
@@ -83,7 +82,7 @@ public class Tutorial_MainSystem : MonoBehaviour
         isCanMove = false;
         _MG_HealthSystem.isStart = true;
         _MG_MainSystem.Stage_Minus = 1.42f;
-        TutorialTipsText.text = "このゲージは「体力」です。時間が経過するごとに減少します。";
+        TutorialTipsText.text = "このゲームは毎秒事に体力が減ります。 減る量はステージによって違います 下の『体力』ゲージを見てみましょう";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips3", 7.0f);
     }
@@ -93,7 +92,7 @@ public class Tutorial_MainSystem : MonoBehaviour
         _MG_HealthSystem.isStart = false;
         ColObject[0].SetActive(false);
         _playerCamera.TargetObject = TutorialHealItem.transform;
-        TutorialTipsText.text = "これは「ZOK-2」。触れてみてください。";
+        TutorialTipsText.text = "あそこにあるのは、回復アイテムです 取ってみましょう。";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips4", 3.5f);
     }
@@ -106,14 +105,14 @@ public class Tutorial_MainSystem : MonoBehaviour
     void Tips5()
     {
         isCanMove = false;
-        TutorialTipsText.text = "「ZOK-2」には「体力」を回復させる効果があります。";
+        TutorialTipsText.text = "体力が回復しましたね 下の『体力』ゲージを確認しましょう";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips6", 5.0f);
     }
     void Tips6()
     {
         _playerCamera.TargetObject = TutorialSpeedItem.transform;
-        TutorialTipsText.text = "これは「KSK-5」。触れてみてください。";
+        TutorialTipsText.text = "あそこにあるのは、速度上昇アイテムです 取ってみましょう";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips7", 3.5f);
     }
@@ -125,7 +124,7 @@ public class Tutorial_MainSystem : MonoBehaviour
     }
     void Tips8()
     {
-        TutorialTipsText.text = "ここにKSK-5の説明を入れて下さい";
+        TutorialTipsText.text = "3秒間の間速度が上昇します 走ってみましょう";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips9", 5.0f);
     }

@@ -7,6 +7,8 @@ namespace Coffee.UIExtensions
 {
     public class MM_MainSystem : MonoBehaviour
     {
+        //Object
+        MM_PushButtons _MM_PushButtons;
         //SoundObject
         [SerializeField] private SoundController _SoundController;
         [SerializeField] private MusicController _MusicController;
@@ -19,6 +21,7 @@ namespace Coffee.UIExtensions
         private float FadeSpeed;
         private void Awake()
         {
+            _MM_PushButtons = GameObject.Find("ScriptObject").GetComponent<MM_PushButtons>();
             _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
             _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
             Invoke("PlayMusic", 0.1f);

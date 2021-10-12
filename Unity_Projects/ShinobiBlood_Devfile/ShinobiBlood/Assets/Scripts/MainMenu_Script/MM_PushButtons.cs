@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MM_PushButtons : MonoBehaviour
 {
     //Class
     OR_SceneManager _SceneManager;
+    OR_JsonSystem _JsonManager;
+    Save_Data save = new Save_Data();
+
     //GameObjects
     [SerializeField] private GameObject MainMenuUI;
     [SerializeField] private GameObject TutorialUI;
@@ -15,11 +19,14 @@ public class MM_PushButtons : MonoBehaviour
     [SerializeField] private GameObject ConfirmExit;
 
     //bool
-    public bool isFirstPlay;
-
+    public bool LoadedNeedTutorial;
     void Start()
     {
         _SceneManager = this.GetComponent<OR_SceneManager>();
+        _JsonManager = this.GetComponent<OR_JsonSystem>();
+        _JsonManager.SaveSystem();
+        _JsonManager.LoadSystem(_JsonManager.FilePath);
+        LoadedNeedTutorial = save.FinishTutorial;
     }
 
     public void BacktoMainMenu()
@@ -31,19 +38,21 @@ public class MM_PushButtons : MonoBehaviour
         ConfirmExit.SetActive(false);
         TutorialUI.SetActive(false);
     }
+
     public void PushGameStart()
     {
-        if (isFirstPlay == true) //初回プレイだった場合
+
+        if (!save.FinishTutorial) //初回プレイだった場合
         {
             TutorialUI.SetActive(true);
             MainMenuUI.SetActive(false);
-            
         }
-        else if (isFirstPlay == false) //二回目以降の場合
+        else if(save.FinishTutorial) //二回目以降の場合
         {
             StageSelectUI.SetActive(true);
             MainMenuUI.SetActive(false);
         }
+
     }
 
     public void PushOption()
@@ -59,9 +68,10 @@ public class MM_PushButtons : MonoBehaviour
     }
     public void PushTutorialPlay()
     {
+        save.FinishTutorial = true;
+        _JsonManager.SaveSystem();
         _SceneManager.SceneName = "Stage_Tutorial";
         _SceneManager.NextSceneLoad();
-        isFirstPlay = false;
     }
     public void PushConfirmExit()
     {

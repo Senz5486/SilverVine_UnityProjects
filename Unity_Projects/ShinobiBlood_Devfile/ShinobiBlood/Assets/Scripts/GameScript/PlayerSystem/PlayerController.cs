@@ -132,6 +132,11 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
             rb.velocity = new Vector3(X_Speed, Y_Speed, 0);
         }
+        else
+        {
+            Horizontal = 0;
+            Vertical = 0;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

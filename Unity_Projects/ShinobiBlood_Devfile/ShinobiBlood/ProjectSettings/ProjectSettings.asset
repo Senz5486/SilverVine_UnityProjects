@@ -41,7 +41,7 @@ PlayerSettings:
     height: 1
   m_SplashScreenLogos:
   - logo: {fileID: 21300000, guid: bb176180e5a33bf478dcfc2883b4514e, type: 3}
-    duration: 2
+    duration: 3
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -272,7 +272,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 48d6f666e26c3e409995e2d777a4aab2, type: 3}
+      m_Icon: {fileID: 2800000, guid: bb176180e5a33bf478dcfc2883b4514e, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -602,7 +602,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: AURA_IN_PROJECT;UNITY_POST_PROCESSING_STACK_V2;AURA_IN_SCENEVIEW
     7: UNITY_POST_PROCESSING_STACK_V2
-    13: UNITY_POST_PROCESSING_STACK_V2
+    13: UNITY_POST_PROCESSING_STACK_V2;AURA_IN_PROJECT;AURA_IN_SCENEVIEW
     14: UNITY_POST_PROCESSING_STACK_V2
     19: UNITY_POST_PROCESSING_STACK_V2
     21: UNITY_POST_PROCESSING_STACK_V2

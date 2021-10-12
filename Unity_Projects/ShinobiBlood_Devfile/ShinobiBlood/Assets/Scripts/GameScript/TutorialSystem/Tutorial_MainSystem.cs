@@ -83,7 +83,7 @@ public class Tutorial_MainSystem : MonoBehaviour
         isCanMove = false;
         _MG_HealthSystem.isStart = true;
         _MG_MainSystem.Stage_Minus = 1.42f;
-        TutorialTipsText.text = "このゲームは毎秒事に体力が減ります。 減る量はステージによって違います 下の『体力』ゲージを見てみましょう";
+        TutorialTipsText.text = "このゲージは「体力」です。時間が経過するごとに減少します。";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips3", 7.0f);
     }
@@ -93,7 +93,7 @@ public class Tutorial_MainSystem : MonoBehaviour
         _MG_HealthSystem.isStart = false;
         ColObject[0].SetActive(false);
         _playerCamera.TargetObject = TutorialHealItem.transform;
-        TutorialTipsText.text = "あそこにあるのは、回復アイテムです 取ってみましょう。";
+        TutorialTipsText.text = "これは「ZOK-2」。触れてみてください。";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips4", 3.5f);
     }
@@ -106,14 +106,14 @@ public class Tutorial_MainSystem : MonoBehaviour
     void Tips5()
     {
         isCanMove = false;
-        TutorialTipsText.text = "体力が回復しましたね 下の『体力』ゲージを確認しましょう";
+        TutorialTipsText.text = "「ZOK-2」には「体力」を回復させる効果があります。";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips6", 5.0f);
     }
     void Tips6()
     {
         _playerCamera.TargetObject = TutorialSpeedItem.transform;
-        TutorialTipsText.text = "あそこにあるのは、速度上昇アイテムです 取ってみましょう";
+        TutorialTipsText.text = "これは「KSK-5」。触れてみてください。";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips7", 3.5f);
     }
@@ -125,7 +125,7 @@ public class Tutorial_MainSystem : MonoBehaviour
     }
     void Tips8()
     {
-        TutorialTipsText.text = "3秒間の間速度が上昇します 走ってみましょう";
+        TutorialTipsText.text = "ここにKSK-5の説明を入れて下さい";
         _SoundController.PlaySEAudio = 7;
         Invoke("Tips9", 5.0f);
     }

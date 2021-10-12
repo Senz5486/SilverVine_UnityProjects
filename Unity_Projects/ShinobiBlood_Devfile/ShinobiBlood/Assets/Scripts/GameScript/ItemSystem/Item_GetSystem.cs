@@ -8,6 +8,7 @@ public class Item_GetSystem : MonoBehaviour
 {
     PlayerController _playerController;
     MG_HealthSystem _mghealthsystem;
+    SoundController _SoundController;
     Tutorial_MainSystem _tutorial;
     string Item_Name;        //アイテム名
     public int Item_Type;           //アイテムタイプ (1: 回復アイテム/2:速度上昇アイテム)
@@ -17,6 +18,7 @@ public class Item_GetSystem : MonoBehaviour
     [SerializeField] private TextMesh Item_DisplayName = null;
     private void Awake()
     {
+        _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
         if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
         {
             _tutorial = GameObject.Find("ScriptObject").GetComponent<Tutorial_MainSystem>();
@@ -52,6 +54,7 @@ public class Item_GetSystem : MonoBehaviour
             {
                 case 1://回復アイテムの場合
                     _mghealthsystem.TokenDamage(-Item_HealPower);
+                    _SoundController.PlaySEAudio = 0;
                     if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
                     {
                         _tutorial.isGetHealItem = true;
@@ -65,6 +68,7 @@ public class Item_GetSystem : MonoBehaviour
                 case 2://加速アイテムの場合
                     _playerController.Player_Speed = _playerController.Player_Speed + Item_SpeedPower;
                     _playerController.SpeedItemTime += isSpeedTime;
+                    _SoundController.PlaySEAudio = 0;
                     if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
                     {
                         _tutorial.isGetSpeedItem = true;

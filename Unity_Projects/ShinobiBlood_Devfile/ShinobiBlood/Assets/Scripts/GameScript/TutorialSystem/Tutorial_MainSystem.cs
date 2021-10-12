@@ -50,6 +50,7 @@ public class Tutorial_MainSystem : MonoBehaviour
             _MusicController.PlayBGMAudio = 5;
             TutorialUI.SetActive(true);
             TutorialTipsText.text = "訓練場へようこそ";
+            _SoundController.PlaySEAudio = 7;
             isCanMove = false;
             Invoke("Tips1", 2.0f);
         }
@@ -74,6 +75,7 @@ public class Tutorial_MainSystem : MonoBehaviour
     {
         TutorialTipsText.text = "A,← キーで左移動 / D,→ キーで右移動 / スペース,↑ キー でジャンプ が出来ます";
         isCanMove = true;
+        _SoundController.PlaySEAudio = 7;
         Invoke("Tips2", 10.0f);
     }
     void Tips2()
@@ -82,6 +84,7 @@ public class Tutorial_MainSystem : MonoBehaviour
         _MG_HealthSystem.isStart = true;
         _MG_MainSystem.Stage_Minus = 1.42f;
         TutorialTipsText.text = "このゲームは毎秒事に体力が減ります。 減る量はステージによって違います 下の『体力』ゲージを見てみましょう";
+        _SoundController.PlaySEAudio = 7;
         Invoke("Tips3", 7.0f);
     }
     void Tips3()
@@ -91,6 +94,7 @@ public class Tutorial_MainSystem : MonoBehaviour
         ColObject[0].SetActive(false);
         _playerCamera.TargetObject = TutorialHealItem.transform;
         TutorialTipsText.text = "あそこにあるのは、回復アイテムです 取ってみましょう。";
+        _SoundController.PlaySEAudio = 7;
         Invoke("Tips4", 3.5f);
     }
     void Tips4()
@@ -103,12 +107,14 @@ public class Tutorial_MainSystem : MonoBehaviour
     {
         isCanMove = false;
         TutorialTipsText.text = "体力が回復しましたね 下の『体力』ゲージを確認しましょう";
+        _SoundController.PlaySEAudio = 7;
         Invoke("Tips6", 5.0f);
     }
     void Tips6()
     {
         _playerCamera.TargetObject = TutorialSpeedItem.transform;
         TutorialTipsText.text = "あそこにあるのは、速度上昇アイテムです 取ってみましょう";
+        _SoundController.PlaySEAudio = 7;
         Invoke("Tips7", 3.5f);
     }
     void Tips7()
@@ -120,11 +126,13 @@ public class Tutorial_MainSystem : MonoBehaviour
     void Tips8()
     {
         TutorialTipsText.text = "3秒間の間速度が上昇します 走ってみましょう";
+        _SoundController.PlaySEAudio = 7;
         Invoke("Tips9", 5.0f);
     }
     void Tips9()
     {
         isCanMove = false;
         TutorialTipsText.text = "次にからくりの説明を開始します";
+        _SoundController.PlaySEAudio = 7;
     }
 }

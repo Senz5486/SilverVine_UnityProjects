@@ -11,28 +11,33 @@ public class MG_MainSystem : MonoBehaviour
     SoundController _SoundController;
     MusicController _MusicController;
     PlayerController _PlayerController;
+    OR_SceneManager _SceneManager;
     //Gameobject
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private GameObject GameClearUI;
     //Text
     [SerializeField] private Text CountDownText;
+    [SerializeField] private Text GameOverCD;
     //float
     public float Stage_Minus;
     [SerializeField] private float Stage_StartCountDown;
     [SerializeField] private float CD_Timer;
+    private float GameOverTime;
     //bool
     public bool StopMinusHealth;
     //int
     private void Awake()
     {
-        //_SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
-        //_MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+        _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+        _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+        _SceneManager = GameObject.Find("ScriptObject").GetComponent<OR_SceneManager>();
         _PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
         _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
         Invoke("PlayStageMusic", 0.1f);
     }
     void Start()
     {
+        GameOverTime = 30.0f;
         GameOverUI.SetActive(false);
         GameClearUI.SetActive(false);
         _PlayerController.EnableCharaSystem = false;
@@ -49,6 +54,14 @@ public class MG_MainSystem : MonoBehaviour
         if (_HealthSystem.isDead) //プレイヤーがゲームオーバー判定になったら
         {
             GameOverUI.SetActive(true);
+            GameOverCD.text = GameOverTime.ToString("0") + "秒";
+            GameOverTime -= Time.deltaTime;
+            if(GameOverTime <= 0)
+            {
+                GameOverTime = 0;
+                _SceneManager.SceneName = "MainMenu";
+                _SceneManager.NextSceneLoad();
+            }
         }
     }
 
@@ -113,6 +126,5 @@ public class MG_MainSystem : MonoBehaviour
         CountDownText.text = "";
         _PlayerController.EnableCharaSystem = true;
         _HealthSystem.isStart = true;
-
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainTitle_mainsystem : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class MainTitle_mainsystem : MonoBehaviour
     //Bool
     [SerializeField] private bool isMoveLogo;
     [SerializeField] private bool isLogoMaxHeight;
+    [SerializeField] private bool once;
     //SoundObject
     [SerializeField] private SoundController _SoundController;
     [SerializeField] private MusicController _MusicController;
@@ -55,14 +57,18 @@ public class MainTitle_mainsystem : MonoBehaviour
 
     void AnyKeyPush()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _SoundController.PlaySEAudio = 6;
-            _orSceneManager.NextSceneLoad();
-        }
-        else
-        {
-            _SoundController.PlaySEAudio = -3;
+        if (once == false) {
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _SoundController.PlaySEAudio = 6;
+                _orSceneManager.NextSceneLoad();
+                once = true;
+            }
+            else
+            {
+                _SoundController.PlaySEAudio = -3;
+            }
         }
     }
 

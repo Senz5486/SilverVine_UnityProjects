@@ -66,8 +66,8 @@ public class Item_GetSystem : MonoBehaviour
                     }
                     break;
                 case 2://â¡ë¨ÉAÉCÉeÉÄÇÃèÍçá
-                    _playerController.Player_Speed = _playerController.Player_Speed + Item_SpeedPower;
-                    _playerController.SpeedItemTime += isSpeedTime;
+                    _playerController.SpeedItemPower = 3;
+                    _playerController.AccelerationSpeed = true;
                     _SoundController.PlaySEAudio = 0;
                     if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
                     {

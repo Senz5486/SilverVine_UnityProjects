@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpLimitTime;
     [SerializeField] private float JumpTime;
     public float SpeedItemPower;
-    public float SpeedItemTime;
     public float Player_Speed;
     private float Default_Player_Speed;
     //‰ñ“]
@@ -33,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool CanAction;
     [SerializeField] private bool isJump;
     public bool EnableCharaSystem;
+    public bool AccelerationSpeed;
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -52,15 +52,14 @@ public class PlayerController : MonoBehaviour
         isHead = head.IsGround();
         CanAction = action.ActionArea();
 
-        if (SpeedItemTime < 0)
+        if (AccelerationSpeed)
         {
-            SpeedItemTime = 0;
-            SpeedItemPower = 0;
-            Player_Speed = Default_Player_Speed;
+            Player_Speed = Default_Player_Speed + SpeedItemPower;
         }
-        else if (SpeedItemTime > 0)
+        else if (!AccelerationSpeed)
         {
-            SpeedItemTime -= Time.deltaTime;
+            Player_Speed = Default_Player_Speed;
+            SpeedItemPower = 0;
         }
 
         

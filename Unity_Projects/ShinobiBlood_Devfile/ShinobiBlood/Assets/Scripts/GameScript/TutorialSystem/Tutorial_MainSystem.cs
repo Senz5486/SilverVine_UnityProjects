@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class Tutorial_MainSystem : MonoBehaviour
 {
     //Class
+    MusicController _MusicController;
+    SoundController _SoundController;
     PlayerController _pc;
     PlayerCamera _playerCamera;
     MG_HealthSystem _MG_HealthSystem;
@@ -38,11 +40,14 @@ public class Tutorial_MainSystem : MonoBehaviour
         ColObject[0].SetActive(true);
         _pc = GameObject.Find("Player").GetComponent<PlayerController>();
         _playerCamera = GameObject.Find("ScriptObject").GetComponent<PlayerCamera>();
+        _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+        _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
     }
     void Start()
     {
         if(SceneManager.GetActiveScene().name == "Stage_Tutorial")
         {
+            _MusicController.PlayBGMAudio = 5;
             TutorialUI.SetActive(true);
             TutorialTipsText.text = "åPó˚èÍÇ÷ÇÊÇ§Ç±Çª";
             isCanMove = false;

@@ -115,18 +115,18 @@ public class PlayerController : MonoBehaviour
             {
                 //transform.localScale = new Vector3(1, 1, 1);
                 Y_Rotate = 90;
-                X_Speed = Player_Speed;
+                X_Speed = Player_Speed * Horizontal;
             }
             else if (Horizontal < 0) //¶ˆÚ“®’†
             {
                 //transform.localScale = new Vector3(1, 1, 1);
                 Y_Rotate = -90;
-                X_Speed = -Player_Speed;
+                X_Speed = Player_Speed * Horizontal;
             }
             else
             {
                 //transform.localScale = new Vector3(1, 1, 1);
-                X_Speed = 0.0f;
+                //X_Speed = 0.0f;
             }
             transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
             rb.velocity = new Vector3(X_Speed, Y_Speed, 0);

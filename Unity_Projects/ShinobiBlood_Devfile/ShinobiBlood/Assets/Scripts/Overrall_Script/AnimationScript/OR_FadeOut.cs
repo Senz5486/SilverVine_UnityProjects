@@ -27,7 +27,7 @@ public class OR_FadeOut : MonoBehaviour
         isFadeOut = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isFadeOut)
         {

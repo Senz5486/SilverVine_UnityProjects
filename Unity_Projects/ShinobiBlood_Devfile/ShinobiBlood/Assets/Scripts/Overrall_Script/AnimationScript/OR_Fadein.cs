@@ -28,7 +28,7 @@ public class OR_Fadein : MonoBehaviour
         isFadeIn = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isFadeIn)
         {

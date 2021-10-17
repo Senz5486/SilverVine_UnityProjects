@@ -2,84 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class MM_PushButtons : MonoBehaviour
+namespace Senz_Program
 {
-    //Class
-    OR_SceneManager _SceneManager;
-    OR_JsonSystem _JsonManager;
-    Save_Data save = new Save_Data();
-
-    //GameObjects
-    [SerializeField] private GameObject MainMenuUI;
-    [SerializeField] private GameObject TutorialUI;
-    [SerializeField] private GameObject StageSelectUI;
-    [SerializeField] private GameObject CreditUI;
-    [SerializeField] private GameObject OptionUI;
-    [SerializeField] private GameObject ConfirmExit;
-
-    //bool
-    public bool LoadedNeedTutorial;
-    void Start()
+    public class MM_PushButtons : MonoBehaviour
     {
-        _SceneManager = this.GetComponent<OR_SceneManager>();
-        _JsonManager = this.GetComponent<OR_JsonSystem>();
-        _JsonManager.SaveSystem();
-        _JsonManager.LoadSystem(_JsonManager.FilePath);
-        LoadedNeedTutorial = save.FinishTutorial;
-    }
+        //Class
+        OR_SceneManager _SceneManager;
 
-    public void BacktoMainMenu()
-    {
-        MainMenuUI.SetActive(true);
-        StageSelectUI.SetActive(false);
-        OptionUI.SetActive(false);
-        CreditUI.SetActive(false);
-        ConfirmExit.SetActive(false);
-        TutorialUI.SetActive(false);
-    }
+        //GameObjects
+        [SerializeField] private GameObject MainMenuUI;
+        [SerializeField] private GameObject TutorialUI;
+        [SerializeField] private GameObject StageSelectUI;
+        [SerializeField] private GameObject CreditUI;
+        [SerializeField] private GameObject OptionUI;
+        [SerializeField] private GameObject ConfirmExit;
 
-    public void PushGameStart()
-    {
-
-        if (!save.FinishTutorial) //初回プレイだった場合
+        void Start()
         {
-            TutorialUI.SetActive(true);
-            MainMenuUI.SetActive(false);
-        }
-        else if(save.FinishTutorial) //二回目以降の場合
-        {
-            StageSelectUI.SetActive(true);
-            MainMenuUI.SetActive(false);
+            OR_SaveSystem.Instance.Load();
+            _SceneManager = this.GetComponent<OR_SceneManager>();
         }
 
-    }
+        public void BacktoMainMenu()
+        {
+            MainMenuUI.SetActive(true);
+            StageSelectUI.SetActive(false);
+            OptionUI.SetActive(false);
+            CreditUI.SetActive(false);
+            ConfirmExit.SetActive(false);
+            TutorialUI.SetActive(false);
+        }
 
-    public void PushOption()
-    {
-        OptionUI.SetActive(true);
-        MainMenuUI.SetActive(false);
-    }
+        public void PushGameStart()
+        {
 
-    public void PushExit()
-    {
-        MainMenuUI.SetActive(false);
-        ConfirmExit.SetActive(true);
-    }
-    public void PushTutorialPlay()
-    {
-        save.FinishTutorial = true;
-        _JsonManager.SaveSystem();
-        _SceneManager.SceneName = "Stage_Tutorial";
-        _SceneManager.NextSceneLoad();
-    }
-    public void PushConfirmExit()
-    {
-        Application.Quit();
-    }
-    public void PushCredit()
-    {
-        CreditUI.SetActive(true);
-        MainMenuUI.SetActive(false);
+            if (!OR_SaveSystem.Instance.SaveData.FinishTutorial) //初回プレイだった場合
+            {
+                TutorialUI.SetActive(true);
+                MainMenuUI.SetActive(false);
+            }
+            else if (OR_SaveSystem.Instance.SaveData.FinishTutorial) //二回目以降の場合
+            {
+                StageSelectUI.SetActive(true);
+                MainMenuUI.SetActive(false);
+            }
+
+        }
+
+        public void PushOption()
+        {
+            OptionUI.SetActive(true);
+            MainMenuUI.SetActive(false);
+        }
+
+        public void PushExit()
+        {
+            MainMenuUI.SetActive(false);
+            ConfirmExit.SetActive(true);
+        }
+        public void PushTutorialPlay()
+        {
+            OR_SaveSystem.Instance.SaveData.FinishTutorial = true;
+            OR_SaveSystem.Instance.Save();
+            _SceneManager.SceneName = "Stage_Tutorial";
+            _SceneManager.NextSceneLoad();
+        }
+        public void PushConfirmExit()
+        {
+            Application.Quit();
+        }
+        public void PushCredit()
+        {
+            CreditUI.SetActive(true);
+            MainMenuUI.SetActive(false);
+        }
     }
 }

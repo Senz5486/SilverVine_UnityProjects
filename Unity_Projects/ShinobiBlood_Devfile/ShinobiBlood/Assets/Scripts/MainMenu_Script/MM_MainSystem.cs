@@ -5,53 +5,50 @@ using UnityEngine.UI;
 
 namespace Coffee.UIExtensions
 {
-    public class MM_MainSystem : MonoBehaviour
-    {
-        //Object
-        MM_PushButtons _MM_PushButtons;
-        //SoundObject
-        [SerializeField] private SoundController _SoundController;
-        [SerializeField] private MusicController _MusicController;
-
-        //GameObject
-        [SerializeField] private GameObject[] _DissolveObjects;
-        [SerializeField] private GameObject DissolveFade;
-
-        //Float
-        private float FadeSpeed;
-        private void Awake()
+        public class MM_MainSystem : MonoBehaviour
         {
-            _MM_PushButtons = GameObject.Find("ScriptObject").GetComponent<MM_PushButtons>();
-            _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
-            _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
-            Invoke("PlayMusic", 0.1f);
+            //SoundObject
+            [SerializeField] private SoundController _SoundController;
+            [SerializeField] private MusicController _MusicController;
 
-        }
-        void Start()
-        {
-            FadeSpeed = 0.0083f;
-        }
+            //GameObject
+            [SerializeField] private GameObject[] _DissolveObjects;
+            [SerializeField] private GameObject DissolveFade;
 
-        void FixedUpdate()
-        {
-            DissolveFade.GetComponent<UIDissolve>().location += 0.02f;
-
-            if (DissolveFade.GetComponent<UIDissolve>().location >= 0.95f)
+            //Float
+            private float FadeSpeed;
+            private void Awake()
             {
-                DissolveFade.SetActive(false);
+                _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+                _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+                Invoke("PlayMusic", 0.1f);
+
+            }
+            void Start()
+            {
+                FadeSpeed = 0.0083f;
             }
 
-            if(_DissolveObjects[0].GetComponent<UIDissolve>().location > 0.0f)
+            void FixedUpdate()
             {
-                for (int i = 0; i < _DissolveObjects.Length; i++)
+                DissolveFade.GetComponent<UIDissolve>().location += 0.02f;
+
+                if (DissolveFade.GetComponent<UIDissolve>().location >= 0.95f)
                 {
-                    _DissolveObjects[i].GetComponent<UIDissolve>().location -= FadeSpeed;
+                    DissolveFade.SetActive(false);
+                }
+
+                if (_DissolveObjects[0].GetComponent<UIDissolve>().location > 0.0f)
+                {
+                    for (int i = 0; i < _DissolveObjects.Length; i++)
+                    {
+                        _DissolveObjects[i].GetComponent<UIDissolve>().location -= FadeSpeed;
+                    }
                 }
             }
-        }
 
-        void PlayMusic()
-        {
+            void PlayMusic()
+            {
+            }
         }
-    }
 }

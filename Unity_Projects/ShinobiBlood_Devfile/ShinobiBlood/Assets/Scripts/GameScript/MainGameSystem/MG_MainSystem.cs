@@ -31,8 +31,8 @@ namespace Senz_Program
         //int
         private void Awake()
         {
-            //_SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
-            //_MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+            _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+            _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
             _SceneManager = GameObject.Find("ScriptObject").GetComponent<OR_SceneManager>();
             _PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
             _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MM_StageSelect_System : MonoBehaviour
 {
 
+    OR_SceneManager _SceneManager;
+
     //int
     [SerializeField] private int StageCount;            //ステージ数
     [SerializeField] private int CurrentSelectStage;    //現在のステージ
@@ -21,6 +23,7 @@ public class MM_StageSelect_System : MonoBehaviour
     //bool 
     void Start()
     {
+        _SceneManager = GameObject.Find("ScriptObject").GetComponent<OR_SceneManager>();
         CurrentSelectStage = 0;
         for (int i = 0; i <= StageCount; i++)
         {
@@ -56,6 +59,34 @@ public class MM_StageSelect_System : MonoBehaviour
 
     }
     
+    public void PushGameStart()
+    {
+        if(CurrentSelectStage == 0) //ステージ1
+        {
+            _SceneManager.SceneName = "Stage_1";
+            _SceneManager.NextSceneLoad();
+        }
+        if (CurrentSelectStage == 1) //ステージ2
+        {
+
+        }
+        if (CurrentSelectStage == 2) //ステージ3
+        {
+
+        }
+        if (CurrentSelectStage == 3) //ステージ4
+        {
+
+        }
+        if (CurrentSelectStage == 4) //ステージ5
+        {
+
+        }
+        if (CurrentSelectStage == 5) //ステージEX
+        {
+
+        }
+    }
     void StageShownSystem() //現在のステージを表示する
     {
         //ステージ選択されたやつをステージ画像、ステージ名、難易度、詳細を表示するシステム

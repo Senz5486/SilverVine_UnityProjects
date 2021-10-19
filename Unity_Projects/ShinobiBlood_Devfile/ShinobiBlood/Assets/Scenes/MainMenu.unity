@@ -5207,7 +5207,6 @@ MonoBehaviour:
   LoadingBar: {fileID: 1386115988}
   ProgressText: {fileID: 1807654573}
   Tips: {fileID: 1826224933}
-  _MusicController: {fileID: 0}
 --- !u!114 &568199405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12878,9 +12877,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 568199405}
-        m_TargetAssemblyTypeName: MM_PushButtons, Assembly-CSharp
-        m_MethodName: BacktoMainMenu
+      - m_Target: {fileID: 294669540}
+        m_TargetAssemblyTypeName: MM_StageSelect_System, Assembly-CSharp
+        m_MethodName: PushGameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

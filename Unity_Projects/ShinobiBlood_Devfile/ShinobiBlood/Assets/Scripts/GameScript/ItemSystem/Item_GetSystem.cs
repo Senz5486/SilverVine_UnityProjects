@@ -7,6 +7,7 @@ namespace Senz_Program
 {
     public class Item_GetSystem : MonoBehaviour
     {
+        Player_ParticleSystem _particle;
         PlayerController _playerController;
         MG_HealthSystem _mghealthsystem;
         SoundController _SoundController;
@@ -24,6 +25,7 @@ namespace Senz_Program
             {
                 _tutorial = GameObject.Find("ScriptObject").GetComponent<Tutorial_MainSystem>();
             }
+            _particle = GameObject.Find("Player").GetComponent<Player_ParticleSystem>();
             _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
             _mghealthsystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
         }
@@ -56,6 +58,7 @@ namespace Senz_Program
                     case 1://回復アイテムの場合
                         _mghealthsystem.TokenDamage(-Item_HealPower);
                         _SoundController.PlaySEAudio = 0;
+                        _particle.isGetHealItem = true;
                         if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
                         {
                             _tutorial.isGetHealItem = true;
@@ -69,6 +72,7 @@ namespace Senz_Program
                     case 2://加速アイテムの場合
                         _playerController.SpeedItemPower = 3;
                         _playerController.AccelerationSpeed = true;
+                        _particle.isGetSpeedItem = true;
                         _SoundController.PlaySEAudio = 0;
                         if (SceneManager.GetActiveScene().name == "Stage_Tutorial")
                         {

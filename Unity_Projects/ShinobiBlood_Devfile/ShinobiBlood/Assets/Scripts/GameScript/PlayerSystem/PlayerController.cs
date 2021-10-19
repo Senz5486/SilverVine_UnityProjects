@@ -13,7 +13,7 @@ namespace Senz_Program
         public GroundCheck ground;
         public GroundCheck head;
         public ActionCheck action;
-
+        PlayerCamera _PlayerCamera;
         //float
         [SerializeField] private float Gravity;
         [SerializeField] private float GravityFallTime;
@@ -25,6 +25,8 @@ namespace Senz_Program
         public float SpeedItemPower;
         public float Player_Speed;
         private float Default_Player_Speed;
+        private float ReverseTime;
+        [SerializeField] private float FirstRotateY;
         //‰ñ“]
         float Y_Rotate;
 
@@ -37,9 +39,27 @@ namespace Senz_Program
         public bool AccelerationSpeed;
         private void Awake()
         {
+            Y_Rotate = FirstRotateY;
+            _PlayerCamera = GameObject.Find("ScriptObject").GetComponent<PlayerCamera>();
             rb = this.GetComponent<Rigidbody>();
-            Y_Rotate = 90.0f;
             Default_Player_Speed = Player_Speed;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q)) //ƒJƒƒ‰”½“]
+            {
+                if (!_PlayerCamera.PlayerReverse)
+                {
+                    _PlayerCamera.PlayerReverse = true;
+                    return;
+                }
+                if (_PlayerCamera.PlayerReverse)
+                {
+                    _PlayerCamera.PlayerReverse = false;
+                    return;
+                }
+            }
         }
 
         void FixedUpdate()
@@ -63,7 +83,6 @@ namespace Senz_Program
                 Player_Speed = Default_Player_Speed;
                 SpeedItemPower = 0;
             }
-
 
             //ƒL[“ü—Í
             float Horizontal = Input.GetAxis("Horizontal");
@@ -115,20 +134,16 @@ namespace Senz_Program
 
                 if (Horizontal > 0) //‰EˆÚ“®’†
                 {
-                    //transform.localScale = new Vector3(1, 1, 1);
                     Y_Rotate = 90;
                     X_Speed = Player_Speed * Horizontal;
                 }
                 else if (Horizontal < 0) //¶ˆÚ“®’†
                 {
-                    //transform.localScale = new Vector3(1, 1, 1);
                     Y_Rotate = -90;
                     X_Speed = Player_Speed * Horizontal;
                 }
                 else
                 {
-                    //transform.localScale = new Vector3(1, 1, 1);
-                    //X_Speed = 0.0f;
                 }
                 transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
                 rb.velocity = new Vector3(X_Speed, Y_Speed, 0);

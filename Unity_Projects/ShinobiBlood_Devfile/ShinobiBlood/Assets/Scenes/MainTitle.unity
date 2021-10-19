@@ -164,6 +164,7 @@ MonoBehaviour:
   LogoMoveSpeed: 0.08
   isMoveLogo: 0
   isLogoMaxHeight: 0
+  once: 0
   _SoundController: {fileID: 0}
   _MusicController: {fileID: 0}
 --- !u!4 &59371283
@@ -200,7 +201,6 @@ MonoBehaviour:
   LoadingBar: {fileID: 479248582}
   ProgressText: {fileID: 479248580}
   Tips: {fileID: 479248581}
-  _MusicController: {fileID: 0}
 --- !u!1 &75607436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2109,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1154242308}
-  - {fileID: 1845914547}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3618,36 +3617,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 193e8f1faaae792428f112ef3ef0f3ed, type: 3}
   - {fileID: 8300000, guid: f23c1f6534a154c419fd7d231f59443e, type: 3}
   - {fileID: 8300000, guid: eca11a743b4919d46bb99404a0377466, type: 3}
---- !u!1 &1845914546
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1845914547}
-  m_Layer: 0
-  m_Name: GlobalBoolObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1845914547
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845914546}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1042518909}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!84 &1913459981
 RenderTexture:
   m_ObjectHideFlags: 0

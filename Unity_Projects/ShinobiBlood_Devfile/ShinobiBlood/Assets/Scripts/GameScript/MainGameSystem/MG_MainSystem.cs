@@ -14,6 +14,7 @@ namespace Senz_Program
         MusicController _MusicController;
         PlayerController _PlayerController;
         OR_SceneManager _SceneManager;
+        MG_GoalSystem _GoalSystem;
         //Gameobject
         [SerializeField] private GameObject GameOverUI;
         [SerializeField] private GameObject GameClearUI;
@@ -30,11 +31,12 @@ namespace Senz_Program
         //int
         private void Awake()
         {
-            _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
-            _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+            //_SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
+            //_MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
             _SceneManager = GameObject.Find("ScriptObject").GetComponent<OR_SceneManager>();
             _PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
             _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
+            //_GoalSystem = GameObject.Find("GoalObject").GetComponent<MG_GoalSystem>();
             Invoke("PlayStageMusic", 0.1f);
         }
         void Start()
@@ -48,9 +50,12 @@ namespace Senz_Program
         void Update()
         {
             MainGame();
+            PlayStageMusic();
             isGameOver();
+            isGameClear();
         }
 
+        //ゲームオーバーシステム
         void isGameOver()
         {
             if (_HealthSystem.isDead) //プレイヤーがゲームオーバー判定になったら
@@ -67,16 +72,64 @@ namespace Senz_Program
             }
         }
 
-        void isGameClear()
+        //ゲームクリアシステム
+        void isGameClear() 
+        {
+            /*if (_GoalSystem.isGoalFlag)
+            {
+                _HealthSystem.isStart = false;
+                _PlayerController.EnableCharaSystem = false;
+                Invoke("DelayClearUI", 2.0f);
+            }*/
+        }
+
+        //ゲームクリアUIを遅れさせて出す
+        void DelayClearUI()
+        {
+            GameClearUI.SetActive(true);
+            GameClearUISystem();
+        }
+
+        //ゲームクリアUIのシステム ->スコア計算など
+        void GameClearUISystem()
         {
 
         }
 
+        //ステージ事の音楽のシステム
         void PlayStageMusic()
         {
+            if (SceneManager.GetActiveScene().name == "Stage_1") //ステージ1の音楽
+            {
 
+            }
+            else if (SceneManager.GetActiveScene().name == "Stage_2") //ステージ2の音楽
+            {
+
+            }
+            else if (SceneManager.GetActiveScene().name == "Stage_3") //ステージ3の音楽
+            {
+
+            }
+            else if (SceneManager.GetActiveScene().name == "Stage_4") //ステージ4の音楽
+            {
+
+            }
+            else if (SceneManager.GetActiveScene().name == "Stage_5") //ステージ5の音楽
+            {
+
+            }
+            else if (SceneManager.GetActiveScene().name == "Stage_Ex") //ステージExの音楽
+            {
+
+            }
+            else if (SceneManager.GetActiveScene().name == "Test") //Testの音楽
+            {
+
+            }
         }
 
+        //メインゲームシステム
         void MainGame()
         {
             if (_HealthSystem.isStart == false) //ゲームが開始する前
@@ -123,6 +176,7 @@ namespace Senz_Program
             }
         }
 
+        //カウントダウンテキスト削除用
         void DeleteCDText()
         {
             CountDownText.text = "";

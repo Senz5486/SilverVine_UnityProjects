@@ -16,7 +16,7 @@ public class ActiveBlock : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(!block.active && other.gameObject.tag == "Player" && Input.GetKeyDown("e"))
+        if(!block.activeSelf && other.gameObject.tag == "Player" && Input.GetKeyDown("e"))
         {
             _mghealthsystem.TokenDamage(Damage);
             block.SetActive(true);

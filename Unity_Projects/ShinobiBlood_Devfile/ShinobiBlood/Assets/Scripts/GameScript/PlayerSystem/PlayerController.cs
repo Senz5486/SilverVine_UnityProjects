@@ -110,7 +110,7 @@ namespace Senz_Program
                 }
                 else if (isGround == false)
                 {
-                    GravityFallTime += Time.deltaTime;
+                    GravityFallTime += Time.deltaTime * 1.2f;
                 }
 
                 if (Horizontal > 0) //‰EˆÚ“®’†

@@ -11,11 +11,21 @@ public class OR_SceneManager : MonoBehaviour
 
     //String
     public string SceneName;      //読み込むシーン名
-    [SerializeField] private string RandomTips1 = "ステージによって、減る体力量は違う！難しいステージに行けば行くほど、減る体力が増え難易度が上昇するぞ・・・！"; //Loading Random1 の時のTips
-    [SerializeField] private string RandomTips2 = "実は、開発当時はキャラクター案が3つあった！今後増えるかもしれない・・・？"; //Loading Random2 の時のTips
-    [SerializeField] private string RandomTips3 = "ゲームのメインキャラクターについて　　　　　　　　　　忍者の家系に産まれた黒魔術師というのが主人公の設定だ！"; //Loading Random3 の時のTips
+
+    //Loading Random1 の時のTips
+    [SerializeField] private string RandomTips1 = "ステージによって、減る体力量は違う！難しいステージに行けば行くほど、減る体力が増え難易度が上昇するぞ・・・！";
+
+    //Loading Random2 の時のTips
+    [SerializeField] private string RandomTips2 = "実は、開発当時はキャラクター案が3つあった！今後増えるかもしれない・・・？";
+
+    //Loading Random3 の時のTips
+    [SerializeField] private string RandomTips3 = "ゲームのメインキャラクターについて　　　　　　　　　　忍者の家系に産まれた黒魔術師というのが主人公の設定だ！"; 
+
     //Int
     private int LoadingRandom;
+
+    //bool
+    private bool isLoading;
 
     //GameObject
     [SerializeField] private GameObject LoadingUI;  //ローディングUI
@@ -27,11 +37,9 @@ public class OR_SceneManager : MonoBehaviour
     [SerializeField] private Text ProgressText;     //プログレステキスト
     [SerializeField] private Text Tips;             //Tipsテキスト
 
-    //MusicObject
-    [SerializeField] private MusicController _MusicController;
     private void Awake()
     {
-        _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
+        isLoading = false;
         LoadingRandom = Random.Range(1, 4); //ランダム整数 1 - 3
         switch (LoadingRandom)
         {
@@ -46,10 +54,6 @@ public class OR_SceneManager : MonoBehaviour
                 break;
         }
     }
-    void PlayMusic()
-    {
-        _MusicController.PlayBGMAudio = -1;
-    }
     //次のシーンへ移動するシステム
     //次のシーンへ移動したいときは NextSceneLoad()関数をご使用ください。
     //↓ 使い方 ↓
@@ -58,9 +62,14 @@ public class OR_SceneManager : MonoBehaviour
     //3 -  そのオブジェクトからこのスクリプトを読み込んで 任意のタイミングで NextSceneLoadを実行します
     public void NextSceneLoad()
     {
-        LoadingUI.SetActive(true);
-        StartCoroutine("LoadAsyncSceneSystem");
+        if (!isLoading)
+        {
+            LoadingUI.SetActive(true);
+            StartCoroutine("LoadAsyncSceneSystem");
+            isLoading = true;
+        }
     }
+
 
     //ローディングシステム 
     IEnumerator LoadAsyncSceneSystem() 

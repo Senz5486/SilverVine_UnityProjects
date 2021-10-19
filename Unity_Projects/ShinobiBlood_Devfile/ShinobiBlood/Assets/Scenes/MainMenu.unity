@@ -5137,7 +5137,6 @@ GameObject:
   - component: {fileID: 568199402}
   - component: {fileID: 568199405}
   - component: {fileID: 568199404}
-  - component: {fileID: 568199406}
   m_Layer: 0
   m_Name: ScriptObject
   m_TagString: Untagged
@@ -5227,20 +5226,6 @@ MonoBehaviour:
   CreditUI: {fileID: 1300608727}
   OptionUI: {fileID: 522896735}
   ConfirmExit: {fileID: 799314635}
-  isFirstPlay: 1
---- !u!114 &568199406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568199401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb1adf902adca843806831695619fbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FilePath: 
 --- !u!1 &618307367
 GameObject:
   m_ObjectHideFlags: 0

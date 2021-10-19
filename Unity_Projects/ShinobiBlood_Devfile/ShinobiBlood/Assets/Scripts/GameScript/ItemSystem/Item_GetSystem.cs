@@ -66,7 +66,7 @@ namespace Senz_Program
                         if (_mghealthsystem.CurrentHealth >= _mghealthsystem.MaxHealth)//体力最大値補正 
                         {
                             _mghealthsystem.CurrentHealth = _mghealthsystem.MaxHealth;
-                            _mghealthsystem.TokenDamage(-_mghealthsystem.MaxHealth);
+                            //_mghealthsystem.TokenDamage(-_mghealthsystem.MaxHealth);
                         }
                         break;
                     case 2://加速アイテムの場合

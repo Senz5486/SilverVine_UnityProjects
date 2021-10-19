@@ -37,7 +37,7 @@ namespace Senz_Program
             _PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
             _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
             //_GoalSystem = GameObject.Find("GoalObject").GetComponent<MG_GoalSystem>();
-            Invoke("PlayStageMusic", 0.1f);
+            Invoke("PlayStageMusic", 0.2f);
         }
         void Start()
         {
@@ -50,7 +50,6 @@ namespace Senz_Program
         void Update()
         {
             MainGame();
-            PlayStageMusic();
             isGameOver();
             isGameClear();
         }
@@ -101,7 +100,7 @@ namespace Senz_Program
         {
             if (SceneManager.GetActiveScene().name == "Stage_1") //ステージ1の音楽
             {
-
+                _MusicController.PlayBGMAudio = 6;
             }
             else if (SceneManager.GetActiveScene().name == "Stage_2") //ステージ2の音楽
             {

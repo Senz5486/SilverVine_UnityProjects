@@ -84,7 +84,7 @@ namespace Senz_Program
             isCanMove = false;
             _MG_HealthSystem.isStart = true;
             _MG_MainSystem.Stage_Minus = 1.42f;
-            TutorialTipsText.text = "このゲージは『体力』です　　時間が経過するごとに減少します";
+            TutorialTipsText.text = "下のゲージは『体力』　時と共に減少し、全て失うと倒れてしまいます";
             _SoundController.PlaySEAudio = 7;
             Invoke("Tips3", 7.0f);
         }
@@ -126,7 +126,7 @@ namespace Senz_Program
         }
         void Tips8()
         {
-            TutorialTipsText.text = "KSK-5の説明をここに書く";
+            TutorialTipsText.text = "『KSK-5』は次にダメージを受けるまで速度を上昇させます";
             _SoundController.PlaySEAudio = 7;
             Invoke("Tips9", 5.0f);
         }

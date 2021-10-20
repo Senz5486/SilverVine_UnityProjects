@@ -15,7 +15,6 @@ namespace Senz_Program
         string Item_Name;        //アイテム名
         public int Item_Type;           //アイテムタイプ (1: 回復アイテム/2:速度上昇アイテム)
         float Item_HealPower;           //アイテム1のヒールパワー
-        float Item_SpeedPower;          //アイテム2の速度上昇率
         public float isSpeedTime;       //アイテム2の速度上昇時間
         [SerializeField] private TextMesh Item_DisplayName = null;
         private void Awake()
@@ -37,13 +36,11 @@ namespace Senz_Program
                     Item_Name = "ZOK-2";
                     Item_DisplayName.text = Item_Name;
                     Item_HealPower = 10.0f;
-                    Item_SpeedPower = 0.0f;
                     isSpeedTime = 0.0f;
                     break;
                 case 2://速度上昇アイテムの場合
                     Item_Name = "KSK-5";
                     Item_DisplayName.text = Item_Name;
-                    Item_SpeedPower = 2.0f;
                     isSpeedTime = 3.0f;
                     Item_HealPower = 0.0f;
                     break;

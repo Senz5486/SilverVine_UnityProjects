@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class OR_SceneManager : MonoBehaviour
 {
+    //MusicCountroller
+    MusicController _MusicController;
     //ASync
     private AsyncOperation async;           //AsyncOperation
 
@@ -39,6 +41,7 @@ public class OR_SceneManager : MonoBehaviour
 
     private void Awake()
     {
+        _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
         isLoading = false;
         LoadingRandom = Random.Range(1, 4); //ランダム整数 1 - 3
         switch (LoadingRandom)
@@ -64,7 +67,7 @@ public class OR_SceneManager : MonoBehaviour
     {
         if (!isLoading)
         {
-            LoadingUI.SetActive(true);
+            LoadingUI.SetActive(true);       
             StartCoroutine("LoadAsyncSceneSystem");
             isLoading = true;
         }
@@ -72,7 +75,7 @@ public class OR_SceneManager : MonoBehaviour
 
 
     //ローディングシステム 
-    IEnumerator LoadAsyncSceneSystem() 
+    IEnumerator LoadAsyncSceneSystem()
     {
         async = SceneManager.LoadSceneAsync(SceneName);
         async.allowSceneActivation = false;
@@ -83,9 +86,12 @@ public class OR_SceneManager : MonoBehaviour
             LoadingBar.fillAmount = async.progress;
             yield return null;
         }
-            ProgressText.text = "100%";
-            LoadingBar.fillAmount = 1.0f;
-            yield return new WaitForSeconds(1.25f); //待ち時間
-            async.allowSceneActivation = true;
+        ProgressText.text = "100%";
+        LoadingBar.fillAmount = 1.0f;
+        yield return new WaitForSeconds(1.25f); //待ち時間
+        async.allowSceneActivation = true;
+    }
+    void stopMusic()
+    {
     }
 }

@@ -11,11 +11,6 @@ namespace Senz_Program
         public bool FinishTutorial;
         public float SEVolume;
         public float BGMVolume;
-        public float Stage1Score;
-        public float Stage2Score;
-        public float Stage3Score;
-        public float Stage4Score;
-        public float Stage5Score;
-        public float StageExScore;
+        public string PlayerName;
     }
 }

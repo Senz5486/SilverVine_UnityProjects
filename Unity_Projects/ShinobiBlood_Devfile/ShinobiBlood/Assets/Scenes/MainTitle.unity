@@ -167,6 +167,8 @@ MonoBehaviour:
   once: 0
   _SoundController: {fileID: 0}
   _MusicController: {fileID: 0}
+  MixerSEGroup: {fileID: 1837920217}
+  MixerBGMGroup: {fileID: 178440483}
 --- !u!4 &59371283
 Transform:
   m_ObjectHideFlags: 0

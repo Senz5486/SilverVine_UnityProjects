@@ -19,9 +19,10 @@ namespace Coffee.UIExtensions
             private float FadeSpeed;
             private void Awake()
             {
+                
                 _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
                 _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
-                Invoke("PlayMusic", 0.1f);
+                Invoke("PlayMusic", 0.15f);
 
             }
             void Start()
@@ -49,6 +50,7 @@ namespace Coffee.UIExtensions
 
             void PlayMusic()
             {
+            _MusicController.PlayBGMAudio = 1;
             }
         }
 }

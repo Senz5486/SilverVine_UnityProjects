@@ -30,14 +30,29 @@ namespace Senz_Program
         {
             if (PlayerReverse)
             {
-                var Position = TargetObject.position + new Vector3(2.5f, Height, -CameraDistance);
-                Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
+                if (TargetObject.gameObject.tag == "Player") 
+                {
+                    var Position = TargetObject.position + new Vector3(2.5f, Height, -CameraDistance);
+                    Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
+                }
+                else if(TargetObject.gameObject.tag == "Item")
+                {
+                    var Position = TargetObject.position + new Vector3(0.0f, Height, -CameraDistance);
+                    Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
+                }
             }
             else if (!PlayerReverse)
             {
-                var Position = TargetObject.position + new Vector3(-2.5f, Height, -CameraDistance);
-                Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
-
+                if (TargetObject.gameObject.tag == "Player")
+                {
+                    var Position = TargetObject.position + new Vector3(-2.5f, Height, -CameraDistance);
+                    Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
+                }
+                else if (TargetObject.gameObject.tag == "Item")
+                {
+                    var Position = TargetObject.position + new Vector3(2.5f, Height, -CameraDistance);
+                    Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
+                }
             }
 
         }

@@ -16,6 +16,7 @@ namespace Senz_Program
         [SerializeField] private GameObject CreditUI;
         [SerializeField] private GameObject OptionUI;
         [SerializeField] private GameObject ConfirmExit;
+        [SerializeField] private GameObject RankingUI;
 
         void Start()
         {
@@ -31,6 +32,7 @@ namespace Senz_Program
             CreditUI.SetActive(false);
             ConfirmExit.SetActive(false);
             TutorialUI.SetActive(false);
+            RankingUI.SetActive(false);
             OR_SaveSystem.Instance.Save();
         }
 
@@ -63,8 +65,6 @@ namespace Senz_Program
         }
         public void PushTutorialPlay()
         {
-            OR_SaveSystem.Instance.SaveData.FinishTutorial = true;
-            OR_SaveSystem.Instance.Save();
             _SceneManager.SceneName = "Stage_Tutorial";
             _SceneManager.NextSceneLoad();
         }
@@ -75,6 +75,11 @@ namespace Senz_Program
         public void PushCredit()
         {
             CreditUI.SetActive(true);
+            MainMenuUI.SetActive(false);
+        }
+        public void PushRanking()
+        {
+            RankingUI.SetActive(true);
             MainMenuUI.SetActive(false);
         }
     }

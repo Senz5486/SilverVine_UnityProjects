@@ -31,6 +31,7 @@ namespace Senz_Program
             CreditUI.SetActive(false);
             ConfirmExit.SetActive(false);
             TutorialUI.SetActive(false);
+            OR_SaveSystem.Instance.Save();
         }
 
         public void PushGameStart()

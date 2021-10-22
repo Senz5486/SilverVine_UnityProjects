@@ -26,6 +26,8 @@ namespace Senz_Program
         public float Player_Speed;
         private float Default_Player_Speed;
         private float ReverseTime;
+        private float Horizontal;
+        private float Vertical;
         [SerializeField] private float FirstRotateY;
         //回転
         float Y_Rotate;
@@ -39,6 +41,8 @@ namespace Senz_Program
         public bool AccelerationSpeed;
         private void Awake()
         {
+            Horizontal = 0.0f;
+            Vertical = 0.0f;
             Y_Rotate = FirstRotateY;
             _PlayerCamera = GameObject.Find("ScriptObject").GetComponent<PlayerCamera>();
             rb = this.GetComponent<Rigidbody>();
@@ -47,6 +51,10 @@ namespace Senz_Program
 
         private void Update()
         {
+            //キー入力
+            Horizontal = Input.GetAxis("Horizontal");
+            Vertical = Input.GetAxis("Vertical");
+
             if (Input.GetKeyDown(KeyCode.Q)) //カメラ反転
             {
                 if (!_PlayerCamera.PlayerReverse)
@@ -83,10 +91,6 @@ namespace Senz_Program
                 Player_Speed = Default_Player_Speed;
                 SpeedItemPower = 0;
             }
-
-            //キー入力
-            float Horizontal = Input.GetAxis("Horizontal");
-            float Vertical = Input.GetAxis("Vertical");
 
             //速度
             float X_Speed = 0.0f;

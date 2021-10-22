@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LantanObject : MonoBehaviour
 {
-    private bool isFire;
+    [SerializeField]private bool isFire;
     void Start()
     {
         isFire = false;
@@ -12,7 +12,7 @@ public class LantanObject : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(!isFire && other.gameObject.tag == "player" && Input.GetKeyDown("e"))
+        if(!isFire && other.gameObject.tag == "Player" && Input.GetKeyDown("e"))
         {
             isFire = true;
         }

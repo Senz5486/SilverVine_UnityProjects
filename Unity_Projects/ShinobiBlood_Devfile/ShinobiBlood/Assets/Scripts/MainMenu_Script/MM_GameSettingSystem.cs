@@ -114,6 +114,7 @@ namespace Senz_Program {
 
         public void PushApplyResolution()
         {
+            QualitySettings.vSyncCount = CheckVsync;
             Screen.SetResolution(OR_SaveSystem.Instance.SaveData.ScreenWidth, OR_SaveSystem.Instance.SaveData.ScreenHeight, OR_SaveSystem.Instance.SaveData.isFullScreen);
         }
     }

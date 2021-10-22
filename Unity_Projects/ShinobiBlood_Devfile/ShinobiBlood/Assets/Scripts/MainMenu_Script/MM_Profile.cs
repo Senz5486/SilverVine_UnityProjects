@@ -9,6 +9,7 @@ namespace Senz_Program {
         [SerializeField] private InputField ChangePlayerName;
         [SerializeField] private Text PlayerName;
         [SerializeField] private Text StatusText;
+        private string CheckName;
         private void Awake()
         {
             OR_SaveSystem.Instance.Load();
@@ -17,14 +18,15 @@ namespace Senz_Program {
         }
         public void PushRename()
         {
-            if (ChangePlayerName.text.Length <= 2) //エラートラップ 文字数
+            CheckName = ChangePlayerName.text.Trim();
+            if (CheckName.Length <= 2) //エラートラップ 文字数
             {
                 StatusText.color = new Color(1.0f, 0.0f, 0.0f);
                 StatusText.text = "エラー: 文字数が少なすぎます 2文字を超える文字数を入力してください";
                 Invoke("DeleteMessage", 2.0f);
                 return;
             }
-            if (ChangePlayerName.text == PlayerName.text || ChangePlayerName.text == OR_SaveSystem.Instance.SaveData.PlayerName) //エラートラップ 同名
+            if (CheckName == PlayerName.text || CheckName == OR_SaveSystem.Instance.SaveData.PlayerName) //エラートラップ 同名
             {
                 StatusText.color = new Color(1.0f, 0.0f, 0.0f);
                 StatusText.text = "エラー: 同じ名前は設定出来ません";

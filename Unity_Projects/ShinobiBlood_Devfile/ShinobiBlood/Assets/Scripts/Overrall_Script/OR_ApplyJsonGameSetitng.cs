@@ -20,18 +20,5 @@ namespace Senz_Program
                 QualitySettings.vSyncCount = Enable;
             }
         }
-        private void Update()
-        {
-            if (OR_SaveSystem.Instance.SaveData.VSyncIsEnable)
-            {
-                Enable = 1;
-                QualitySettings.vSyncCount = Enable;
-            }
-            else if (!OR_SaveSystem.Instance.SaveData.VSyncIsEnable)
-            {
-                Enable = 0;
-                QualitySettings.vSyncCount = Enable;
-            }
-        }
     }
 }

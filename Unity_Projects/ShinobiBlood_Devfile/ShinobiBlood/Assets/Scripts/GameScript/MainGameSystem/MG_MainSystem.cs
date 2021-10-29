@@ -61,6 +61,8 @@ namespace Senz_Program
         {
             if (_HealthSystem.isDead) //プレイヤーがゲームオーバー判定になったら
             {
+                _HealthSystem.isStart = false;
+                _PlayerController.EnableCharaSystem = false;
                 GameOverUI.SetActive(true);
                 GameOverCD.text = GameOverTime.ToString("0") + "秒";
                 GameOverTime -= Time.deltaTime;
@@ -100,23 +102,23 @@ namespace Senz_Program
             }
             else if (SceneManager.GetActiveScene().name == "Stage_2") //ステージ2の音楽
             {
-
+                _MusicController.PlayBGMAudio = 7;
             }
             else if (SceneManager.GetActiveScene().name == "Stage_3") //ステージ3の音楽
             {
-
+                _MusicController.PlayBGMAudio = 8;
             }
             else if (SceneManager.GetActiveScene().name == "Stage_4") //ステージ4の音楽
             {
-
+                _MusicController.PlayBGMAudio = 9;
             }
             else if (SceneManager.GetActiveScene().name == "Stage_5") //ステージ5の音楽
             {
-
+                _MusicController.PlayBGMAudio = 10;
             }
             else if (SceneManager.GetActiveScene().name == "Stage_Ex") //ステージExの音楽
             {
-
+                _MusicController.PlayBGMAudio = 11;
             }
             else if (SceneManager.GetActiveScene().name == "Test") //Testの音楽
             {

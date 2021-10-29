@@ -23,6 +23,7 @@ namespace Senz_Program
         [SerializeField] private Text GameOverCD;
         //float
         public float Stage_Minus;
+        public float Stage_ProgressTime;
         [SerializeField] private float Stage_StartCountDown;
         [SerializeField] private float CD_Timer;
         private float GameOverTime;
@@ -31,12 +32,13 @@ namespace Senz_Program
         //int
         private void Awake()
         {
+            Stage_ProgressTime = 0.0f;
             _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
             _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
             _SceneManager = GameObject.Find("ScriptObject").GetComponent<OR_SceneManager>();
             _PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
             _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
-            //_GoalSystem = GameObject.Find("GoalObject").GetComponent<MG_GoalSystem>();
+            _GoalSystem = GameObject.Find("Goal").GetComponent<MG_GoalSystem>();
             Invoke("PlayStageMusic", 0.2f);
         }
         void Start()
@@ -74,25 +76,19 @@ namespace Senz_Program
         //ゲームクリアシステム
         void isGameClear() 
         {
-            /*if (_GoalSystem.isGoalFlag)
+            if (_GoalSystem.isGoalFlag)
             {
                 _HealthSystem.isStart = false;
                 _PlayerController.EnableCharaSystem = false;
+                CountDownText.text = "ステージクリア!";
                 Invoke("DelayClearUI", 2.0f);
-            }*/
+            }
         }
 
         //ゲームクリアUIを遅れさせて出す
         void DelayClearUI()
         {
             GameClearUI.SetActive(true);
-            GameClearUISystem();
-        }
-
-        //ゲームクリアUIのシステム ->スコア計算など
-        void GameClearUISystem()
-        {
-
         }
 
         //ステージ事の音楽のシステム
@@ -131,7 +127,7 @@ namespace Senz_Program
         //メインゲームシステム
         void MainGame()
         {
-            if (_HealthSystem.isStart == false) //ゲームが開始する前
+            if (_HealthSystem.isStart == false && !_GoalSystem.isGoalFlag) //ゲームが開始する前
             {
                 if (CD_Timer > 1.0f)
                 {
@@ -172,6 +168,7 @@ namespace Senz_Program
             else if (_HealthSystem.isStart == true && StopMinusHealth == false)//ゲームが開始したら
             {
                 _HealthSystem.MinusHealth = Stage_Minus; //ステージごとに減少率を選べる
+                Stage_ProgressTime += Time.deltaTime;
             }
         }
 

@@ -7,6 +7,8 @@ TagManager:
   - Stage_GroundOBJ
   - karakuri
   - Item
+  - GoalObject
+  - GameOverArea
   layers:
   - Default
   - TransparentFX

@@ -100,7 +100,7 @@ public class MM_StageSelect_System : MonoBehaviour
                 {
                     case 0: //ステージ1
                         StageImage[CurrentSelectStage].SetActive(true);
-                        StageName.text = "ステージ1";
+                        StageName.text = "壱の間";
                         StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#FF0000>★</color><color=#ffffff>☆☆☆☆</color>";
                         StageGimik.text = "トゲトゲ";
                         break;

@@ -27,7 +27,7 @@ namespace Senz_Program {
             }
             MassScore = GameObject.Find("ScriptObject").GetComponent<Score_Mass>();
             _MainSystem = GameObject.Find("ScriptObject").GetComponent<MG_MainSystem>();
-            ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0") +"秒";
+            ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0.00") +"秒";
             ShownTime = 3.0f;
         }
 
@@ -38,7 +38,7 @@ namespace Senz_Program {
             {
                 ResultScoreText.text = Random.Range(100000, 999999).ToString("0");
                 CurrentStageMaxScoreText.text = Random.Range(100000, 999999).ToString("0");
-                ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0") + "秒";
+                ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0.00") + "秒";
             }
             else if (ShownTime < 0)
             {
@@ -68,7 +68,7 @@ namespace Senz_Program {
                     CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.StageEx_MaxScores.ToString();
                 }
                 SaveMaxScore();
-                ClearTimeText.text = "ステージクリアタイム:" + _MainSystem.Stage_ProgressTime.ToString("0") + "秒";
+                ClearTimeText.text = "ステージクリアタイム:" + _MainSystem.Stage_ProgressTime.ToString("0.00") + "秒";
                 ShownTime = -1;
             }
         }

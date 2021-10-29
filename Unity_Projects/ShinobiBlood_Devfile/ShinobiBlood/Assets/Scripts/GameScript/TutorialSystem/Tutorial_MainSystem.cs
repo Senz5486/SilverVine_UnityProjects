@@ -91,8 +91,7 @@ namespace Senz_Program
         void Tips3()
         {
             isCanMove = false;
-            _MG_HealthSystem.isStart = false;
-            ColObject[0].SetActive(false);
+            _MG_HealthSystem.isStart = false; 
             _playerCamera.TargetObject = TutorialHealItem.transform;
             TutorialTipsText.text = "これは『ZOK-2』  触れてみてください";
             _SoundController.PlaySEAudio = 7;
@@ -101,6 +100,7 @@ namespace Senz_Program
         void Tips4()
         {
             isCanMove = true;
+            ColObject[0].SetActive(false);
             _playerCamera.TargetObject = Player.transform;
             TutorialTipsText.text = "";
         }
@@ -121,6 +121,7 @@ namespace Senz_Program
         void Tips7()
         {
             isCanMove = true;
+            ColObject[0].SetActive(false);
             _playerCamera.TargetObject = Player.transform;
             TutorialTipsText.text = "";
         }
@@ -135,6 +136,10 @@ namespace Senz_Program
             isCanMove = false;
             TutorialTipsText.text = "次にからくりの説明を開始します";
             _SoundController.PlaySEAudio = 7;
+        }
+        void Tips10()
+        {
+
         }
     }
 }

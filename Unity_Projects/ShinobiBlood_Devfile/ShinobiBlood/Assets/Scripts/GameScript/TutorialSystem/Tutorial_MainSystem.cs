@@ -121,7 +121,7 @@ namespace Senz_Program
         void Tips7()
         {
             isCanMove = true;
-            ColObject[0].SetActive(false);
+            ColObject[1].SetActive(false);
             _playerCamera.TargetObject = Player.transform;
             TutorialTipsText.text = "";
         }

@@ -109,7 +109,7 @@ namespace Senz_Program
                             StageImage[CurrentSelectStage].SetActive(true);
                             StageName.text = "<color=#FF0000>壱</color><color=#ffffff>の間</color>";
                             StageDifficult.text = "<color=#ffffff>難易度:</color> <color=#FF0000>★</color><color=#ffffff>☆☆☆☆</color>";
-                            StageGimik.text = "トゲトゲ";
+                            StageGimik.text = "回転刃";
                             break;
                         case 1: //ステージ2
                             CurrentMaxScore.text = OR_SaveSystem.Instance.SaveData.Stage2_MaxScores.ToString("0") + " 点";

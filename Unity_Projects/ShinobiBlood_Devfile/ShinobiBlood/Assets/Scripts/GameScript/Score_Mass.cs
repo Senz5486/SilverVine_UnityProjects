@@ -8,16 +8,16 @@ namespace Senz_Program
     {
         MG_HealthSystem _HealthSystem;
         PlayerStatus _PlayerStatus;
-        float MassScore;
+        int MassScore;
         private void Awake()
         {
             _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
             _PlayerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
         }
-        public float Score()
+        public int Score()
         {
 
-            MassScore = _HealthSystem.CurrentHealth * 1500;
+            MassScore = (int)_HealthSystem.CurrentHealth * 1500;
             MassScore += _PlayerStatus.Player_GetItems * 500;
 
             if (_PlayerStatus.isNoHit)

@@ -53,8 +53,8 @@ namespace Senz_Program
         private void Update()
         {
             //キー入力
-            Horizontal = Input.GetAxis("Horizontal");
-            Vertical = Input.GetAxis("Vertical");
+                Horizontal = Input.GetAxis("Horizontal");
+                Vertical   = Input.GetAxis("Vertical");
 
             if (Input.GetKeyDown(KeyCode.Q)) //カメラ反転
             {
@@ -98,18 +98,19 @@ namespace Senz_Program
             float Y_Speed = -Gravity * GravityFallTime;
 
 
-            if (EnableCharaSystem)
-            {
                 if (isGround)
                 {
                     GravityFallTime = 0.0f;
                     if (Vertical > 0)
                     {
-                        Y_Speed = Player_JumpSpeed;
-                        Player_JumpPos = transform.position.y;
-                        isJump = true;
-                        JumpTime = 0.0f;
-                        _Animator.SetBool("IsJump", true);
+                        if (EnableCharaSystem)
+                        {
+                            Y_Speed = Player_JumpSpeed;
+                            Player_JumpPos = transform.position.y;
+                            isJump = true;
+                            JumpTime = 0.0f;
+                            _Animator.SetBool("IsJump", true);
+                        }                
                     }
                     else
                     {
@@ -139,10 +140,11 @@ namespace Senz_Program
                 {
                     GravityFallTime += Time.deltaTime * 1.2f;
                 }
-
+            if (EnableCharaSystem)
+            {
                 if (Horizontal > 0) //右移動中
                 {
-                    Y_Rotate = 90;             
+                    Y_Rotate = 90;
                     X_Speed = Player_Speed * Horizontal;
                     _Animator.SetBool("IsRun", true);
                 }
@@ -156,14 +158,13 @@ namespace Senz_Program
                 {
                     _Animator.SetBool("IsRun", false);
                 }
-                transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
-                rb.velocity = new Vector3(X_Speed, Y_Speed, 0);
             }
             else
             {
-                Horizontal = 0;
-                Vertical = 0;
+                _Animator.SetBool("IsRun", false);
             }
+            transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
+            rb.velocity = new Vector3(X_Speed, Y_Speed, 0);
         }
 
         private void OnCollisionEnter(Collision collision)

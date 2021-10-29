@@ -29,13 +29,11 @@ namespace Senz_Program {
             {
                 ResolutionText.text = "全画面モードのみ変更可能";
                 ResolutionObject.SetActive(false);
-                ApplyButton.SetActive(false);
             }
             else if (OR_SaveSystem.Instance.SaveData.isFullScreen)
             {
                 ResolutionText.text = "解像度設定";
                 ResolutionObject.SetActive(true);
-                ApplyButton.SetActive(true);
             }
         }
 

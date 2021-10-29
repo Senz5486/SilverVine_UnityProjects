@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MG_BacktoRespawn : MonoBehaviour
+namespace Senz_Program
 {
-    private Transform PlayerObject;
-    private Vector3 FirstSpawnPosition;
-
-    void Start()
+    public class MG_BacktoRespawn : MonoBehaviour
     {
-        PlayerObject = GameObject.Find("Player").GetComponent<Transform>();
-        FirstSpawnPosition = PlayerObject.transform.position;
-    }
+        PlayerStatus _PlayerStatus;
+        private Transform PlayerObject;
+        private Vector3 FirstSpawnPosition;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
+        void Start() { 
+            _PlayerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
+            PlayerObject = GameObject.Find("Player").GetComponent<Transform>();
+            FirstSpawnPosition = PlayerObject.transform.position;
+        }
+
+        private void OnTriggerEnter(Collider other)
         {
-            PlayerObject.transform.position = FirstSpawnPosition;
+            if (other.gameObject.tag == "Player")
+            {
+                PlayerObject.transform.position = FirstSpawnPosition;
+                _PlayerStatus.RespawnCount++;
+            }
         }
     }
 }

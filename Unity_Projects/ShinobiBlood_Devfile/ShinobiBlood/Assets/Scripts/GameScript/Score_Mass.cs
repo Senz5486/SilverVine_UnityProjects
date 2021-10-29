@@ -19,6 +19,7 @@ namespace Senz_Program
 
             MassScore = (int)_HealthSystem.CurrentHealth * 1500;
             MassScore += _PlayerStatus.Player_GetItems * 500;
+            
 
             if (_PlayerStatus.isNoHit)
             {

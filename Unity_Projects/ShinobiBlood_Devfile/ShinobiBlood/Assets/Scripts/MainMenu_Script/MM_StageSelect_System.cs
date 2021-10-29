@@ -72,7 +72,8 @@ namespace Senz_Program
             }
             if (CurrentSelectStage == 1) //ステージ2
             {
-
+                _SceneManager.SceneName = "Stage_2";
+                _SceneManager.NextSceneLoad();
             }
             if (CurrentSelectStage == 2) //ステージ3
             {

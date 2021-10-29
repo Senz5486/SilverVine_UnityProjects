@@ -25,6 +25,11 @@ namespace Senz_Program {
                 StageName.text = "壱の間";
                 CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage1_MaxScores.ToString();
             }
+            if (SceneManager.GetActiveScene().name == "Stage_2")
+            {
+                StageName.text = "弐の間";
+                CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage2_MaxScores.ToString();
+            }
             MassScore = GameObject.Find("ScriptObject").GetComponent<Score_Mass>();
             _MainSystem = GameObject.Find("ScriptObject").GetComponent<MG_MainSystem>();
             ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0.00") +"秒";

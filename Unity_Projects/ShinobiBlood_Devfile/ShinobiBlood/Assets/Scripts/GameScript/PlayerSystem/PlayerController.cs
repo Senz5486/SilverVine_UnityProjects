@@ -138,7 +138,7 @@ namespace Senz_Program
                 }
                 else if (isGround == false)
                 {
-                    GravityFallTime += Time.deltaTime * 1.2f;
+                    GravityFallTime += Time.deltaTime;
                 }
             if (EnableCharaSystem)
             {

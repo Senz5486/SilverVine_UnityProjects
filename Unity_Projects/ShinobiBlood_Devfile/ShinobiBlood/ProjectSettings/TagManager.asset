@@ -9,6 +9,7 @@ TagManager:
   - Item
   - GoalObject
   - GameOverArea
+  - RespawnArea
   layers:
   - Default
   - TransparentFX

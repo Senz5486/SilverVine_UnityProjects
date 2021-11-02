@@ -1782,7 +1782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 330842113}
   m_Layer: 0
-  m_Name: == ITEMS == (1)
+  m_Name: == ITEMS ==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2540,7 +2540,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477687883}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64a7031d981e91545a51d8cbc44598f6, type: 3}
   m_Name: 
@@ -3022,7 +3022,7 @@ GameObject:
   m_Component:
   - component: {fileID: 561919453}
   m_Layer: 0
-  m_Name: == KARAKURI == (1)
+  m_Name: == KARAKURI ==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5659,7 +5659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 943350858}
   m_Layer: 0
-  m_Name: == UI == (1)
+  m_Name: == UI ==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11023,7 +11023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012919239}
   m_Layer: 0
-  m_Name: MAPObjects (1)
+  m_Name: MAPObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11614,7 +11614,7 @@ GameObject:
   - component: {fileID: 1157322893}
   - component: {fileID: 1157322892}
   m_Layer: 0
-  m_Name: Post_Process (1)
+  m_Name: Post_Process
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11813,7 +11813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175885357}
   m_Layer: 0
-  m_Name: == FLAGOBJECT == (1)
+  m_Name: == FLAGOBJECT ==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12317,7 +12317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284785129}
   m_Layer: 0
-  m_Name: == PLAYER == (1)
+  m_Name: == PLAYER ==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13147,7 +13147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1481466840}
   m_Layer: 0
-  m_Name: == LIGHT == (1)
+  m_Name: == LIGHT ==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13276,10 +13276,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560060114c9a742448e9a05157d7d651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_GetItems: 0
   NoHitTime: 0
+  MaxNoHitTime: 0
+  KarakuriGetDamage: 0
+  isHit: 0
   isNoHit: 0
   isMiliHealth: 0
+  RespawnCount: 0
+  Player_GetItems: 0
+  Bonus_NoHit: 0
+  Bonus_MiliHealth: 0
+  Bonus_NoItem: 0
+  Bonus_RespawnLv1: 0
+  Bonus_RespawnLv2: 0
+  Plus_HealthScore: 0
+  Plus_ItemScore: 0
+  Plus_ClearTimeScore: 0
 --- !u!114 &1534128848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13576,6 +13588,9 @@ GameObject:
   - component: {fileID: 1569235501}
   - component: {fileID: 1569235500}
   - component: {fileID: 1569235499}
+  - component: {fileID: 1569235505}
+  - component: {fileID: 1569235504}
+  - component: {fileID: 1569235506}
   m_Layer: 0
   m_Name: Player_Track_Camera
   m_TagString: MainCamera
@@ -13755,6 +13770,53 @@ Transform:
   m_Father: {fileID: 806147920}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 12.02, y: 0, z: 0}
+--- !u!54 &1569235504
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569235497}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &1569235505
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569235497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1569235506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569235497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a7031d981e91545a51d8cbc44598f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetObject: {fileID: 1534128845}
+  CameraDistance: 9
+  Height: 1.85
+  SmoothSpeed: 7
+  Player_Camera: {fileID: 1569235498}
+  PlayerReverse: 0
 --- !u!1 &1587593759
 GameObject:
   m_ObjectHideFlags: 0
@@ -15706,7 +15768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029006453}
   m_Layer: 0
-  m_Name: == OBJECT == (1)
+  m_Name: == OBJECT ==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

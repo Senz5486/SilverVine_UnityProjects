@@ -9,12 +9,12 @@ namespace Senz_Program
     public class MG_MainSystem : MonoBehaviour
     {
         //ëºÉNÉâÉXéQè∆
-        MG_HealthSystem _HealthSystem;
-        SoundController _SoundController;
-        MusicController _MusicController;
-        PlayerController _PlayerController;
-        OR_SceneManager _SceneManager;
-        MG_GoalSystem _GoalSystem;
+        MG_HealthSystem     _HealthSystem;
+        SoundController     _SoundController;
+        MusicController     _MusicController;
+        PlayerController    _PlayerController;
+        OR_SceneManager     _SceneManager;
+        MG_GoalSystem       _GoalSystem;
         //Gameobject
         [SerializeField] private GameObject GameOverUI;
         [SerializeField] private GameObject GameClearUI;

@@ -44,7 +44,7 @@ namespace Senz_Program
             Horizontal = 0.0f;
             Vertical = 0.0f;
             Y_Rotate = FirstRotateY;
-            _PlayerCamera = GameObject.Find("ScriptObject").GetComponent<PlayerCamera>();
+            _PlayerCamera = GameObject.Find("Player_Track_Camera").GetComponent<PlayerCamera>();
             _Animator = this.GetComponent<Animator>();
             rb = this.GetComponent<Rigidbody>();
             Default_Player_Speed = Player_Speed;
@@ -56,18 +56,9 @@ namespace Senz_Program
                 Horizontal = Input.GetAxis("Horizontal");
                 Vertical   = Input.GetAxis("Vertical");
 
-            if (Input.GetKeyDown(KeyCode.Q)) //ÉJÉÅÉâîΩì]
+            if (Input.GetKeyDown(KeyCode.Q)) //ÉJÉÅÉâîΩì] 2021/11/02 ç≈ìKâª
             {
-                if (!_PlayerCamera.PlayerReverse)
-                {
-                    _PlayerCamera.PlayerReverse = true;
-                    return;
-                }
-                if (_PlayerCamera.PlayerReverse)
-                {
-                    _PlayerCamera.PlayerReverse = false;
-                    return;
-                }
+                _PlayerCamera.PlayerReverse = !_PlayerCamera.PlayerReverse;
             }
         }
 

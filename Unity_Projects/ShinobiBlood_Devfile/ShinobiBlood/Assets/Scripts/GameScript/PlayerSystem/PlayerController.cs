@@ -44,7 +44,7 @@ namespace Senz_Program
             Horizontal = 0.0f;
             Vertical = 0.0f;
             Y_Rotate = FirstRotateY;
-            _PlayerCamera = GameObject.Find("Player_Track_Camera").GetComponent<PlayerCamera>();
+            _PlayerCamera = GameObject.Find("ScriptObject").GetComponent<PlayerCamera>();
             _Animator = this.GetComponent<Animator>();
             rb = this.GetComponent<Rigidbody>();
             Default_Player_Speed = Player_Speed;

@@ -32,7 +32,7 @@ namespace Senz_Program
             if(other.gameObject.tag == "Player")
             {
                 _PlayerStatus.isHit = true;
-                _PlayerStatus.KarakuriGetDamage = 10.0f;
+                _PlayerStatus.KarakuriGetDamage += 10.0f;
             }
         }
     }

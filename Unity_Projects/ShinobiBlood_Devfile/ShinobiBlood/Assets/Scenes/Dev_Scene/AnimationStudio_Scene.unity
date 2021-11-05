@@ -642,7 +642,6 @@ MonoBehaviour:
   Height: 1
   SmoothSpeed: 2.5
   Player_Camera: {fileID: 626875971}
-  PlayerReverse: 0
 --- !u!4 &579927689
 Transform:
   m_ObjectHideFlags: 0
@@ -1368,12 +1367,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e28df8d14f287544923427423977fcc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7e28df8d14f287544923427423977fcc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7e28df8d14f287544923427423977fcc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7e28df8d14f287544923427423977fcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.0317976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e28df8d14f287544923427423977fcc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0602
+      value: 5.94
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e28df8d14f287544923427423977fcc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1407,6 +1418,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2005467706557783574, guid: 7e28df8d14f287544923427423977fcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 486a9f1f4c1952e47b5a8ffc82853a78, type: 2}
     - target: {fileID: 919132149155446097, guid: 7e28df8d14f287544923427423977fcc, type: 3}
       propertyPath: m_Name
       value: ZOK
@@ -1922,12 +1937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9d65d7ba874bf4ab374cfea94b9650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 100
-  MaxHealth: 100
-  MinusTime: 1
-  MinusHealth: 1
-  isStart: 0
-  isDead: 0
   MinusTimer: 0
   HealthRedBar: {fileID: 0}
   HealthPurpleBar: {fileID: 0}
@@ -1943,22 +1952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560060114c9a742448e9a05157d7d651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoHitTime: 0
-  MaxNoHitTime: 0
-  KarakuriGetDamage: 0
-  isHit: 0
-  isNoHit: 0
-  isMiliHealth: 0
-  RespawnCount: 0
-  Player_GetItems: 0
-  Bonus_NoHit: 0
-  Bonus_MiliHealth: 0
-  Bonus_NoItem: 0
-  Bonus_RespawnLv1: 0
-  Bonus_RespawnLv2: 0
-  Plus_HealthScore: 0
-  Plus_ItemScore: 0
-  Plus_ClearTimeScore: 0
 --- !u!114 &999771014937255922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,15 +1974,12 @@ MonoBehaviour:
   Player_JumpLimitHeight: 25
   JumpLimitTime: 0.15
   JumpTime: 0
-  SpeedItemPower: 0
   Player_Speed: 6
   FirstRotateY: -90
   isGround: 0
   isHead: 0
   CanAction: 0
   isJump: 0
-  EnableCharaSystem: 1
-  AccelerationSpeed: 0
 --- !u!54 &999771014937255923
 Rigidbody:
   m_ObjectHideFlags: 0

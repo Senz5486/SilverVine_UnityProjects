@@ -36,6 +36,7 @@ public class MG_HealthSystem : MonoBehaviour
     private Tween HealthPurpleTween;
     private void Awake()
     {
+        _MinusTime = 1.0f;
         _CurrentHealth = 100;
         _MaxHealth = 100;
     }

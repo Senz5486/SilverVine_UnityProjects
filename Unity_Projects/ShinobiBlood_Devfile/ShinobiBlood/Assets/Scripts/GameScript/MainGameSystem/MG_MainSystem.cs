@@ -39,7 +39,7 @@ namespace Senz_Program
             _PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
             _HealthSystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
             _GoalSystem = GameObject.Find("Goal").GetComponent<MG_GoalSystem>();
-            Invoke("PlayStageMusic", 0.2f);
+            Invoke("PlayStageMusic", 0.1f);
         }
         void Start()
         {

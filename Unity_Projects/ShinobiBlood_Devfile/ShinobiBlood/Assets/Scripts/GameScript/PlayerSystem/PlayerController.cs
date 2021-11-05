@@ -10,9 +10,13 @@ namespace Senz_Program
     {
         //Gameobjects
         private Rigidbody rb = null;
+
         public GroundCheck ground;
         public GroundCheck head;
         public ActionCheck action;
+
+
+
         PlayerCamera _PlayerCamera;
         Animator _Animator;
         //float
@@ -23,8 +27,12 @@ namespace Senz_Program
         [SerializeField] private float Player_JumpLimitHeight;
         [SerializeField] private float JumpLimitTime;
         [SerializeField] private float JumpTime;
-        public float SpeedItemPower;
-        public float Player_Speed;
+
+        private float _speeditempower;
+        public float SpeedItemPower {get {return _speeditempower;}set{_speeditempower = value;}  }
+        [SerializeField]private float Player_Speed;
+
+
         private float Default_Player_Speed;
         private float Horizontal;
         private float Vertical;
@@ -37,8 +45,15 @@ namespace Senz_Program
         [SerializeField] private bool isHead;
         [SerializeField] private bool CanAction;
         [SerializeField] private bool isJump;
-        public bool EnableCharaSystem;
-        public bool AccelerationSpeed;
+
+
+        private bool _enablecharasystem;
+        public bool EnableCharaSystem{get{return _enablecharasystem;}set{_enablecharasystem = value;}}
+
+        private bool _accelerationspeed;
+        public bool AccelerationSpeed{get{return _accelerationspeed;}set{_accelerationspeed = value;}}
+
+
         private void Awake()
         {
             Horizontal = 0.0f;
@@ -74,14 +89,14 @@ namespace Senz_Program
             isHead = head.IsGround();
             CanAction = action.ActionArea();
 
-            if (AccelerationSpeed)
+            if (_accelerationspeed)
             {
                 Player_Speed = Default_Player_Speed + SpeedItemPower;
             }
-            else if (!AccelerationSpeed)
+            else if (!_accelerationspeed)
             {
                 Player_Speed = Default_Player_Speed;
-                SpeedItemPower = 0;
+                _speeditempower = 0;
             }
 
             //‘¬“x
@@ -94,7 +109,7 @@ namespace Senz_Program
                     GravityFallTime = 0.0f;
                     if (Vertical > 0)
                     {
-                        if (EnableCharaSystem)
+                        if (_enablecharasystem)
                         {
                             Y_Speed = Player_JumpSpeed;
                             Player_JumpPos = transform.position.y;
@@ -131,7 +146,8 @@ namespace Senz_Program
                 {
                     GravityFallTime += Time.deltaTime;
                 }
-            if (EnableCharaSystem)
+
+            if (_enablecharasystem)
             {
                 if (Horizontal > 0) //‰EˆÚ“®’†
                 {

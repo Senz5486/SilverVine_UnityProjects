@@ -14,7 +14,8 @@ namespace Senz_Program
 
         [SerializeField] private Camera Player_Camera;
 
-        public bool PlayerReverse = false;
+        private bool _playerreverse = false;
+        public bool PlayerReverse{get{return _playerreverse;}set{_playerreverse = value;}}
 
         private bool isCollisionCameraLeft = false;
         private bool isCollisionCameraRight = false;
@@ -32,7 +33,7 @@ namespace Senz_Program
 
         void CameraPlayerSmoothTracker()
         {
-            if (PlayerReverse)
+            if (_playerreverse)
             {
                 if (!isCollisionCameraLeft ||
                     !checkDistance(Player_Camera.transform.position.x,
@@ -50,7 +51,7 @@ namespace Senz_Program
                     }
                 }
             }
-            else if (!PlayerReverse)
+            else if (!_playerreverse)
             {
                 if(!isCollisionCameraRight ||
                    !checkDistance(Player_Camera.transform.position.x,

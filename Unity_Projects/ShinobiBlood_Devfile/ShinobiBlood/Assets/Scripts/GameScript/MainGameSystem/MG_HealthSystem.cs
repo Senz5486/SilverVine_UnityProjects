@@ -7,15 +7,21 @@ using UnityEngine.UI;
 public class MG_HealthSystem : MonoBehaviour
 {
     //public float
-    public float CurrentHealth; //Default:100
-    public float MaxHealth;     //Default:100
+    private float _CurrentHealth; //Default:100
+    private float _MaxHealth;     //Default:100
+    private float _MinusTime;     //1.0fなら1秒ごとに体力が減る
+    private float _MinusHealth;   //MinusTime毎に減る体力量
 
-    public float MinusTime;     //1.0fなら1秒ごとに体力が減る
-    public float MinusHealth;   //MinusTime毎に減る体力量
-
+    public float CurrentHealth { get { return _CurrentHealth; } set { _CurrentHealth = value; } }
+    public float MaxHealth { get { return _MaxHealth; } set { _MaxHealth = value; } }
+    public float MinusTime { get { return _MinusTime; } set { _MinusTime = value; } }
+    public float MinusHealth { get { return _MinusHealth; } set { _MinusHealth = value; } }
     //public bool
-    public bool isStart;        //ステージがスタートしたかどうか
-    public bool isDead;
+    private bool _isStart;        //ステージがスタートしたかどうか
+    private bool _isDead;
+
+    public bool isStart { get { return _isStart; } set { _isStart = value; } }
+    public bool isDead { get { return _isDead; } set { _isDead = value; } }
     
     //float
     [SerializeField] private float MinusTimer;
@@ -30,8 +36,8 @@ public class MG_HealthSystem : MonoBehaviour
     private Tween HealthPurpleTween;
     private void Awake()
     {
-        CurrentHealth = 100;
-        MaxHealth = 100;
+        _CurrentHealth = 100;
+        _MaxHealth = 100;
     }
     void Update()
     {
@@ -40,14 +46,14 @@ public class MG_HealthSystem : MonoBehaviour
 
     void PerSecMinusSystem()
     {
-        if (isStart == true)
+        if (_isStart == true)
         {
             LimitHealthControll();
             MinusTimer += Time.deltaTime;
-            if (MinusTimer >= MinusTime)
+            if (MinusTimer >= _MinusTime)
             {
-                HealthBarUpdate(MinusHealth);
-                CurrentHealth -= MinusHealth;
+                HealthBarUpdate(_MinusHealth);
+                _CurrentHealth -= _MinusHealth;
                 MinusTimer = 0;
             }
         }
@@ -55,12 +61,12 @@ public class MG_HealthSystem : MonoBehaviour
     public void TokenDamage(float Damage)
     {
         HealthBarUpdate(Damage);
-        CurrentHealth -= Damage;
+        _CurrentHealth -= Damage;
     }
     public void HealthBarUpdate(float reducationValue, float time = 0.5f)
     {
-        var ValueFrom = CurrentHealth / MaxHealth;
-        var ValueTo = (CurrentHealth - reducationValue) / MaxHealth;
+        var ValueFrom = _CurrentHealth / _MaxHealth;
+        var ValueTo = (_CurrentHealth - reducationValue) / _MaxHealth;
 
         //赤ゲージの常時減少
         HealthRedBar.fillAmount = ValueTo;
@@ -76,15 +82,15 @@ public class MG_HealthSystem : MonoBehaviour
 
     public void LimitHealthControll()
     {
-        if(CurrentHealth <= 0)
+        if(_CurrentHealth <= 0)
         {
-            CurrentHealth = 0;
-            isDead = true;
+            _CurrentHealth = 0;
+            _isDead = true;
             return;
         }
         else
         {
-            isDead = false;
+            _isDead = false;
         }
     }
 }

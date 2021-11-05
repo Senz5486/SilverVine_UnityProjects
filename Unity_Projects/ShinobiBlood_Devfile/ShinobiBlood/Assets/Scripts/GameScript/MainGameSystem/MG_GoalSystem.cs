@@ -6,16 +6,28 @@ namespace Senz_Program
 {
     public class MG_GoalSystem : MonoBehaviour
     {
-        public bool isGoalFlag;
+        private bool _isgoalflag;
+
+        public bool IsGoalFlag
+        {
+            get
+            {
+                return _isgoalflag;
+            }
+            set
+            {
+                _isgoalflag = value;
+            }
+        }
         private void Start()
         {
-            isGoalFlag = false;
+            _isgoalflag = false;
         }
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.tag == "Player")
             {
-                isGoalFlag = true;
+                _isgoalflag = true;
             }
         }
     }

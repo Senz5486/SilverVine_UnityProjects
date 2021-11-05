@@ -78,7 +78,7 @@ namespace Senz_Program
         //ゲームクリアシステム
         void isGameClear() 
         {
-            if (_GoalSystem.isGoalFlag)
+            if (_GoalSystem.IsGoalFlag)
             {
                 _HealthSystem.isStart = false;
                 _PlayerController.EnableCharaSystem = false;
@@ -129,7 +129,7 @@ namespace Senz_Program
         //メインゲームシステム
         void MainGame()
         {
-            if (_HealthSystem.isStart == false && !_GoalSystem.isGoalFlag) //ゲームが開始する前
+            if (_HealthSystem.isStart == false && !_GoalSystem.IsGoalFlag) //ゲームが開始する前
             {
                 if (CD_Timer > 1.0f)
                 {

@@ -17,8 +17,8 @@ namespace Senz_Program
         private bool _playerreverse = false;
         public bool PlayerReverse{get{return _playerreverse;}set{_playerreverse = value;}}
 
-        private bool isCollisionCameraLeft = false;
-        private bool isCollisionCameraRight = false;
+        [SerializeField] private bool isCollisionCameraRight = false;
+        [SerializeField] private bool isCollisionCameraLeft = false;
 
         private void Awake()
         {
@@ -35,7 +35,7 @@ namespace Senz_Program
         {
             if (_playerreverse)
             {
-                if (!isCollisionCameraLeft ||
+                if (!isCollisionCameraRight ||
                     !checkDistance(Player_Camera.transform.position.x,
                     TargetObject.position.x, 2.5f))
                 {
@@ -53,7 +53,7 @@ namespace Senz_Program
             }
             else if (!_playerreverse)
             {
-                if(!isCollisionCameraRight ||
+                if(!isCollisionCameraLeft ||
                    !checkDistance(Player_Camera.transform.position.x,
                    TargetObject.position.x, 2.5f))
                 {
@@ -78,38 +78,30 @@ namespace Senz_Program
 
         private void OnCollisionEnter(Collision other)
         {
-            Vector3 hitPos = new Vector3(0, 0, 0);
-            foreach (ContactPoint point in other.contacts)
-            {
-                hitPos = point.point;
-            }
+            Vector3 hitPos = other.gameObject.transform.position;
 
-            if(hitPos.x < Player_Camera.transform.position.x)
+            if (hitPos.x < Player_Camera.transform.position.x)
             {
-                isCollisionCameraRight = true;
+                isCollisionCameraLeft = true;
             }
             else
             {
-                isCollisionCameraLeft = true;
+                isCollisionCameraRight = true;
             }
 
         }
 
         private void OnCollisionExit(Collision other)
         {
-            Vector3 hitPos = new Vector3(0, 0, 0);
-            foreach (ContactPoint point in other.contacts)
-            {
-                hitPos = point.point;
-            }
+            Vector3 hitPos = other.gameObject.transform.position;
 
             if (hitPos.x < Player_Camera.transform.position.x)
             {
-                isCollisionCameraRight = false;
+                isCollisionCameraLeft = false;
             }
             else
             {
-                isCollisionCameraLeft = false;
+                isCollisionCameraRight = false;
             }
         }
     }

@@ -22,7 +22,7 @@ public class MG_HealthSystem : MonoBehaviour
 
     public bool isStart { get { return _isStart; } set { _isStart = value; } }
     public bool isDead { get { return _isDead; } set { _isDead = value; } }
-    
+
     //float
     [SerializeField] private float MinusTimer;
 
@@ -30,8 +30,14 @@ public class MG_HealthSystem : MonoBehaviour
     [SerializeField] private Image HealthRedBar;
     [SerializeField] private Image HealthPurpleBar;
 
+    //–³“GŽžŠÔ—p
+    private bool isInvincible;
+    private float invincibleTime;
+    private GameObject playerMesh;
+    private bool isPlayerActive;
+
     //Text
-    
+
     //Tween
     private Tween HealthPurpleTween;
     private void Awake()
@@ -39,10 +45,24 @@ public class MG_HealthSystem : MonoBehaviour
         _MinusTime = 1.0f;
         _CurrentHealth = 100;
         _MaxHealth = 100;
+        isInvincible = false;
+        invincibleTime = 0;
+        playerMesh = GameObject.Find("Player_MESH");
     }
     void Update()
     {
-        PerSecMinusSystem();   
+        PerSecMinusSystem();
+        invincibleTime -= Time.deltaTime;
+
+        if(invincibleTime <= 0) 
+        { 
+            isInvincible = false; 
+        }
+        else
+        {
+            isPlayerActive = !isPlayerActive;
+            playerMesh.SetActive(isPlayerActive);
+        }
     }
 
     void PerSecMinusSystem()
@@ -61,6 +81,10 @@ public class MG_HealthSystem : MonoBehaviour
     }
     public void TokenDamage(float Damage)
     {
+        if (isInvincible) { return; }
+
+        isInvincible = true;
+        invincibleTime = 1;
         HealthBarUpdate(Damage);
         _CurrentHealth -= Damage;
     }

@@ -9,7 +9,10 @@ namespace Senz_Program {
     {
         Score_Mass MassScore;
         MG_MainSystem _MainSystem;
+        PlayerStatus _PlayerStatus;
         [SerializeField] private Text StageName;
+        [SerializeField] private Text NormalScoreText;
+        [SerializeField] private Text AddScoreText;
         [SerializeField] private Text ResultScoreText;
         [SerializeField] private Text CurrentStageMaxScoreText;
         [SerializeField] private Text ClearTimeText;
@@ -30,10 +33,11 @@ namespace Senz_Program {
                 StageName.text = "弐の間";
                 CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage2_MaxScores.ToString();
             }
+            _PlayerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
             MassScore = GameObject.Find("ScriptObject").GetComponent<Score_Mass>();
             _MainSystem = GameObject.Find("ScriptObject").GetComponent<MG_MainSystem>();
             ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0.00") +"秒";
-            ShownTime = 3.0f;
+            ShownTime = 5.0f;
         }
 
         private void Update()
@@ -43,11 +47,18 @@ namespace Senz_Program {
             {
                 ResultScoreText.text = Random.Range(100000, 999999).ToString("0");
                 CurrentStageMaxScoreText.text = Random.Range(100000, 999999).ToString("0");
+                NormalScoreText.text = Random.Range(100000, 999999).ToString("0");
+                AddScoreText.text = Random.Range(100000, 999999).ToString("0");
                 ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0.00") + "秒";
             }
-            else if (ShownTime < 0)
+
+
+            if (ShownTime < 0)
             {
+                NormalScoreText.text = MassScore.NormalScore.ToString();
+                AddScoreText.text = MassScore.AddScore.ToString();
                 ResultScoreText.text = MassScore.Score().ToString();
+
                 if(SceneManager.GetActiveScene().name == "Stage_1")
                 {
                     CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage1_MaxScores.ToString();

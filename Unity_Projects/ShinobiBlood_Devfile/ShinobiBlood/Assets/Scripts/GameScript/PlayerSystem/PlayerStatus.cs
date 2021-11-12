@@ -84,7 +84,7 @@ namespace Senz_Program
                 }
                 else if (_isHit || _KarakuriGetDamage >= 1)
                 {
-                    _HealthSystem.TokenDamage(_KarakuriGetDamage);
+                    _HealthSystem.TokenDamage(_KarakuriGetDamage,true);
                     _NoHitTime = 0.0f;
                     _KarakuriGetDamage = 0.0f;
                     _isNoHit = false;

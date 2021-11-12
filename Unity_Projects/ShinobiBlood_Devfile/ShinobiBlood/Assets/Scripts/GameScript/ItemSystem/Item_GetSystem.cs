@@ -53,7 +53,7 @@ namespace Senz_Program
                 switch (Item_Type)
                 {
                     case 1://‰ñ•œƒAƒCƒeƒ€‚Ìê‡
-                        _mghealthsystem.TokenDamage(-Item_HealPower);
+                        _mghealthsystem.TokenDamage(-Item_HealPower,false);
                         _SoundController.PlaySEAudio = 0;
                         _particle.isGetHealItem = true;
                         if (SceneManager.GetActiveScene().name == "Stage_Tutorial")

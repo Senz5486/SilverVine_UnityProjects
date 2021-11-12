@@ -19,7 +19,7 @@ public class DamageObject : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            _mghealthsystem.TokenDamage(Damage);
+            _mghealthsystem.TokenDamage(Damage,false);
             //ノックバックが存在するならばここに追記
         }
     }

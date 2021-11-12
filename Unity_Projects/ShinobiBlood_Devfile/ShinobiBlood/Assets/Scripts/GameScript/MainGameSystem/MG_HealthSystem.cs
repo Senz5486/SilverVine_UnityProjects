@@ -56,7 +56,8 @@ public class MG_HealthSystem : MonoBehaviour
 
         if(invincibleTime <= 0) 
         { 
-            isInvincible = false; 
+            isInvincible = false;
+            playerMesh.SetActive(true);
         }
         else
         {
@@ -79,12 +80,14 @@ public class MG_HealthSystem : MonoBehaviour
             }
         }
     }
-    public void TokenDamage(float Damage)
+    public void TokenDamage(float Damage , bool isKarakuri)
     {
-        if (isInvincible) { return; }
-
-        isInvincible = true;
-        invincibleTime = 1;
+        if(isKarakuri)
+        {
+            if (isInvincible) { return; }
+            isInvincible = true;
+            invincibleTime = 1;
+        }
         HealthBarUpdate(Damage);
         _CurrentHealth -= Damage;
     }

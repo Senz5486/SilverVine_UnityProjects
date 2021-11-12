@@ -17,7 +17,7 @@ public class ReverseObject : MonoBehaviour
     {
      if(other.gameObject.tag == "Player" && Input.GetKeyDown("e"))
         {
-            _mghealthsystem.TokenDamage(Damage);
+            _mghealthsystem.TokenDamage(Damage,false);
             revarseArea.transform.rotation = Quaternion.Euler(180, 0, 0);
         }
     }

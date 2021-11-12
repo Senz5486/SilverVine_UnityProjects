@@ -17,6 +17,7 @@ namespace Senz_Program
         float Item_HealPower;           //アイテム1のヒールパワー
         public float isSpeedTime;       //アイテム2の速度上昇時間
         [SerializeField] private TextMesh Item_DisplayName = null;
+        [SerializeField] private Object thisObject;
         private void Awake()
         {
             _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
@@ -76,7 +77,7 @@ namespace Senz_Program
                         }
                         break;
                 }
-                Destroy(this.gameObject);//アイテム消去
+                Destroy(thisObject);//アイテム消去
             }
         }
     }

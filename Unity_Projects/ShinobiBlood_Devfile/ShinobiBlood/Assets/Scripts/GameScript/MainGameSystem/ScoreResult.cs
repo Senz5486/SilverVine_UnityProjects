@@ -23,7 +23,7 @@ namespace Senz_Program {
         {
             UpdateStatusText.text = "";
             UpdateMaxScore = false;
-            if(SceneManager.GetActiveScene().name == "Stage_1")
+            if (SceneManager.GetActiveScene().name == "Stage_1")
             {
                 StageName.text = "壱の間";
                 CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage1_MaxScores.ToString();
@@ -36,8 +36,8 @@ namespace Senz_Program {
             _PlayerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
             MassScore = GameObject.Find("ScriptObject").GetComponent<Score_Mass>();
             _MainSystem = GameObject.Find("ScriptObject").GetComponent<MG_MainSystem>();
-            ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0.00") +"秒";
-            ShownTime = 5.0f;
+            ClearTimeText.text = "クリア時間: " + Random.Range(100, 999).ToString("0.00") + "秒";
+            ShownTime = 3.0f;
         }
 
         private void Update()
@@ -49,17 +49,15 @@ namespace Senz_Program {
                 CurrentStageMaxScoreText.text = Random.Range(100000, 999999).ToString("0");
                 NormalScoreText.text = Random.Range(100000, 999999).ToString("0");
                 AddScoreText.text = Random.Range(100000, 999999).ToString("0");
-                ClearTimeText.text = "ステージクリアタイム:" + Random.Range(100, 999).ToString("0.00") + "秒";
+                ClearTimeText.text = "クリア時間: " + Random.Range(100, 999).ToString("0.00") + "秒";
             }
-
 
             if (ShownTime < 0)
             {
+                ResultScoreText.text = MassScore.Score().ToString();
                 NormalScoreText.text = MassScore.NormalScore.ToString();
                 AddScoreText.text = MassScore.AddScore.ToString();
-                ResultScoreText.text = MassScore.Score().ToString();
-
-                if(SceneManager.GetActiveScene().name == "Stage_1")
+                if (SceneManager.GetActiveScene().name == "Stage_1")
                 {
                     CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage1_MaxScores.ToString();
                 }
@@ -84,12 +82,12 @@ namespace Senz_Program {
                     CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.StageEx_MaxScores.ToString();
                 }
                 SaveMaxScore();
-                ClearTimeText.text = "ステージクリアタイム:" + _MainSystem.Stage_ProgressTime.ToString("0.00") + "秒";
+                ClearTimeText.text = "クリア時間: " + _MainSystem.Stage_ProgressTime.ToString("0.00") + "秒";
                 ShownTime = -1;
             }
         }
 
-         private void SaveMaxScore()
+        private void SaveMaxScore()
         {
             if (SceneManager.GetActiveScene().name == "Stage_1")
             {
@@ -191,6 +189,28 @@ namespace Senz_Program {
         void DeleteUpdateMaxScoreText()
         {
             UpdateStatusText.text = "";
+        }
+
+        void Bonus1()
+        {
+
+        }
+
+        void Bonus2()
+        {
+
+        }
+        void Bonus3()
+        {
+
+        }
+        void Bonus4()
+        {
+
+        }
+        void Bonus5()
+        {
+
         }
     }
 }

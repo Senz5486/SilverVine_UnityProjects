@@ -10,13 +10,13 @@ namespace Senz_Program
         MG_HealthSystem _HealthSystem;
         
         //float
-        private float _NoHitTime;     //当たっていない時間のfloat
-        private float _MaxNoHitTime;  //最大の当たっていない時間のfloat
-        private float _KarakuriGetDamage;     //受けたダメージ
+        private float _NoHitTime;//当たっていない時間のfloat
+        private float _MaxNoHitTime;//最大の当たっていない時間のfloat
+        private float _KarakuriGetDamage;//受けたダメージ
         public float KarakuriGetDamage { get { return _KarakuriGetDamage; } set { _KarakuriGetDamage = value; } }
 
         //bool
-        private bool _isHit;          //ギミックに当たったかどうかの確認
+        private bool _isHit;//ギミックに当たったかどうかの確認
         public bool isHit { get { return _isHit; } set { _isHit = value; } }
 
 

@@ -20,22 +20,18 @@ namespace Senz_Program
             {
                 _PlayerStatus.KarakuriGetDamage = 5.0f;
             }
-            else
-            {
-
-            }
         }
-        private void OnTriggerStay(Collider other)
+        private void OnCollisionStay(Collision collision)
         {
-            if (other.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player")
             {
                 _PlayerStatus.isHit = true;
                 isStay_Karakuri = true;
             }
         }
-        private void OnTriggerExit(Collider other)
+        private void OnCollisionExit(Collision collision)
         {
-            if (other.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player")
             {
 
                 isStay_Karakuri = false;

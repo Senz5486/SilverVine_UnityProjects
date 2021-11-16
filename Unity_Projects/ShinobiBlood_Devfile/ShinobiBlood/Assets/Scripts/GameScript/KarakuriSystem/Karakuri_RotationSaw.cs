@@ -20,16 +20,15 @@ namespace Senz_Program
         void Update()
         {
             RotateX -= RotationSpeed;
-            SawTrans.rotation = Quaternion.Euler(RotateX, 90, 90);
+            SawTrans.rotation = Quaternion.Euler(-RotateX, -90, 0);
             if(RotateX <= -360)
             {
                 RotateX = 0;
             }
         }
-
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-            if(other.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player")
             {
                 _PlayerStatus.isHit = true;
                 _PlayerStatus.KarakuriGetDamage = 10.0f;

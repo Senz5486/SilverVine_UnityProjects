@@ -27,6 +27,7 @@ namespace Senz_Program
             }
         }
         private void OnTriggerEnter(Collider other)
+
         {
             if (other.gameObject.tag == "Player")
             {

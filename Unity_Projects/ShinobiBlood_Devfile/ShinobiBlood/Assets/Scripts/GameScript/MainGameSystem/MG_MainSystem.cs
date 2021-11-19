@@ -85,8 +85,7 @@ namespace Senz_Program
                 ClearImage.SetActive(true);
                 _HealthSystem.isStart = false;
                 _PlayerController.EnableCharaSystem = false;
-                CountDownText.text = "ステージクリア!";
-                Invoke("DelayClearUI", 2.0f);
+                Invoke("DelayClearUI", 1.75f);
             }
         }
 

@@ -15,8 +15,7 @@ namespace Senz_Program
         public GroundCheck head;
         public ActionCheck action;
 
-
-
+        MG_GimikCast _GimikCast;
         PlayerCamera _PlayerCamera;
         Animator _Animator;
         //float
@@ -59,6 +58,7 @@ namespace Senz_Program
             Horizontal = 0.0f;
             Vertical = 0.0f;
             Y_Rotate = FirstRotateY;
+            _GimikCast = this.GetComponent<MG_GimikCast>();
             _PlayerCamera = GameObject.Find("Player_Track_Camera").GetComponent<PlayerCamera>();
             _Animator = this.GetComponent<Animator>();
             rb = this.GetComponent<Rigidbody>();
@@ -111,7 +111,11 @@ namespace Senz_Program
                     {
                         if (_enablecharasystem)
                         {
-                            Y_Speed = Player_JumpSpeed;
+                            if (_GimikCast.IsCast)
+                            {
+                                _GimikCast.IsCast = false;
+                            }
+                        Y_Speed = Player_JumpSpeed;
                             Player_JumpPos = transform.position.y;
                             isJump = true;
                             JumpTime = 0.0f;
@@ -131,7 +135,11 @@ namespace Senz_Program
                     bool Player_CanTime = JumpLimitTime > JumpTime;
                     if (PushVecKey && Player_CanJump && Player_CanTime && !isHead)
                     {
-                        Y_Speed = Player_JumpSpeed;
+                    if (_GimikCast.IsCast)
+                    {
+                        _GimikCast.IsCast = false;
+                    }
+                    Y_Speed = Player_JumpSpeed;
                         JumpTime += Time.deltaTime;
                     }
                     else
@@ -151,12 +159,20 @@ namespace Senz_Program
             {
                 if (Horizontal > 0) //‰EˆÚ“®’†
                 {
+                    if (_GimikCast.IsCast)
+                    {
+                        _GimikCast.IsCast = false;
+                    }
                     Y_Rotate = 90;
                     X_Speed = Player_Speed * Horizontal;
                     _Animator.SetBool("IsRun", true);
                 }
                 else if (Horizontal < 0) //¶ˆÚ“®’†
                 {
+                    if (_GimikCast.IsCast)
+                    {
+                        _GimikCast.IsCast = false;
+                    }
                     Y_Rotate = -90;
                     X_Speed = Player_Speed * Horizontal;
                     _Animator.SetBool("IsRun", true);

@@ -14,7 +14,8 @@ namespace Senz_Program
         private bool _startcast;
         public bool StartCast { get { return _startcast; } set { _startcast = value; } }
 
-        private bool IsCast;
+        private bool _iscast;
+        public bool IsCast { get { return _iscast; }set { _iscast = value; } }
         private float CastTime;
         private float MaxCastTime = 1.75f;
         private bool _finishcast;
@@ -33,11 +34,11 @@ namespace Senz_Program
             if (_startcast && !_finishcast)
             {
                 CastTime = 0;
-                IsCast = true;
+                _iscast = true;
                 _startcast = false;
             }
 
-            if (IsCast)
+            if (_iscast)
             {
                 CastUI.SetActive(true);
                 CastTime += Time.deltaTime;
@@ -46,7 +47,7 @@ namespace Senz_Program
                 {
                     CastTime = MaxCastTime;
                     _finishcast = true;
-                    IsCast = false;
+                    _iscast = false;
                 }
             }
             else

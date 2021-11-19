@@ -18,6 +18,7 @@ namespace Senz_Program
         //Gameobject
         [SerializeField] private GameObject GameOverUI;
         [SerializeField] private GameObject GameClearUI;
+        [SerializeField] private GameObject ClearImage;
         //Text
         [SerializeField] private Text CountDownText;
         [SerializeField] private Text GameOverCD;
@@ -32,6 +33,7 @@ namespace Senz_Program
         //int
         private void Awake()
         {
+            ClearImage.SetActive(false);
             Stage_ProgressTime = 0.0f;
             _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
             _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
@@ -80,6 +82,7 @@ namespace Senz_Program
         {
             if (_GoalSystem.IsGoalFlag)
             {
+                ClearImage.SetActive(true);
                 _HealthSystem.isStart = false;
                 _PlayerController.EnableCharaSystem = false;
                 CountDownText.text = "ステージクリア!";

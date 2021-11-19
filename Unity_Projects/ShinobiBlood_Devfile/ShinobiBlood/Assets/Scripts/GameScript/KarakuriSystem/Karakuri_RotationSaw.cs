@@ -17,7 +17,7 @@ namespace Senz_Program
         }
 
 
-        void Update()
+        void FixedUpdate()
         {
             RotateX += RotationSpeed;
             SawTrans.rotation = Quaternion.Euler(RotateX, -90, 0);

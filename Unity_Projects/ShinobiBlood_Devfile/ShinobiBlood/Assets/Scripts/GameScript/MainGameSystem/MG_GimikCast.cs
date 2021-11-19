@@ -12,14 +12,11 @@ namespace Senz_Program
         [SerializeField] private Image CastBar;
         //Getter / Setter
         private bool _startcast;
-        public bool StartCast { set { _startcast = value; } }
+        public bool StartCast { get { return _startcast; } set { _startcast = value; } }
 
         private bool IsCast;
-        
-
         private float CastTime;
-        private float MaxCastTime = 3.0f;
-
+        private float MaxCastTime = 1.75f;
         private bool _finishcast;
 
         public bool FinishCast { get { return _finishcast; } set { _finishcast = value; } }
@@ -35,7 +32,7 @@ namespace Senz_Program
 
             if (_startcast && !_finishcast)
             {
-                CastTime = MaxCastTime;
+                CastTime = 0;
                 IsCast = true;
                 _startcast = false;
             }
@@ -43,11 +40,11 @@ namespace Senz_Program
             if (IsCast)
             {
                 CastUI.SetActive(true);
-                CastTime -= Time.deltaTime;
-                CastBar.fillAmount = MaxCastTime / CastTime;
-                if (CastTime <= 0)
+                CastTime += Time.deltaTime;
+                CastBar.fillAmount = CastTime / MaxCastTime;
+                if (CastTime >= MaxCastTime)
                 {
-                    CastTime = 0;
+                    CastTime = MaxCastTime;
                     _finishcast = true;
                     IsCast = false;
                 }

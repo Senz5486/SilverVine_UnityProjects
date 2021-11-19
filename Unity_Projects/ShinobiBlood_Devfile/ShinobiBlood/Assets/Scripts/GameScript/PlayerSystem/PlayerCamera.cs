@@ -50,6 +50,12 @@ namespace Senz_Program
                         Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
                     }
                 }
+                else
+                {
+                    var Position = Player_Camera.transform.position;
+                    Position.y = TargetObject.position.y + Height;
+                    Player_Camera.transform.position = Position;
+                }
             }
             else if (!_playerreverse)
             {
@@ -67,6 +73,12 @@ namespace Senz_Program
                         var Position = TargetObject.position + new Vector3(2.5f, Height, -CameraDistance);
                         Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
                     }
+                }
+                else
+                {
+                    var Position = Player_Camera.transform.position;
+                    Position.y = TargetObject.position.y + Height;
+                    Player_Camera.transform.position = Position;
                 }
             }          
         }

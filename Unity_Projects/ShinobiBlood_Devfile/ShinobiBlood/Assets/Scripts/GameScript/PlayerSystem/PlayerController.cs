@@ -27,6 +27,9 @@ namespace Senz_Program
         [SerializeField] private float JumpLimitTime;
         [SerializeField] private float JumpTime;
 
+        [SerializeField] private float slopeForce;
+        [SerializeField] private float slopeForceRayLength;
+
         private float _speeditempower;
         public float SpeedItemPower {get {return _speeditempower;}set{_speeditempower = value;}  }
         [SerializeField]private float Player_Speed;
@@ -101,7 +104,15 @@ namespace Senz_Program
 
             //‘¬“x
             float X_Speed = 0.0f;
-            float Y_Speed = -Gravity * GravityFallTime;
+            float Y_Speed;
+            if ((Horizontal != 0 || Vertical != 0) && onSlope())
+            {
+                Y_Speed = -Gravity * GravityFallTime - slopeForce;
+            }
+            else
+            {
+                Y_Speed = -Gravity * GravityFallTime;
+            } 
 
 
                 if (isGround)
@@ -203,6 +214,22 @@ namespace Senz_Program
             {
                 transform.SetParent(null);
             }
+        }
+
+        private bool onSlope()
+        {
+            if (isJump) return false;
+
+            RaycastHit hit;
+
+            if(Physics.Raycast(transform.position , Vector3.down , out hit , slopeForceRayLength))
+            {
+                if(hit.normal != Vector3.up)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

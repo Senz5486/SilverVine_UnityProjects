@@ -2425,6 +2425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 796210551}
   GameClearUI: {fileID: 638877567}
+  ClearImage: {fileID: 0}
   CountDownText: {fileID: 196118605}
   GameOverCD: {fileID: 376234736}
   Stage_Minus: 1
@@ -13193,6 +13194,8 @@ MonoBehaviour:
   Player_JumpLimitHeight: 32
   JumpLimitTime: 0.15
   JumpTime: 0
+  slopeForce: 2
+  slopeForceRayLength: 1
   Player_Speed: 6
   FirstRotateY: -90
   isGround: 0

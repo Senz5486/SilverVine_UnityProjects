@@ -299,15 +299,14 @@ MonoBehaviour:
   Player_JumpLimitHeight: 25
   JumpLimitTime: 0.15
   JumpTime: 0
-  SpeedItemPower: 0
+  slopeForce: 2
+  slopeForceRayLength: 0.2
   Player_Speed: 6
   FirstRotateY: -90
   isGround: 0
   isHead: 0
   CanAction: 0
   isJump: 0
-  EnableCharaSystem: 1
-  AccelerationSpeed: 0
 --- !u!136 &1007571067835857708
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -353,12 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9d65d7ba874bf4ab374cfea94b9650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 100
-  MaxHealth: 100
-  MinusTime: 1
-  MinusHealth: 1
-  isStart: 0
-  isDead: 0
   MinusTimer: 0
   HealthRedBar: {fileID: 0}
   HealthPurpleBar: {fileID: 0}
@@ -374,10 +367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560060114c9a742448e9a05157d7d651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_GetItems: 0
-  NoHitTime: 0
-  isNoHit: 0
-  isMiliHealth: 0
 --- !u!114 &1007571067835857707
 MonoBehaviour:
   m_ObjectHideFlags: 0

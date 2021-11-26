@@ -6386,6 +6386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 1814829894}
   GameClearUI: {fileID: 1691493319}
+  ClearImage: {fileID: 0}
   CountDownText: {fileID: 2035753869}
   GameOverCD: {fileID: 1148015425}
   Stage_Minus: 1
@@ -7754,8 +7755,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1007571067835857711, guid: f767886bca21be24e80705c57cf46c23, type: 3}
+      propertyPath: slopeForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007571067835857711, guid: f767886bca21be24e80705c57cf46c23, type: 3}
       propertyPath: FirstRotateY
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007571067835857711, guid: f767886bca21be24e80705c57cf46c23, type: 3}
+      propertyPath: slopeForceRayLength
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5727240191108610252, guid: f767886bca21be24e80705c57cf46c23, type: 3}
       propertyPath: m_TargetTexture

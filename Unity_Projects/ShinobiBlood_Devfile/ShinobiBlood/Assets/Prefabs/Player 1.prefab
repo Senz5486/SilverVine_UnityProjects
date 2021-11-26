@@ -906,6 +906,8 @@ MonoBehaviour:
   Player_JumpLimitHeight: 25
   JumpLimitTime: 0.15
   JumpTime: 0
+  slopeForce: 2
+  slopeForceRayLength: 0.2
   Player_Speed: 6
   FirstRotateY: -90
   isGround: 0

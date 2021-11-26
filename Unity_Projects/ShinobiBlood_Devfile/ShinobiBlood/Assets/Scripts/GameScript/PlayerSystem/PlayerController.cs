@@ -47,6 +47,8 @@ namespace Senz_Program
         [SerializeField] private bool isHead;
         [SerializeField] private bool CanAction;
         [SerializeField] private bool isJump;
+        [SerializeField] private bool _isRope;
+        public bool isRope { get { return _isRope; } }
 
 
         private bool _enablecharasystem;

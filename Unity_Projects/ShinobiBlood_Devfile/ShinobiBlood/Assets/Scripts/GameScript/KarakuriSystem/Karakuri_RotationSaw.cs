@@ -26,10 +26,10 @@ namespace Senz_Program
                 RotateX -= 360;
             }
         }
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
 
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player" && !_PlayerStatus.isHit)
             {
                 _PlayerStatus.isHit = true;
                 _PlayerStatus.KarakuriGetDamage = 10.0f;

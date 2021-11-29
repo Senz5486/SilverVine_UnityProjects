@@ -33,6 +33,26 @@ namespace Senz_Program {
                 StageName.text = "“ó‚ÌŠÔ";
                 CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage2_MaxScores.ToString();
             }
+            if (SceneManager.GetActiveScene().name == "Stage_3")
+            {
+                StageName.text = "ŽQ‚ÌŠÔ";
+                CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage3_MaxScores.ToString();
+            }
+            if (SceneManager.GetActiveScene().name == "Stage_4")
+            {
+                StageName.text = "ãæ‚ÌŠÔ";
+                CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage4_MaxScores.ToString();
+            }
+            if (SceneManager.GetActiveScene().name == "Stage_5")
+            {
+                StageName.text = "ŒÞ‚ÌŠÔ";
+                CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.Stage5_MaxScores.ToString();
+            }
+            if (SceneManager.GetActiveScene().name == "Stage_Ex")
+            {
+                StageName.text = "’´‰z‚ÌŠÔ";
+                CurrentStageMaxScoreText.text = OR_SaveSystem.Instance.SaveData.StageEx_MaxScores.ToString();
+            }
             _PlayerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
             MassScore = GameObject.Find("ScriptObject").GetComponent<Score_Mass>();
             _MainSystem = GameObject.Find("ScriptObject").GetComponent<MG_MainSystem>();

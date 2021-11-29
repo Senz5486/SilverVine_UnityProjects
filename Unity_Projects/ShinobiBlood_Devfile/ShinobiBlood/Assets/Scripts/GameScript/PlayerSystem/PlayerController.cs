@@ -26,13 +26,12 @@ namespace Senz_Program
         [SerializeField] private float Player_JumpLimitHeight;
         [SerializeField] private float JumpLimitTime;
         [SerializeField] private float JumpTime;
-
-        [SerializeField] private float slopeForce;
         [SerializeField] private float slopeForceRayLength;
 
         private float _speeditempower;
         public float SpeedItemPower {get {return _speeditempower;}set{_speeditempower = value;}  }
         [SerializeField]private float Player_Speed;
+        Vector3 moveDirection;
 
 
         private float Default_Player_Speed;
@@ -73,13 +72,24 @@ namespace Senz_Program
         private void Update()
         {
             //キー入力
-                Horizontal = Input.GetAxis("Horizontal");
-                Vertical   = Input.GetAxis("Vertical");
-
+            Horizontal = Input.GetAxis("Horizontal");
+            Vertical   = Input.GetAxis("Vertical");
+            moveDirection.x = Horizontal;
             if (Input.GetKeyDown(KeyCode.Q)) //カメラ反転 2021/11/02 最適化
             {
                 _PlayerCamera.PlayerReverse = !_PlayerCamera.PlayerReverse;
             }
+            RaycastHit raycastHit;
+            if (Physics.Raycast(transform.position, Vector3.down, 
+                out raycastHit, slopeForceRayLength))
+            {
+                float dot = Vector3.Dot(moveDirection, raycastHit.normal);
+                if (dot <= 0.71f && dot >= -0.71f)
+                {
+                    moveDirection = moveDirection - dot * raycastHit.normal;
+                }
+            }
+
         }
 
         void FixedUpdate()
@@ -106,15 +116,8 @@ namespace Senz_Program
 
             //速度
             float X_Speed = 0.0f;
-            float Y_Speed;
-            if ((Horizontal != 0 || Vertical != 0) && onSlope())
-            {
-                Y_Speed = -Gravity * GravityFallTime - slopeForce;
-            }
-            else
-            {
-                Y_Speed = -Gravity * GravityFallTime;
-            } 
+            float Y_Speed = -Gravity * GravityFallTime;
+            
 
 
                 if (isGround)
@@ -200,7 +203,7 @@ namespace Senz_Program
                 _Animator.SetBool("IsRun", false);
             }
             transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
-            rb.velocity = new Vector3(X_Speed, Y_Speed, 0);
+            rb.velocity = new Vector3(0, Y_Speed, 0) + moveDirection * Player_Speed;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -218,20 +221,20 @@ namespace Senz_Program
             }
         }
 
-        private bool onSlope()
-        {
-            if (isJump) return false;
+        //private bool onSlope()
+        //{
+        //    if (isJump) return false;
 
-            RaycastHit hit;
+        //    RaycastHit hit;
 
-            if(Physics.Raycast(transform.position , Vector3.down , out hit , slopeForceRayLength))
-            {
-                if(hit.normal != Vector3.up)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        //    if(Physics.Raycast(transform.position , Vector3.down , out hit , slopeForceRayLength))
+        //    {
+        //        if(hit.normal != Vector3.up)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
     }
 }

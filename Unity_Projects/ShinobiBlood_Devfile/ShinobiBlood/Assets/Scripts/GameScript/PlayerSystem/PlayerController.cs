@@ -197,13 +197,13 @@ namespace Senz_Program
                 {
                     _Animator.SetBool("IsRun", false);
                 }
+                transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
+                rb.velocity = new Vector3(0, Y_Speed, 0) + moveDirection * Player_Speed;
             }
             else
             {
                 _Animator.SetBool("IsRun", false);
             }
-            transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
-            rb.velocity = new Vector3(0, Y_Speed, 0) + moveDirection * Player_Speed;
         }
 
         private void OnCollisionEnter(Collision collision)

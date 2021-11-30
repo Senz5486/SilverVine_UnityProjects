@@ -24,11 +24,12 @@ namespace Senz_Program
         private void Update()
         {
             isStartGame = _HealthSystem.isStart;
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                isPause = !isPause;
+            if (isStartGame) {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    isPause = !isPause;
+                }
             }
-
             if(isPause & isStartGame)
             {
                 PauseUI.SetActive(true);

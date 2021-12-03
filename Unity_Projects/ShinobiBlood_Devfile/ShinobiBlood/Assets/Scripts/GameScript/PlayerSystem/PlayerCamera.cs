@@ -14,7 +14,7 @@ namespace Senz_Program
 
         [SerializeField] private Camera Player_Camera;
 
-        private bool _playerreverse = false;
+        [SerializeField]private bool _playerreverse = false;
         public bool PlayerReverse{get{return _playerreverse;}set{_playerreverse = value;}}
 
         [SerializeField] private bool isCollisionCameraRight = false;

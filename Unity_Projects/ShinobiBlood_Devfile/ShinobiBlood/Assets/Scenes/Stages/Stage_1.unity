@@ -3604,8 +3604,8 @@ RectTransform:
   - {fileID: 1289190119}
   - {fileID: 1288315193}
   - {fileID: 343600161}
-  - {fileID: 1791293761}
   - {fileID: 862660864}
+  - {fileID: 1791293761}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25362,7 +25362,7 @@ RectTransform:
   - {fileID: 1767149851}
   - {fileID: 814085850}
   m_Father: {fileID: 132771278}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -39717,7 +39717,7 @@ GameObject:
   - component: {fileID: 1300084782}
   m_Layer: 0
   m_Name: RopeTestBlock
-  m_TagString: Untagged
+  m_TagString: Stage_GroundOBJ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67181,7 +67181,6 @@ MonoBehaviour:
   Player_JumpLimitHeight: 35
   JumpLimitTime: 0.18
   JumpTime: 0
-  slopeForce: 2
   slopeForceRayLength: 0.2
   Player_Speed: 8
   FirstRotateY: 90

@@ -41,7 +41,7 @@ namespace Senz_Program
             _MG_MainSystem = GameObject.Find("ScriptObject").GetComponent<MG_MainSystem>();
             ColObject[0].SetActive(true);
             _pc = GameObject.Find("Player").GetComponent<PlayerController>();
-            _playerCamera = GameObject.Find("ScriptObject").GetComponent<PlayerCamera>();
+            _playerCamera = GameObject.Find("Player_Track_Camera").GetComponent<PlayerCamera>();
             _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
             _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
         }
@@ -114,7 +114,7 @@ namespace Senz_Program
         void Tips6()
         {
             _playerCamera.TargetObject = TutorialSpeedItem.transform;
-            TutorialTipsText.text = "これは『KSK-5』  触れてみてください";
+            TutorialTipsText.text = "次は『KSK-5』  触れてみてください";
             _SoundController.PlaySEAudio = 7;
             Invoke("Tips7", 3.5f);
         }
@@ -134,11 +134,15 @@ namespace Senz_Program
         void Tips9()
         {
             isCanMove = false;
-            TutorialTipsText.text = "次にからくりの説明を開始します";
+            TutorialTipsText.text = "次にギミックの説明です";
             _SoundController.PlaySEAudio = 7;
+            Invoke("Tips10", 2.0f);
         }
         void Tips10()
         {
+            isCanMove = true;
+            TutorialTipsText.text = "道なりに進んでください";
+            _SoundController.PlaySEAudio = 7;
 
         }
     }

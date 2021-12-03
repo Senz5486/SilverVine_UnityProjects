@@ -18,6 +18,8 @@ namespace Senz_Program
         MG_GimikCast _GimikCast;
         PlayerCamera _PlayerCamera;
         Animator _Animator;
+
+        Player_ParticleSystem _Particle;
         //float
         [SerializeField] private float Gravity;
         [SerializeField] private float GravityFallTime;
@@ -62,11 +64,13 @@ namespace Senz_Program
             Horizontal = 0.0f;
             Vertical = 0.0f;
             Y_Rotate = FirstRotateY;
-            _GimikCast = this.GetComponent<MG_GimikCast>();
             _PlayerCamera = GameObject.Find("Player_Track_Camera").GetComponent<PlayerCamera>();
+            _GimikCast = this.GetComponent<MG_GimikCast>();
             _Animator = this.GetComponent<Animator>();
             rb = this.GetComponent<Rigidbody>();
+            _Particle = this.GetComponent<Player_ParticleSystem>();
             Default_Player_Speed = Player_Speed;
+            
         }
 
         private void Update()
@@ -115,10 +119,12 @@ namespace Senz_Program
             if (_accelerationspeed)
             {
                 Player_Speed = Default_Player_Speed + SpeedItemPower;
+                _Particle.Particles[1].Play();
             }
             else if (!_accelerationspeed)
             {
                 Player_Speed = Default_Player_Speed;
+                _Particle.Particles[1].Stop();
                 _speeditempower = 0;
             }
 

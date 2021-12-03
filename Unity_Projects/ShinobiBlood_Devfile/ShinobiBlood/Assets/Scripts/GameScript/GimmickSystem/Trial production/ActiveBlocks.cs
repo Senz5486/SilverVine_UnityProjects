@@ -6,9 +6,9 @@ namespace Senz_Program
 {
     public class ActiveBlocks : MonoBehaviour
     {
-        [SerializeField] BoxCollider collider;
+        [SerializeField] private new BoxCollider collider;
         [SerializeField] float Damage;
-        [SerializeField]MeshRenderer renderer;
+        [SerializeField] private new MeshRenderer renderer;
         MG_HealthSystem _mghealthsystem;
         MG_GimikCast _mggimikcast;
         bool isEnd;
@@ -19,7 +19,7 @@ namespace Senz_Program
             _mggimikcast = GameObject.Find("Player").GetComponent<MG_GimikCast>();
 
             collider.enabled = false;
-            renderer.material.color -= new Color32(0, 0, 0, 200);
+            renderer.material.color = new Color32(0, 0, 0, 50);
             isEnd = false;
         }
 
@@ -28,7 +28,7 @@ namespace Senz_Program
             if (_mggimikcast.FinishCast)
             {
                 _mghealthsystem.TokenDamage(Damage, false);
-                renderer.material.color += new Color32(0, 0, 0, 200);
+                renderer.material.color = new Color32(0, 0, 0, 255);
                 _mggimikcast.FinishCast = false;
                 isEnd = true;
                 collider.enabled = true;

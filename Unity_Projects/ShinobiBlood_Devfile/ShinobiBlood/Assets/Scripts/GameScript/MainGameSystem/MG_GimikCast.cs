@@ -8,6 +8,7 @@ namespace Senz_Program
     public class MG_GimikCast : MonoBehaviour
     {
         //GameObject
+        Player_ParticleSystem _Particle;
         [SerializeField] private GameObject CastUI;
         [SerializeField] private Image CastBar;
         //Getter / Setter
@@ -24,14 +25,15 @@ namespace Senz_Program
 
         void Start()
         {
+            _Particle = this.GetComponent<Player_ParticleSystem>();
             IsCast = false;
             CastUI.SetActive(false);
         }
 
-        void FixedUpdate()
+        void Update()
         {
 
-            if (_startcast && !_finishcast)
+            if (_startcast && !_finishcast && !_iscast)
             {
                 CastTime = 0;
                 _iscast = true;
@@ -41,6 +43,7 @@ namespace Senz_Program
             if (_iscast)
             {
                 CastUI.SetActive(true);
+                _Particle.Particles[2].Play();
                 CastTime += Time.deltaTime;
                 CastBar.fillAmount = CastTime / MaxCastTime;
                 if (CastTime >= MaxCastTime)

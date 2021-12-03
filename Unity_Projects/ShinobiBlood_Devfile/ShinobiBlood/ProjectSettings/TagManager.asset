@@ -10,6 +10,7 @@ TagManager:
   - GoalObject
   - GameOverArea
   - RespawnArea
+  - GimikTrigger
   layers:
   - Default
   - TransparentFX

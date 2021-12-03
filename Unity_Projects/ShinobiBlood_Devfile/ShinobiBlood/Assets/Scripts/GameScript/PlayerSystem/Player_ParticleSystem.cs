@@ -8,8 +8,9 @@ namespace Senz_Program
     {
         public bool isGetHealItem;
         public bool isGetSpeedItem;
+        public bool isCastGimik;
 
-        [SerializeField] private ParticleSystem[] Particles;
+        public ParticleSystem[] Particles;
 
         private void Update()
         {
@@ -26,14 +27,23 @@ namespace Senz_Program
                 }
                 isGetHealItem = false;
             }
-            /*if (isGetSpeedItem)
+            if (isGetSpeedItem)
             {
                 if (!Particles[1].isPlaying)
                 {
                     Particles[1].Play();
                 }
                 isGetSpeedItem = false;
-            }*/
+            }
+
+            if (isCastGimik)
+            {
+                if (!Particles[2].isPlaying)
+                {
+                    Particles[2].Play();
+                }
+                isCastGimik = false;
+            }
         }
     }
 }

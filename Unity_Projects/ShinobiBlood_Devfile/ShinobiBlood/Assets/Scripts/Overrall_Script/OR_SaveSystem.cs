@@ -12,7 +12,7 @@ namespace Senz_Program
 
         private OR_SaveSystem() { Load(); }
 
-        public string FilePath => Application.dataPath + "/data.json";
+        public string FilePath => Application.dataPath + "/data.sav";
         
         public SaveData SaveData { get; private set; }
 

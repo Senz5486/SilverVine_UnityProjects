@@ -8,7 +8,7 @@
     "StageEx_MaxScores": 0,
     "ScreenWidth": 1920,
     "ScreenHeight": 1080,
-    "SEVolume": 0.45023712515830996,
+    "SEVolume": 0.4000000059604645,
     "BGMVolume": 0.5,
     "PlayerName": "名前無し 登録してください",
     "RK_Stage1_PlayerNames": "現在最高記録がありません",
@@ -19,5 +19,5 @@
     "RK_StageEx_PlayerNames": "現在最高記録がありません",
     "VSyncIsEnable": true,
     "isFullScreen": true,
-    "FinishTutorial": true
+    "FinishTutorial": false
 }

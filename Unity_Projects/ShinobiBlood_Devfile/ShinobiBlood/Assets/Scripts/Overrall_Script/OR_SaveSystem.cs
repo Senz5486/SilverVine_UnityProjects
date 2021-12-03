@@ -12,13 +12,13 @@ namespace Senz_Program
 
         private OR_SaveSystem() { Load(); }
 
-        public string FilePath => Application.dataPath + "/data.sav";
+        public string FilePath => Application.dataPath + "/svd.snbfile";
         
         public SaveData SaveData { get; private set; }
 
         public void Save()
         {
-            string jsonData = JsonUtility.ToJson(SaveData);
+            string jsonData = JsonUtility.ToJson(SaveData,true);
             StreamWriter writer = new StreamWriter(FilePath, false);
             writer.WriteLine(jsonData);
             writer.Flush();

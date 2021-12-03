@@ -15,13 +15,48 @@ namespace Senz_Program {
         [SerializeField] private Dropdown ResolutionList;
         [SerializeField] private Text ResolutionText;
         [SerializeField] private int CheckVsync;
-        [SerializeField] private int CheckFullScreen;
+        [SerializeField] private Toggle FullScreen;
+        [SerializeField] private Toggle Window;
+        [SerializeField] private Toggle FullScreenWindow;
+
+        List<string> Res = new List<string>();
+        int Index;
+
         void Start()
         {
-            ResolutionList.value = OR_SaveSystem.Instance.SaveData.ResolutionSetting;
+            for (int i = 0; i < Screen.resolutions.Length; i++)
+            {
+                Res.Add(Screen.resolutions[i].ToString());
+
+                if (Screen.resolutions[i].width == Screen.currentResolution.width &&
+                    Screen.resolutions[i].height == Screen.currentResolution.height &&
+                    Screen.resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
+                {
+                    Index = i;
+                }
+            }
+
+            switch (Screen.fullScreenMode)
+            {
+                case FullScreenMode.ExclusiveFullScreen:
+                    FullScreen.isOn = true;
+                    break;
+                case FullScreenMode.FullScreenWindow:
+
+                    break;
+                case FullScreenMode.MaximizedWindow:
+                    FullScreenWindow.isOn = true;
+                    break;
+                case FullScreenMode.Windowed:
+                    Window.isOn = true;
+                    break;
+                default:
+                    break;
+            }
+            ResolutionList.AddOptions(Res);
+            ResolutionList.value = Index;
             OR_SaveSystem.Instance.Load();
             VSyncToggle.isOn = OR_SaveSystem.Instance.SaveData.VSyncIsEnable;
-            FullScreenToggle.isOn = OR_SaveSystem.Instance.SaveData.isFullScreen;
         }
         private void Update()
         {
@@ -52,69 +87,22 @@ namespace Senz_Program {
                     break;
             }
         }
-        public void FullScreenOnValueChange()
-        {
-            CheckFullScreen = FullScreenToggle.isOn ? 1 : 0;
-            switch (CheckFullScreen)
-            {
-                case 1:
-                    OR_SaveSystem.Instance.SaveData.isFullScreen = true;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-                case 0:
-                    OR_SaveSystem.Instance.SaveData.isFullScreen = false;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-            }
-        }
-        public void ResolutionSystem()
-        {
-            switch (ResolutionList.value)
-            {
-                case 0:     //800x600
-                    OR_SaveSystem.Instance.SaveData.ResolutionSetting = 0;
-                    OR_SaveSystem.Instance.SaveData.ScreenWidth = 800;
-                    OR_SaveSystem.Instance.SaveData.ScreenHeight = 600;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-                case 1:     //1024x768
-                    OR_SaveSystem.Instance.SaveData.ResolutionSetting = 1;
-                    OR_SaveSystem.Instance.SaveData.ScreenWidth = 1024;
-                    OR_SaveSystem.Instance.SaveData.ScreenHeight = 768;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-                case 2:     //1280x960
-                    OR_SaveSystem.Instance.SaveData.ResolutionSetting = 2;
-                    OR_SaveSystem.Instance.SaveData.ScreenWidth = 1280;
-                    OR_SaveSystem.Instance.SaveData.ScreenHeight = 960;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-                case 3:     //1440x792
-                    OR_SaveSystem.Instance.SaveData.ResolutionSetting = 3;
-                    OR_SaveSystem.Instance.SaveData.ScreenWidth = 1440;
-                    OR_SaveSystem.Instance.SaveData.ScreenHeight = 792;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-                case 4:     //1792x1008 
-                    OR_SaveSystem.Instance.SaveData.ResolutionSetting = 4;
-                    OR_SaveSystem.Instance.SaveData.ScreenWidth = 1792;
-                    OR_SaveSystem.Instance.SaveData.ScreenHeight = 1008;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-                case 5:     //1920x1080
-                    OR_SaveSystem.Instance.SaveData.ResolutionSetting = 5;
-                    OR_SaveSystem.Instance.SaveData.ScreenWidth = 1920;
-                    OR_SaveSystem.Instance.SaveData.ScreenHeight = 1080;
-                    OR_SaveSystem.Instance.Save();
-                    break;
-            }
-        }
 
         public void PushApplyResolution()
         {
+            FullScreenMode fullScreenMode = FullScreenMode.Windowed;
+            if (FullScreen.isOn)
+            {
+                fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+            }
+            else if (FullScreenWindow.isOn)
+            {
+                fullScreenMode = FullScreenMode.MaximizedWindow;
+            }
+
             QualitySettings.vSyncCount = CheckVsync;
-            Screen.fullScreen = OR_SaveSystem.Instance.SaveData.isFullScreen;
-            Screen.SetResolution(OR_SaveSystem.Instance.SaveData.ScreenWidth, OR_SaveSystem.Instance.SaveData.ScreenHeight, Screen.fullScreen);
+
+            Screen.SetResolution(int.Parse(Res[ResolutionList.value].Split(' ')[0]), int.Parse(Res[ResolutionList.value].Split(' ')[2]), fullScreenMode);
         }
     }
 }

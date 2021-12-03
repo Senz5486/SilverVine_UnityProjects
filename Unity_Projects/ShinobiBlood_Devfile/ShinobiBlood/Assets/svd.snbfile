@@ -1,6 +1,6 @@
 {
     "ResolutionSetting": 5,
-    "Stage1_MaxScores": 351255,
+    "Stage1_MaxScores": 376619,
     "Stage2_MaxScores": 0,
     "Stage3_MaxScores": 0,
     "Stage4_MaxScores": 0,
@@ -19,5 +19,5 @@
     "RK_StageEx_PlayerNames": "現在最高記録がありません",
     "VSyncIsEnable": true,
     "isFullScreen": true,
-    "FinishTutorial": true
+    "FinishTutorial": false
 }

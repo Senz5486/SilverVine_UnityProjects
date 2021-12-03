@@ -107,12 +107,6 @@ namespace cakeslice
 
         private void Awake()
         {
-            if (Instance != null)
-            {
-                Destroy(this);
-                throw new System.Exception("you can only have one outline camera in the scene");
-            }
-
             Instance = this;
         }
 

@@ -32,7 +32,7 @@ namespace Senz_Program
         //bool
         public bool VSyncIsEnable = true;  //VSync用の保存bool
         public bool isFullScreen = true;   //フルスクリーン確認用の保存bool
-        public bool FinishTutorial = false; //チュートリアルを終えてるか確認用の保存bool
+        public bool FinishTutorial = true; //チュートリアルを終えてるか確認用の保存bool
         
     }
 }

@@ -119,7 +119,10 @@ namespace Senz_Program
             if (_accelerationspeed)
             {
                 Player_Speed = Default_Player_Speed + SpeedItemPower;
-                _Particle.Particles[1].Play();
+                if (!_Particle.Particles[1].isPlaying)
+                {
+                    _Particle.Particles[1].Play();
+                }
             }
             else if (!_accelerationspeed)
             {

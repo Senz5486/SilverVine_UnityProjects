@@ -90,10 +90,10 @@ namespace Senz_Program
 
         void Tips1()
         {
-            TutorialTipsText.text = "A,← キーで左移動 / D,→ キーで右移動 / スペース,↑ キー でジャンプ が出来ます";
+            TutorialTipsText.text = "A,← キーで左移動 / D,→ キーで右移動 / スペース,↑ キー でジャンプ  /  Qキーでカメラの前後切り替え が出来ます";
             isCanMove = true;
             _SoundController.PlaySEAudio = 7;
-            Invoke("Tips2", 5.0f);
+            Invoke("Tips2", 8.0f);
         }
         void Tips2()
         {

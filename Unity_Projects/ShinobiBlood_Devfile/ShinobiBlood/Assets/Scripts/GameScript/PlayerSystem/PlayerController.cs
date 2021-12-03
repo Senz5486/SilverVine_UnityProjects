@@ -72,8 +72,16 @@ namespace Senz_Program
         private void Update()
         {
             //キー入力
-            Horizontal = Input.GetAxis("Horizontal");
-            Vertical   = Input.GetAxis("Vertical");
+            if(_enablecharasystem)
+            {
+                Horizontal = Input.GetAxis("Horizontal");
+                Vertical = Input.GetAxis("Vertical");
+            }
+            else
+            {
+                Horizontal = 0;
+                Vertical = 0;
+            }
             moveDirection.x = Horizontal;
             if (Input.GetKeyDown(KeyCode.Q)) //カメラ反転 2021/11/02 最適化
             {
@@ -125,18 +133,18 @@ namespace Senz_Program
                     GravityFallTime = 0.0f;
                     if (Vertical > 0)
                     {
-                        if (_enablecharasystem)
-                        {
+                        //if (_enablecharasystem)
+                        //{
                             if (_GimikCast.IsCast)
                             {
                                 _GimikCast.IsCast = false;
                             }
-                        Y_Speed = Player_JumpSpeed;
+                            Y_Speed = Player_JumpSpeed;
                             Player_JumpPos = transform.position.y;
                             isJump = true;
                             JumpTime = 0.0f;
                             _Animator.SetBool("IsJump", true);
-                        }                
+                        //}                
                     }
                     else
                     {

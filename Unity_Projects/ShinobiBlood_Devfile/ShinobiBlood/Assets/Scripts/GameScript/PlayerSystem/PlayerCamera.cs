@@ -44,7 +44,7 @@ namespace Senz_Program
                         var Position = TargetObject.position + new Vector3(2.5f, Height, -CameraDistance);
                         Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
                     }
-                    else if (TargetObject.gameObject.tag == "Item")
+                    else if (TargetObject.gameObject.tag != "Player")
                     {
                         var Position = TargetObject.position + new Vector3(0.0f, Height, -CameraDistance);
                         Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
@@ -68,7 +68,7 @@ namespace Senz_Program
                         var Position = TargetObject.position + new Vector3(-2.5f, Height, -CameraDistance);
                         Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);
                     }
-                    else if (TargetObject.gameObject.tag == "Item")
+                    else /*if (TargetObject.gameObject.tag != "Player")*/
                     {
                         var Position = TargetObject.position + new Vector3(2.5f, Height, -CameraDistance);
                         Player_Camera.transform.position = Vector3.Lerp(Player_Camera.transform.position, Position, Time.deltaTime * SmoothSpeed);

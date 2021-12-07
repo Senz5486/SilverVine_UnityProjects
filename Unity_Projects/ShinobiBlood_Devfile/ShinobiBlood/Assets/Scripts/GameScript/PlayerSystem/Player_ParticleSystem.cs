@@ -35,7 +35,6 @@ namespace Senz_Program
                 }
                 isGetSpeedItem = false;
             }
-
             if (isCastGimik)
             {
                 if (!Particles[2].isPlaying)

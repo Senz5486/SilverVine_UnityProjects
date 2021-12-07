@@ -80,6 +80,10 @@ namespace Senz_Program
             {
                 Horizontal = Input.GetAxis("Horizontal");
                 Vertical = Input.GetAxis("Vertical");
+                if(Horizontal != 0)
+                {
+                    _isRope = false;
+                }
             }
             else
             {
@@ -101,11 +105,15 @@ namespace Senz_Program
                     moveDirection = moveDirection - dot * raycastHit.normal;
                 }
             }
-
         }
 
         void FixedUpdate()
         {
+            if (_isRope)
+            {
+                UseRope();
+                return;
+            }
             CharacterMovement();
         }
 
@@ -135,25 +143,20 @@ namespace Senz_Program
             float X_Speed = 0.0f;
             float Y_Speed = -Gravity * GravityFallTime;
             
-
-
                 if (isGround)
                 {
                     GravityFallTime = 0.0f;
                     if (Vertical > 0)
                     {
-                        //if (_enablecharasystem)
-                        //{
-                            if (_GimikCast.IsCast)
-                            {
-                                _GimikCast.IsCast = false;
-                            }
-                            Y_Speed = Player_JumpSpeed;
-                            Player_JumpPos = transform.position.y;
-                            isJump = true;
-                            JumpTime = 0.0f;
-                            _Animator.SetBool("IsJump", true);
-                        //}                
+                        if (_GimikCast.IsCast)
+                        {
+                            _GimikCast.IsCast = false;
+                        }
+                        Y_Speed = Player_JumpSpeed;
+                        Player_JumpPos = transform.position.y;
+                        isJump = true;
+                        JumpTime = 0.0f;
+                        _Animator.SetBool("IsJump", true);
                     }
                     else
                     {
@@ -223,6 +226,11 @@ namespace Senz_Program
             }
         }
 
+        void UseRope()
+        {
+            float Y_Speed = Vertical * Player_Speed;
+            rb.velocity = new Vector3(0, Y_Speed, 0);
+        }
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == "MoveOBJ")//ìÆÇ≠Ç‡ÇÃÇ…èÊÇ¡ÇΩéû

@@ -9,14 +9,15 @@ public class GroundCheck : MonoBehaviour
 
     public bool IsGround()
     {
-        if (isGroundEnter || isGroundStay)
-        {
-            isGround = true;
-        }
-        else if (isGroundExit)
+        if (isGroundExit)
         {
             isGround = false;
         }
+        else if (isGroundEnter || isGroundStay)
+        {
+            isGround = true;
+        }
+        
 
         isGroundEnter = false;
         isGroundStay = false;

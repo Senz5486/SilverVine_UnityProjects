@@ -11,6 +11,8 @@ TagManager:
   - GameOverArea
   - RespawnArea
   - GimikTrigger
+  - FxTemporaire
+  - DestroyArea
   layers:
   - Default
   - TransparentFX

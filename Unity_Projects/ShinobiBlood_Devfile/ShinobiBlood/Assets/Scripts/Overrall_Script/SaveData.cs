@@ -9,13 +9,14 @@ namespace Senz_Program
     public class SaveData
     {
         //int
-        public int ResolutionSetting = 5; //解像度用の保存int
+        public int QualitySetting = 2;     //品質設定保存
         public int Stage1_MaxScores = 0;   //スコア仮保存
         public int Stage2_MaxScores = 0;   //スコア仮保存
         public int Stage3_MaxScores = 0;   //スコア仮保存
         public int Stage4_MaxScores = 0;   //スコア仮保存
         public int Stage5_MaxScores = 0;   //スコア仮保存
         public int StageEx_MaxScores = 0;   //スコア仮保存
+
         //float
         public int ScreenWidth = 1920;   //解像度用の保存float 
         public int ScreenHeight = 1080;  //解像度用の保存float 

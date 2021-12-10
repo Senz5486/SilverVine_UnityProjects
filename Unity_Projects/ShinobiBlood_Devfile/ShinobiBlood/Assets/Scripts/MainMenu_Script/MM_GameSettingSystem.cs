@@ -13,6 +13,7 @@ namespace Senz_Program {
         [SerializeField] private GameObject ResolutionObject;
         [SerializeField] private GameObject ApplyButton;
         [SerializeField] private Dropdown ResolutionList;
+        [SerializeField] private Dropdown Quality;
         [SerializeField] private Text ResolutionText;
         [SerializeField] private int CheckVsync;
         [SerializeField] private Toggle FullScreen;
@@ -21,9 +22,11 @@ namespace Senz_Program {
 
         List<string> Res = new List<string>();
         int Index;
-
+        [SerializeField] int getQualityValue;
+        [SerializeField]int CurrentQualityLevel;
         void Start()
         {
+            Quality.value = OR_SaveSystem.Instance.SaveData.QualitySetting;
             for (int i = 0; i < Screen.resolutions.Length; i++)
             {
                 Res.Add(Screen.resolutions[i].ToString());
@@ -35,6 +38,8 @@ namespace Senz_Program {
                     Index = i;
                 }
             }
+
+            
 
             switch (Screen.fullScreenMode)
             {
@@ -88,8 +93,38 @@ namespace Senz_Program {
             }
         }
 
+        public void QualityValueGet(int Value)
+        {
+            Value = Quality.value;
+            getQualityValue = Value;
+        }
+
         public void PushApplyResolution()
         {
+            QualitySettings.SetQualityLevel(getQualityValue, true);
+            CurrentQualityLevel = QualitySettings.GetQualityLevel();
+            OR_SaveSystem.Instance.SaveData.QualitySetting = getQualityValue;
+            switch (CurrentQualityLevel)
+            {
+                case 0:
+                    Debug.Log("‰æŽ¿Ý’è‚ª Å’á ‚ÉÝ’è‚³‚ê‚Ü‚µ‚½");
+                    break;
+                case 1:
+                    Debug.Log("‰æŽ¿Ý’è‚ª ’á ‚ÉÝ’è‚³‚ê‚Ü‚µ‚½");
+                    break;
+                case 2:
+                    Debug.Log("‰æŽ¿Ý’è‚ª ‚Ó‚Â‚¤ ‚ÉÝ’è‚³‚ê‚Ü‚µ‚½");
+                    break;
+                case 3:
+                    Debug.Log("‰æŽ¿Ý’è‚ª ‚ ‚ÉÝ’è‚³‚ê‚Ü‚µ‚½");
+                    break;
+                case 4:
+                    Debug.Log("‰æŽ¿Ý’è‚ª Å‚ ‚ÉÝ’è‚³‚ê‚Ü‚µ‚½");
+                    break;
+                case 5:
+                    Debug.Log("‰æŽ¿Ý’è‚ª ƒEƒ‹ƒgƒ‰ ‚ÉÝ’è‚³‚ê‚Ü‚µ‚½");
+                    break;
+            }
             FullScreenMode fullScreenMode = FullScreenMode.Windowed;
             if (FullScreen.isOn)
             {
@@ -103,6 +138,8 @@ namespace Senz_Program {
             QualitySettings.vSyncCount = CheckVsync;
 
             Screen.SetResolution(int.Parse(Res[ResolutionList.value].Split(' ')[0]), int.Parse(Res[ResolutionList.value].Split(' ')[2]), fullScreenMode);
+
+            OR_SaveSystem.Instance.Save();
         }
     }
 }

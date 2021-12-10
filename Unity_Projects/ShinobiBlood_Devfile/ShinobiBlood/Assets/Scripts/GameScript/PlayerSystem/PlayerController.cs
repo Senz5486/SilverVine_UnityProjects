@@ -167,6 +167,7 @@ namespace Senz_Program
                     Player_JumpPos = transform.position.y;
                     isJump = true;
                     JumpTime = 0.0f;
+                    _SoundController.PlaySEAudio = 9;
                     _Animator.SetBool("IsJump", true);
                 }
                 else

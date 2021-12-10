@@ -1,5 +1,5 @@
 {
-    "ResolutionSetting": 5,
+    "QualitySetting": 0,
     "Stage1_MaxScores": 376619,
     "Stage2_MaxScores": 0,
     "Stage3_MaxScores": 0,
@@ -8,7 +8,7 @@
     "StageEx_MaxScores": 0,
     "ScreenWidth": 1920,
     "ScreenHeight": 1080,
-    "SEVolume": 0.05013594776391983,
+    "SEVolume": 1.0,
     "BGMVolume": 0.06180357187986374,
     "PlayerName": "名前無し 登録してください",
     "RK_Stage1_PlayerNames": "名前無し 登録してください",

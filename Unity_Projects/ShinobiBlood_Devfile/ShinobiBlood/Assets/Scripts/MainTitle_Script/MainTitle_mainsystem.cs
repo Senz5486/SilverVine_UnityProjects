@@ -38,6 +38,7 @@ namespace Senz_Program
         private void Awake()
         {
             OR_SaveSystem.Instance.Load();
+            QualitySettings.SetQualityLevel(OR_SaveSystem.Instance.SaveData.QualitySetting, true);
             _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
             _MusicController = GameObject.Find("MusicControllerObject").GetComponent<MusicController>();
             _orSceneManager = SceneManagerObject.GetComponent<OR_SceneManager>();

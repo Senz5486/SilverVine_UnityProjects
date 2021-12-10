@@ -39,6 +39,7 @@ namespace Senz_Program
         private float Default_Player_Speed;
         private float Horizontal;
         private float Vertical;
+        public float _Vertical { get { return Vertical; } }
         [SerializeField] private float FirstRotateY;
         //‰ñ“]
         float Y_Rotate;
@@ -55,7 +56,7 @@ namespace Senz_Program
         private bool _enablecharasystem;
         public bool EnableCharaSystem{get{return _enablecharasystem;}set{_enablecharasystem = value;}}
 
-        private bool _accelerationspeed;
+        [SerializeField]private bool _accelerationspeed;
         public bool AccelerationSpeed{get{return _accelerationspeed;}set{_accelerationspeed = value;}}
 
 
@@ -225,7 +226,6 @@ namespace Senz_Program
                 _Animator.SetBool("IsRun", false);
             }
         }
-
         void UseRope()
         {
             float Y_Speed = Vertical * Player_Speed;
@@ -245,21 +245,5 @@ namespace Senz_Program
                 transform.SetParent(null);
             }
         }
-
-        //private bool onSlope()
-        //{
-        //    if (isJump) return false;
-
-        //    RaycastHit hit;
-
-        //    if(Physics.Raycast(transform.position , Vector3.down , out hit , slopeForceRayLength))
-        //    {
-        //        if(hit.normal != Vector3.up)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
     }
 }

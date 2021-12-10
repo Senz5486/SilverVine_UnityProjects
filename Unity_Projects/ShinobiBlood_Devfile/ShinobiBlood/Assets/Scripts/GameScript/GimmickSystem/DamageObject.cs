@@ -2,25 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageObject : MonoBehaviour
+namespace Senz_Program
 {
-    MG_HealthSystem _mghealthsystem;
-    [SerializeField] float Damage;
-
-    // Start is called before the first frame update
-    void Start()
+    public class DamageObject : MonoBehaviour
     {
-        _mghealthsystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
+        MG_HealthSystem _mghealthsystem;
+        [SerializeField] float Damage;
 
-    }
-
-    // Update is called once per frame
-    private void OnCollisionEnter(Collision collision)//触れた時
-    {
-        if(collision.gameObject.tag == "Player")
+        // Start is called before the first frame update
+        void Start()
         {
-            _mghealthsystem.TokenDamage(Damage,false);
-            //ノックバックが存在するならばここに追記
+            _mghealthsystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
+
+        }
+
+        // Update is called once per frame
+        private void OnCollisionEnter(Collision collision)//触れた時
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                _mghealthsystem.TokenDamage(Damage, false);
+                //ノックバックが存在するならばここに追記
+            }
         }
     }
 }

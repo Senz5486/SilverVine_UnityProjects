@@ -126,10 +126,18 @@ namespace Senz_Program
             isHead = head.IsGround();
             CanAction = action.ActionArea();
 
-            if (_accelerationspeed)
+            if (Horizontal == 0.0f)
+            {
+                if (_Particle.Particles[1].isPlaying)
+                {
+                    _Particle.Particles[1].Stop();
+                }
+            }
+            else if (_accelerationspeed)
             {
                 Player_Speed = Default_Player_Speed + SpeedItemPower;
-                if (!_Particle.Particles[1].isPlaying)
+
+                if (!_Particle.Particles[1].isPlaying && (Horizontal >= 0.5 || Horizontal <= -0.5))
                 {
                     _Particle.Particles[1].Play();
                 }
@@ -140,6 +148,7 @@ namespace Senz_Program
                 _Particle.Particles[1].Stop();
                 _speeditempower = 0;
             }
+            
 
             //‘¬“x
             float X_Speed = 0.0f;

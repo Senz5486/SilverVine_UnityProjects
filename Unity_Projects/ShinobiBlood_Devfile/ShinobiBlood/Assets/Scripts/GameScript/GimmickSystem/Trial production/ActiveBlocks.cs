@@ -9,6 +9,7 @@ namespace Senz_Program
         [SerializeField] private new BoxCollider collider;
         [SerializeField] float Damage;
         [SerializeField] private new MeshRenderer renderer;
+        [SerializeField] private ParticleSystem OnFire;
         MG_HealthSystem _mghealthsystem;
         MG_GimikCast _mggimikcast;
         bool isEnd;
@@ -17,7 +18,6 @@ namespace Senz_Program
         {
             _mghealthsystem = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
             _mggimikcast = GameObject.Find("Player").GetComponent<MG_GimikCast>();
-
             collider.enabled = false;
             renderer.material.color = new Color32(0, 0, 0, 50);
             isEnd = false;
@@ -32,6 +32,10 @@ namespace Senz_Program
                 _mggimikcast.FinishCast = false;
                 isEnd = true;
                 collider.enabled = true;
+                if (!OnFire.isPlaying) 
+                {
+                    OnFire.Play();
+                }
             }
         }
 

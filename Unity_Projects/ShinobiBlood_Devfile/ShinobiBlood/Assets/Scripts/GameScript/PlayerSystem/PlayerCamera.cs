@@ -116,5 +116,6 @@ namespace Senz_Program
                 isCollisionCameraRight = false;
             }
         }
+        
     }
 }

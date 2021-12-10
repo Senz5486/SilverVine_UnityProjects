@@ -18,7 +18,7 @@ namespace Senz_Program
         MG_GimikCast _GimikCast;
         PlayerCamera _PlayerCamera;
         Animator _Animator;
-
+        SoundController _SoundController;
         Player_ParticleSystem _Particle;
         //float
         [SerializeField] private float Gravity;
@@ -31,8 +31,8 @@ namespace Senz_Program
         [SerializeField] private float slopeForceRayLength;
 
         private float _speeditempower;
-        public float SpeedItemPower {get {return _speeditempower;}set{_speeditempower = value;}  }
-        [SerializeField]private float Player_Speed;
+        public float SpeedItemPower { get { return _speeditempower; } set { _speeditempower = value; } }
+        [SerializeField] private float Player_Speed;
         Vector3 moveDirection;
 
 
@@ -54,10 +54,10 @@ namespace Senz_Program
 
 
         private bool _enablecharasystem;
-        public bool EnableCharaSystem{get{return _enablecharasystem;}set{_enablecharasystem = value;}}
+        public bool EnableCharaSystem { get { return _enablecharasystem; } set { _enablecharasystem = value; } }
 
-        [SerializeField]private bool _accelerationspeed;
-        public bool AccelerationSpeed{get{return _accelerationspeed;}set{_accelerationspeed = value;}}
+        [SerializeField] private bool _accelerationspeed;
+        public bool AccelerationSpeed { get { return _accelerationspeed; } set { _accelerationspeed = value; } }
 
 
         private void Awake()
@@ -65,23 +65,24 @@ namespace Senz_Program
             Horizontal = 0.0f;
             Vertical = 0.0f;
             Y_Rotate = FirstRotateY;
+            _SoundController = GameObject.Find("SoundControllerObject").GetComponent<SoundController>();
             _PlayerCamera = GameObject.Find("Player_Track_Camera").GetComponent<PlayerCamera>();
             _GimikCast = this.GetComponent<MG_GimikCast>();
             _Animator = this.GetComponent<Animator>();
             rb = this.GetComponent<Rigidbody>();
             _Particle = this.GetComponent<Player_ParticleSystem>();
             Default_Player_Speed = Player_Speed;
-            
+
         }
 
         private void Update()
         {
             //キー入力
-            if(_enablecharasystem)
+            if (_enablecharasystem)
             {
                 Horizontal = Input.GetAxis("Horizontal");
                 Vertical = Input.GetAxis("Vertical");
-                if(Horizontal != 0)
+                if (Horizontal != 0)
                 {
                     _isRope = false;
                 }
@@ -97,7 +98,7 @@ namespace Senz_Program
                 _PlayerCamera.PlayerReverse = !_PlayerCamera.PlayerReverse;
             }
             RaycastHit raycastHit;
-            if (Physics.Raycast(transform.position, Vector3.down, 
+            if (Physics.Raycast(transform.position, Vector3.down,
                 out raycastHit, slopeForceRayLength))
             {
                 float dot = Vector3.Dot(moveDirection, raycastHit.normal);
@@ -143,54 +144,54 @@ namespace Senz_Program
             //速度
             float X_Speed = 0.0f;
             float Y_Speed = -Gravity * GravityFallTime;
-            
-                if (isGround)
+
+            if (isGround)
+            {
+                GravityFallTime = 0.0f;
+                if (Vertical > 0)
                 {
-                    GravityFallTime = 0.0f;
-                    if (Vertical > 0)
-                    {
-                        if (_GimikCast.IsCast)
-                        {
-                            _GimikCast.IsCast = false;
-                        }
-                        Y_Speed = Player_JumpSpeed;
-                        Player_JumpPos = transform.position.y;
-                        isJump = true;
-                        JumpTime = 0.0f;
-                        _Animator.SetBool("IsJump", true);
-                    }
-                    else
-                    {
-                        isJump = false;
-                        _Animator.SetBool("IsJump", false);
-                    }
-                }
-                else if (isJump)
-                {
-                    bool PushVecKey = Vertical > 0;
-                    bool Player_CanJump = Player_JumpPos + Player_JumpLimitHeight > transform.position.y;
-                    bool Player_CanTime = JumpLimitTime > JumpTime;
-                    if (PushVecKey && Player_CanJump && Player_CanTime && !isHead)
-                    {
                     if (_GimikCast.IsCast)
                     {
                         _GimikCast.IsCast = false;
                     }
                     Y_Speed = Player_JumpSpeed;
-                        JumpTime += Time.deltaTime;
-                    }
-                    else
-                    {
-                        _Animator.SetBool("IsJump", false);
-                        isJump = false;
-                        GravityFallTime = 0.0f;
-                        JumpTime = 0.0f;
-                    }
+                    Player_JumpPos = transform.position.y;
+                    isJump = true;
+                    JumpTime = 0.0f;
+                    _Animator.SetBool("IsJump", true);
                 }
-                else if (isGround == false)
+                else
                 {
-                    GravityFallTime += Time.deltaTime;
+                    isJump = false;
+                    _Animator.SetBool("IsJump", false);
                 }
+            }
+            else if (isJump)
+            {
+                bool PushVecKey = Vertical > 0;
+                bool Player_CanJump = Player_JumpPos + Player_JumpLimitHeight > transform.position.y;
+                bool Player_CanTime = JumpLimitTime > JumpTime;
+                if (PushVecKey && Player_CanJump && Player_CanTime && !isHead)
+                {
+                    if (_GimikCast.IsCast)
+                    {
+                        _GimikCast.IsCast = false;
+                    }
+                    Y_Speed = Player_JumpSpeed;
+                    JumpTime += Time.deltaTime;
+                }
+                else
+                {
+                    _Animator.SetBool("IsJump", false);
+                    isJump = false;
+                    GravityFallTime = 0.0f;
+                    JumpTime = 0.0f;
+                }
+            }
+            else if (isGround == false)
+            {
+                GravityFallTime += Time.deltaTime;
+            }
 
             if (_enablecharasystem)
             {
@@ -244,6 +245,15 @@ namespace Senz_Program
             {
                 transform.SetParent(null);
             }
+        }
+
+        void FootStep1() //足音左
+        {
+            _SoundController.PlaySEAudio = 8;
+        }
+        void FootStep2() //足音右
+        {
+            _SoundController.PlaySEAudio = 8;
         }
     }
 }

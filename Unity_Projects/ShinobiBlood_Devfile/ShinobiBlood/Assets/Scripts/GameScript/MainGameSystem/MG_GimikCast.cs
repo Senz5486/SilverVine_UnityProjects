@@ -8,9 +8,11 @@ namespace Senz_Program
     public class MG_GimikCast : MonoBehaviour
     {
         //GameObject
+        MG_HealthSystem _MGHealth;
         Player_ParticleSystem _Particle;
         [SerializeField] private GameObject CastUI;
         [SerializeField] private Image CastBar;
+        [SerializeField] private Text ErrorText;
         //Getter / Setter
         private bool _startcast;
         public bool StartCast { get { return _startcast; } set { _startcast = value; } }
@@ -25,6 +27,8 @@ namespace Senz_Program
 
         void Start()
         {
+            ErrorText.text = "";
+            _MGHealth = GameObject.Find("Player").GetComponent<MG_HealthSystem>();
             _Particle = this.GetComponent<Player_ParticleSystem>();
             IsCast = false;
             CastUI.SetActive(false);
@@ -32,32 +36,43 @@ namespace Senz_Program
 
         void Update()
         {
-
-            if (_startcast && !_finishcast && !_iscast)
+            if (_MGHealth.CurrentHealth >= 10) 
             {
-                CastTime = 0;
-                _iscast = true;
-                _startcast = false;
-            }
-
-            if (_iscast)
-            {
-                CastUI.SetActive(true);
-                _Particle.Particles[2].Play();
-                CastTime += Time.deltaTime;
-                CastBar.fillAmount = CastTime / MaxCastTime;
-                if (CastTime >= MaxCastTime)
+                if (_startcast && !_finishcast && !_iscast)
                 {
-                    CastTime = MaxCastTime;
-                    _finishcast = true;
-                    _iscast = false;
+                    CastTime = 0;
+                    _iscast = true;
+                    _startcast = false;
+                }
+
+                if (_iscast)
+                {
+                    CastUI.SetActive(true);
+                    _Particle.Particles[2].Play();
+                    CastTime += Time.deltaTime;
+                    CastBar.fillAmount = CastTime / MaxCastTime;
+                    if (CastTime >= MaxCastTime)
+                    {
+                        CastTime = MaxCastTime;
+                        _finishcast = true;
+                        _iscast = false;
+                    }
+                }
+                else
+                {
+                    CastUI.SetActive(false);
                 }
             }
-            else
+            else if(_MGHealth.CurrentHealth <= 9)
             {
-                CastUI.SetActive(false);
+                ErrorText.text = "‘Ì—Í‚ª•s‘«‚µ‚Ä‚¢‚éˆ×A•–‚p‚ð‰r¥‚·‚éŽ–‚ªo—ˆ‚Ü‚¹‚ñ";
+                Invoke("RemoveText", 1.5f);
             }
+        }
 
+        void RemoveText()
+        {
+            ErrorText.text = "";
         }
     }
 }

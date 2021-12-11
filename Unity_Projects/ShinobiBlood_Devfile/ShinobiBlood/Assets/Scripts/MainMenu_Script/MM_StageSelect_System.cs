@@ -109,7 +109,7 @@ namespace Senz_Program
                             StageImage[CurrentSelectStage].SetActive(true);
                             StageName.text = "<color=#FF0000>ˆë</color><color=#ffffff>‚ÌŠÔ</color>";
                             StageDifficult.text = "<color=#ffffff>“ïˆÕ“x:</color> <color=#FF0000>š</color><color=#ffffff>™™™™</color>";
-                            StageGimik.text = "‰ñ“]n";
+                            StageGimik.text = "‰ñ“]n / ’|‘„ / ˆÚ“®°";
                             break;
                         case 1: //ƒXƒe[ƒW2
                             CurrentMaxScore.text = OR_SaveSystem.Instance.SaveData.Stage2_MaxScores.ToString("0") + " “_";

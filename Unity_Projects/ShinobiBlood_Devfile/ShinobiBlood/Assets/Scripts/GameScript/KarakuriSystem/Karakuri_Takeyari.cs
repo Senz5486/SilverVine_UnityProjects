@@ -21,7 +21,7 @@ namespace Senz_Program
                 _PlayerStatus.KarakuriGetDamage = 5.0f;
             }
         }
-        private void OnCollisionStay(Collision collision)
+        private void OnTriggerStay(Collision collision)
         {
             if (collision.gameObject.tag == "Player")
             {
@@ -29,7 +29,7 @@ namespace Senz_Program
                 isStay_Karakuri = true;
             }
         }
-        private void OnCollisionExit(Collision collision)
+        private void OnTriggerExit(Collision collision)
         {
             if (collision.gameObject.tag == "Player")
             {

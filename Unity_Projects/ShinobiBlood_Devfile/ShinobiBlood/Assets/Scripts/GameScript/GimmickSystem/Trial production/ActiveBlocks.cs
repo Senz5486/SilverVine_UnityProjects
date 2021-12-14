@@ -13,6 +13,7 @@ namespace Senz_Program
         MG_HealthSystem _mghealthsystem;
         MG_GimikCast _mggimikcast;
         bool isEnd;
+        bool isCast;
 
         private void Start()
         {
@@ -21,11 +22,18 @@ namespace Senz_Program
             collider.enabled = false;
             renderer.material.color = new Color32(0, 0, 0, 50);
             isEnd = false;
+            isCast = false;
         }
 
         private void FixedUpdate()
         {
-            if (_mggimikcast.FinishCast)
+            if (isEnd) return;
+            if(!_mggimikcast.StartCast && !_mggimikcast.IsCast && !_mggimikcast.FinishCast)
+            {
+                isCast = false;
+            }
+
+            if (_mggimikcast.FinishCast && isCast)
             {
                 _mghealthsystem.TokenDamage(Damage, false);
                 renderer.material.color = new Color32(0, 0, 0, 255);
@@ -44,6 +52,7 @@ namespace Senz_Program
             if (!isEnd && other.gameObject.tag == "Player" && Input.GetKeyDown("e") && !_mggimikcast.StartCast)
             {
                 _mggimikcast.StartCast = true;
+                isCast = true;
             }
         }
     }

@@ -63,10 +63,11 @@ namespace Senz_Program
                     CastUI.SetActive(false);
                 }
             }
-            else if(_MGHealth.CurrentHealth <= 9)
+            else if(_MGHealth.CurrentHealth <= 9 && _startcast)
             {
-                ErrorText.text = "体力が不足している為、黒魔術を詠唱する事が出来ません";
-                Invoke("RemoveText", 1.5f);
+                _startcast = false;
+                ErrorText.text = "体力が不足している為、詠唱を開始出来ません";
+                Invoke("RemoveText", 1.5f);          
             }
         }
 

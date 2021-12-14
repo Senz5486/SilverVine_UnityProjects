@@ -19,5 +19,5 @@
     "RK_StageEx_PlayerNames": "現在最高記録がありません",
     "VSyncIsEnable": true,
     "isFullScreen": true,
-    "FinishTutorial": true
+    "FinishTutorial": false
 }

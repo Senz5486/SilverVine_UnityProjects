@@ -52,7 +52,6 @@ namespace Senz_Program
         [SerializeField] private bool _isRope;
         public bool isRope { get { return _isRope; } }
 
-
         private bool _enablecharasystem;
         public bool EnableCharaSystem { get { return _enablecharasystem; } set { _enablecharasystem = value; } }
 
@@ -72,7 +71,6 @@ namespace Senz_Program
             rb = this.GetComponent<Rigidbody>();
             _Particle = this.GetComponent<Player_ParticleSystem>();
             Default_Player_Speed = Player_Speed;
-
         }
 
         private void Update()
@@ -85,6 +83,8 @@ namespace Senz_Program
                 if (Horizontal != 0)
                 {
                     _isRope = false;
+                    _Animator.speed = 1;
+                    _Animator.SetBool("IsRope", false);
                 }
             }
             else
@@ -232,9 +232,19 @@ namespace Senz_Program
         }
         void UseRope()
         {
-            float Y_Speed = Vertical * Player_Speed;
+            if(Vertical == 0)
+            {
+                _Animator.speed = 0;
+            }
+            else
+            {
+                _Animator.speed = 1;
+            }
+
+            float Y_Speed = Vertical * Player_Speed / 2;
             rb.velocity = new Vector3(0, Y_Speed, 0);
         }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == "MoveOBJ")//ìÆÇ≠Ç‡ÇÃÇ…èÊÇ¡ÇΩéû
@@ -257,6 +267,13 @@ namespace Senz_Program
         void FootStep2() //ë´âπâE
         {
             _SoundController.PlaySEAudio = 8;
+        }
+        public void RopeAction( float posx)
+        {
+            gameObject.transform.position = new Vector3(posx, gameObject.transform.position.y, gameObject.transform.position.z);
+            gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            _Animator.SetBool("IsRope", true);
+            _isRope = true;
         }
     }
 }

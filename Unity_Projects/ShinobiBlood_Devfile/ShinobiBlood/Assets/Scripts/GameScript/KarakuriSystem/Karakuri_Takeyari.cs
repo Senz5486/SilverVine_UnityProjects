@@ -21,17 +21,17 @@ namespace Senz_Program
                 _PlayerStatus.KarakuriGetDamage = 5.0f;
             }
         }
-        private void OnTriggerStay(Collision collision)
+        private void OnTriggerStay(Collider other)
         {
-            if (collision.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player")
             {
                 _PlayerStatus.isHit = true;
                 isStay_Karakuri = true;
             }
         }
-        private void OnTriggerExit(Collision collision)
+        private void OnTriggerExit(Collider other)
         {
-            if (collision.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player")
             {
 
                 isStay_Karakuri = false;

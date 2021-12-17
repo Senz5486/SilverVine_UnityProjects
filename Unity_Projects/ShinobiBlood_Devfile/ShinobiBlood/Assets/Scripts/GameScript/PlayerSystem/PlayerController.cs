@@ -203,39 +203,32 @@ namespace Senz_Program
                 GravityFallTime += Time.deltaTime;
             }
 
-            if (_enablecharasystem)
+            if (Horizontal > 0) //‰EˆÚ“®’†
             {
-                if (Horizontal > 0) //‰EˆÚ“®’†
+                if (_GimikCast.IsCast)
                 {
-                    if (_GimikCast.IsCast)
-                    {
-                        _GimikCast.IsCast = false;
-                    }
-                    Y_Rotate = 90;
-                    X_Speed = Player_Speed * Horizontal;
-                    _Animator.SetBool("IsRun", true);
+                    _GimikCast.IsCast = false;
                 }
-                else if (Horizontal < 0) //¶ˆÚ“®’†
+                Y_Rotate = 90;
+                X_Speed = Player_Speed * Horizontal;
+                _Animator.SetBool("IsRun", true);
+            }
+            else if (Horizontal < 0) //¶ˆÚ“®’†
+            {
+                if (_GimikCast.IsCast)
                 {
-                    if (_GimikCast.IsCast)
-                    {
-                        _GimikCast.IsCast = false;
-                    }
-                    Y_Rotate = -90;
-                    X_Speed = Player_Speed * Horizontal;
-                    _Animator.SetBool("IsRun", true);
+                    _GimikCast.IsCast = false;
                 }
-                else
-                {
-                    _Animator.SetBool("IsRun", false);
-                }
-                transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
-                rb.velocity = new Vector3(0, Y_Speed, 0) + moveDirection * Player_Speed;
+                Y_Rotate = -90;
+                X_Speed = Player_Speed * Horizontal;
+                _Animator.SetBool("IsRun", true);
             }
             else
             {
                 _Animator.SetBool("IsRun", false);
             }
+            transform.rotation = Quaternion.Euler(0, Y_Rotate, 0);
+            rb.velocity = new Vector3(0, Y_Speed, 0) + moveDirection * Player_Speed;
         }
         void UseRope()
         {

@@ -7,15 +7,9 @@ namespace Senz_Program
    public class Karakuri_RoringRog : MonoBehaviour
     {
         PlayerStatus _PlayerStatus;
-        [SerializeField] float RoringSpeed;
-        Transform RogTrans;
-        private float RotateZ;
-        
-
         private void Start()
         {
             _PlayerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
-            RogTrans = this.GetComponent<Transform>();
         }
 
         private void onCollisionStay(Collider other)

@@ -13,6 +13,7 @@ TagManager:
   - GimikTrigger
   - FxTemporaire
   - DestroyArea
+  - invalidArea
   layers:
   - Default
   - TransparentFX

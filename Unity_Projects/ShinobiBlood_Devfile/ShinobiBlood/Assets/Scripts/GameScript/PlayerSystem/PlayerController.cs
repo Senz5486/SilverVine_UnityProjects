@@ -102,7 +102,7 @@ namespace Senz_Program
                 out raycastHit, slopeForceRayLength))
             {
                 float dot = Vector3.Dot(moveDirection, raycastHit.normal);
-                if (dot <= 0.71f && dot >= -0.71f)
+                if (dot <= 0.866f && dot >= -0.866f)
                 {
                     moveDirection = moveDirection - dot * raycastHit.normal;
                 }

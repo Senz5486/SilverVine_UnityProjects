@@ -50,6 +50,7 @@ namespace Senz_Program
         [SerializeField] private bool CanAction;
         [SerializeField] private bool isJump;
         [SerializeField] private bool _isRope;
+        [SerializeField] private bool _isRopeEnd;
         public bool isRope { get { return _isRope; } }
 
         private bool _enablecharasystem;
@@ -74,7 +75,7 @@ namespace Senz_Program
         }
 
         private void Update()
-        {
+        {  
             //ÉLÅ[ì¸óÕ
             if (_enablecharasystem)
             {
@@ -232,7 +233,24 @@ namespace Senz_Program
         }
         void UseRope()
         {
-            if(Vertical == 0)
+            if(_isRopeEnd)
+            {          
+                _Animator.speed = 1;
+                if(_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+                {
+                    _isRopeEnd = false;
+                    _isRope = false;
+                    _Animator.SetBool("IsRopeEnd", false);
+                    _Animator.SetBool("IsRope", false);
+                }
+                else
+                {
+                    _Animator.SetBool("IsRopeEnd", _isRopeEnd);
+                }
+                return;
+            }
+
+            if (Vertical == 0)
             {
                 _Animator.speed = 0;
             }

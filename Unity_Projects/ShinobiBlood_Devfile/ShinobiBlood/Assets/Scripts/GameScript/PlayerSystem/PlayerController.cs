@@ -279,6 +279,17 @@ namespace Senz_Program
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.tag == "RopeEndArea")
+            {
+                if(_isRope)
+                {
+                    _isRopeEnd = true;
+                }
+            }
+        }
+
         void FootStep1() //ë´âπç∂
         {
             _SoundController.PlaySEAudio = 8;

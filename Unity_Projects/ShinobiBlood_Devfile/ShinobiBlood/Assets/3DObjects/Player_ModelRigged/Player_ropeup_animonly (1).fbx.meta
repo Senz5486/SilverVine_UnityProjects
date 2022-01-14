@@ -21,7 +21,11 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Player_Rig_IK:L_Hip' has translation animation
+      that will be discarded.\n\t'Player_Rig_IK:R_Hip' has translation animation
+      that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -33,7 +37,43 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 68
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 1
+        functionName: FinishRopeAnimation
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -79,8 +119,368 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: Player_Rig_IK:Root
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:L_Hip
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:R_Hip
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:L_Knee
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:R_Knee
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:L_Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:R_Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:Spine1
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:Spine2
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:L_Clavice
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:R_Clavice
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:L_Sholder
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:R_Sholder
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:L_Elbow
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:R_Elbow
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:L_Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:R_Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Player_Rig_IK:Spine3
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Player_ropeup_animonly (1)(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Player_BONES
+      parentName: Player_ropeup_animonly (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Root
+      parentName: Player_Rig_IK:Player_BONES
+      position: {x: -0.002250522, y: 0.8937404, z: 0.048447974}
+      rotation: {x: -0.07453165, y: 0, z: -0, w: 0.99721867}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Spine1
+      parentName: Player_Rig_IK:Root
+      position: {x: -2.0285147e-12, y: 0.115722425, z: -3.9234393e-12}
+      rotation: {x: -0.13450006, y: 0.0025562227, z: -0.000051126408, w: 0.9909103}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Spine2
+      parentName: Player_Rig_IK:Spine1
+      position: {x: 5.551115e-19, y: 0.1434258, z: 7.105427e-17}
+      rotation: {x: -0.018626856, y: 0, z: -0, w: 0.9998265}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Spine3
+      parentName: Player_Rig_IK:Spine2
+      position: {x: -1.9428903e-17, y: 0.16586985, z: 0.0000028028073}
+      rotation: {x: 0.046759475, y: -0, z: -0, w: 0.9989062}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Neck
+      parentName: Player_Rig_IK:Spine3
+      position: {x: 2.7755574e-18, y: 0.17928545, z: 7.105427e-17}
+      rotation: {x: -0.016970893, y: 0, z: -0, w: 0.999856}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Head
+      parentName: Player_Rig_IK:Neck
+      position: {x: -1.110223e-18, y: 0.089913845, z: 1.4210854e-16}
+      rotation: {x: 0.050807785, y: -0, z: -0, w: 0.9987085}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Head_end
+      parentName: Player_Rig_IK:Head
+      position: {x: -0, y: 0.44323838, z: -8.881784e-18}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Clavice
+      parentName: Player_Rig_IK:Spine3
+      position: {x: -0.10738295, y: 0.12626062, z: 0.107574195}
+      rotation: {x: 0.045189813, y: 0.097744435, z: 0.012509974, w: 0.9941064}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Sholder
+      parentName: Player_Rig_IK:L_Clavice
+      position: {x: -0.12931724, y: 0.005960887, z: -0.07439599}
+      rotation: {x: -0.19231942, y: -0.050488696, z: -0.03591553, w: 0.9793744}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Elbow
+      parentName: Player_Rig_IK:L_Sholder
+      position: {x: -0.3699242, y: -2.842171e-16, z: -0.034675922}
+      rotation: {x: 0.021219293, y: -0.1046179, z: 0.0098687755, w: 0.9942372}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Hand
+      parentName: Player_Rig_IK:L_Elbow
+      position: {x: -0.31407803, y: 0.007550683, z: 0.04625092}
+      rotation: {x: -0.47650748, y: -0.05844213, z: 0.062463813, w: 0.87499917}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Hand_end
+      parentName: Player_Rig_IK:L_Hand
+      position: {x: -0.114672914, y: -0.0010194501, z: 0.014010032}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Clavice
+      parentName: Player_Rig_IK:Spine3
+      position: {x: 0.10738252, y: 0.12625574, z: 0.10757373}
+      rotation: {x: 0.99381584, y: -0.012515116, z: 0.10056646, w: -0.04538477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Sholder
+      parentName: Player_Rig_IK:R_Clavice
+      position: {x: 0.129318, y: -0.00597, z: 0.074396}
+      rotation: {x: 0.010772311, y: -0.048983827, z: -0.0033680662, w: 0.9987358}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Elbow
+      parentName: Player_Rig_IK:R_Sholder
+      position: {x: 0.36992687, y: 0.0000031370664, z: 0.0346759}
+      rotation: {x: 0.0003500004, y: -0.119541615, z: 0.011857956, w: 0.99275833}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Hand
+      parentName: Player_Rig_IK:R_Elbow
+      position: {x: 0.3140782, y: -0.0075504845, z: -0.04625092}
+      rotation: {x: -0.23408026, y: 0.48869395, z: 0.28533858, w: 0.79054826}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Hand_end
+      parentName: Player_Rig_IK:R_Hand
+      position: {x: 0.11467311, y: 0.0010189917, z: -0.01400998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Hip
+      parentName: Player_Rig_IK:Root
+      position: {x: -0.14888701, y: -0.06592792, z: -0.026030693}
+      rotation: {x: 0.40548098, y: 0.40786675, z: 0.56056416, w: 0.59581697}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Knee
+      parentName: Player_Rig_IK:L_Hip
+      position: {x: -0.4395756, y: -0.00000054931076, z: -1.2434498e-16}
+      rotation: {x: 0.072020836, y: -0.043032553, z: 0.28354624, w: 0.9552815}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Foot
+      parentName: Player_Rig_IK:L_Knee
+      position: {x: -0.3686002, y: -0.00000001793809, z: -1.0658141e-16}
+      rotation: {x: 0.20298061, y: 0.12784766, z: 0.043602224, w: 0.96982104}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Hip
+      parentName: Player_Rig_IK:Root
+      position: {x: 0.14888652, y: -0.06592552, z: -0.026035799}
+      rotation: {x: 0.61232424, y: -0.5803824, z: 0.3863796, w: -0.37272796}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Knee
+      parentName: Player_Rig_IK:R_Hip
+      position: {x: 0.43957594, y: 0.00000057317357, z: 0.00000074295986}
+      rotation: {x: 0.11200087, y: -0.056345403, z: 0.28014177, w: 0.95173615}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Foot
+      parentName: Player_Rig_IK:R_Knee
+      position: {x: 0.36859992, y: 0.00000007708575, z: -0.0000006644397}
+      rotation: {x: 0.23516922, y: 0.15647328, z: 0.23149095, w: 0.9309262}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Player_Controls
+      parentName: Player_ropeup_animonly (1)(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:World_FK
+      parentName: Player_Rig_IK:Player_Controls
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Main
+      parentName: Player_Rig_IK:World_FK
+      position: {x: -0.002250522, y: 0.8937404, z: 0.048447974}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:hand_R_IK_CTRL
+      parentName: Player_Rig_IK:Main
+      position: {x: 0.38563544, y: 0.23865323, z: 0.47182423}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:hand_R_Rotation_CTRL
+      parentName: Player_Rig_IK:hand_R_IK_CTRL
+      position: {x: -2.842171e-16, y: 0, z: 0}
+      rotation: {x: 0.58383185, y: 0.49352646, z: 0.41616738, w: -0.4923177}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:hand_L_IK_CTRL
+      parentName: Player_Rig_IK:Main
+      position: {x: -0.055168036, y: 0.702284, z: 0.3628138}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:hand_L_Rotation_CTRL
+      parentName: Player_Rig_IK:hand_L_IK_CTRL
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.53003216, y: 0.46340466, z: 0.46742785, w: 0.53463376}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Root 1
+      parentName: Player_Rig_IK:Main
+      position: {x: 4.163336e-18, y: 2.4158453e-15, z: 1.5987211e-16}
+      rotation: {x: 0.11321899, y: -0, z: -0, w: 0.9935701}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Spine1 1
+      parentName: Player_Rig_IK:Main
+      position: {x: 4.1355808e-17, y: 0.11443676, z: -0.017201988}
+      rotation: {x: -0.099536866, y: 0.0025035068, z: -0.00051898224, w: 0.99503064}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Spine2 1
+      parentName: Player_Rig_IK:Spine1 1
+      position: {x: 8.3266725e-19, y: 0.1399809, z: -0.031245984}
+      rotation: {x: -0.016988494, y: 0, z: -0, w: 0.9998557}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Spine3 1
+      parentName: Player_Rig_IK:Spine2 1
+      position: {x: -3.802514e-17, y: 0.16184188, z: -0.036666}
+      rotation: {x: -0.019138895, y: 0, z: -0, w: 0.99981683}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Neck 1
+      parentName: Player_Rig_IK:Spine3 1
+      position: {x: 1.9984014e-17, y: 0.17846788, z: -0.016303157}
+      rotation: {x: -0.052128203, y: 0, z: -0, w: 0.9986404}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:Head 1
+      parentName: Player_Rig_IK:Neck 1
+      position: {x: -1.3877787e-18, y: 0.08989458, z: -0.0018610493}
+      rotation: {x: 0.050807785, y: -0, z: -0, w: 0.9987085}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:R_Clavice 1
+      parentName: Player_Rig_IK:Spine3 1
+      position: {x: 0.10738251, y: 0.13544007, z: 0.0956471}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Player_Rig_IK:L_Clavice 1
+      parentName: Player_Rig_IK:Spine3 1
+      position: {x: -0.10738295, y: 0.13544494, z: 0.09564711}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

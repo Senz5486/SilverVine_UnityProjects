@@ -234,18 +234,11 @@ namespace Senz_Program
         void UseRope()
         {
             if(_isRopeEnd)
-            {          
-                _Animator.speed = 1;
-                if(_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-                {
-                    _isRopeEnd = false;
-                    _isRope = false;
-                    _Animator.SetBool("IsRopeEnd", false);
-                    _Animator.SetBool("IsRope", false);
-                }
-                else
+            {
+                if(!_Animator.GetBool("IsRopeEnd"))
                 {
                     _Animator.SetBool("IsRopeEnd", _isRopeEnd);
+                    _Animator.speed = 1;
                 }
                 return;
             }
@@ -261,6 +254,14 @@ namespace Senz_Program
 
             float Y_Speed = Vertical * Player_Speed / 2;
             rb.velocity = new Vector3(0, Y_Speed, 0);
+        }
+
+        void FinishRopeAnimation()
+        {
+            _isRopeEnd = false;
+            _isRope = false;
+            _Animator.SetBool("IsRopeEnd", false);
+            _Animator.SetBool("IsRope", false);
         }
 
         private void OnCollisionEnter(Collision collision)
